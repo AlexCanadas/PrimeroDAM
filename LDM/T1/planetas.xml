@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<planetas> 
+      <planeta type="interior">
+          <nombre>Mercurio</nombre>
+          <diametro referencia="0,382"/>
+       </planeta>
+      <planeta type="interior">
+            <nombre>Venus</nombre>
+            <diametro referencia="0,949"/>
+      </planeta>
+      <planeta type="interior">
+            <nombre>La Tierra</nombre>
+          <diametro referencia="1"/>
+      </planeta>
+      <planeta type="interior">
+           <nombre>Marte</nombre>
+            <diametro referencia="0,53"/>
+      </planeta>
+      <planeta type="exterior">
+           <nombre>Jupiter</nombre>
+           <diametro referencia="11,2"/>
+     </planeta>
+    <planeta type="exterior">
+            <nombre>Sarturno</nombre>
+          <diametro referencia="9,41"/>
+      </planeta>
+      <planeta type="exterior">
+          <nombre>Urano</nombre>
+          <diametro referencia="3,98"/>
+    </planeta>
+    <planeta type="exterior">
+           <nombre>Neptuno</nombre>
+         <diametro referencia="3,81"/>
+     </planeta>
+</planetas>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Pedidos>
+    <Destinatario_del_pedido>
+        <Nombre>"Pedro"</Nombre>  
+        <Primer_apellido>"Martín"</Primer_apellido>   
+        <Segundo_apellido>"Martínez"</Segundo_apellido>
+    </Destinatario_del_pedido>
+    <Artículo_pedido>
+        <Fabricante>"Samsung"</Fabricante>
+        <Modelo>"Galaxy_Tab_A8"</Modelo>
+    </Artículo_pedido>
+    <Dirección_de_entrega>
+        <Calle>"Virgen_de_la_cruz"</Calle>
+        <Número>"2"</Número>      
+        <Piso>"7"</Piso>
+        <Letra>"A"</Letra>
+        <Localidad>"Madrid"</Localidad>
+    </Dirección_de_entrega>
+    <Fecha_de_entrega>
+        <Dia>"17"</Dia>   
+        <Mes>"10"</Mes>  
+        <Año>"2022"</Año>
+    </Fecha_de_entrega>
+</Pedidos>

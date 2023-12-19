@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./utils/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <div class="header-section">
+        <header>
+            <hgroup>
+                <h1><center><b>Formulario y contacto</b></center></h1>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="./index.html" class="btn btn-primary" role="button">Inicio</a>
+                    <a href="./enlaces.html" class="btn btn-primary" role="button">Enlaces y nube</a>
+                    <a href="./formulario.html" class="btn btn-primary" role="button">Contacto y tutorías</a>
+                </div>
+                <div>
+                    <hr class="border border-2 opacity-50">
+                </div>
+            </hgroup>
+        </header>
+    <h4><b>Formulario de contacto: </b></h4>
+    <form class="row g-3">
+        <div class="col-md-6">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre">
+        </div>
+        <div class="col-md-6">
+          <label for="apellidos" class="form-label">Apellidos</label>
+          <input type="text" class="form-control" id="apellidos">
+        </div>
+        <div class="col-md-6">
+        <label for="id" class="form-label">ID estudiante</label>
+        <input type="number" class="form-control" id="id">
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress" class="form-label">Correo electrónico</label>
+          <input type="text" class="form-control" id="correo">
+        </div>
+        <div class="form-check text-start">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Subscribirme a la newsletter
+            </label>
+          </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">A quién quieres contactar:</label>
+          <select id="inputState" class="form-select">
+            <option value="Francisco Javier">Francisco Javier (Programación) </option>
+            <option value="Javier">Javier (Entornos de desarrollo)</option>
+            <option value="Víctor">Víctor (Bases de datos)</option>
+            <option value="José David">José David (Sistemas informáticos)</option>
+            <option value="Borja">Borja (Lenguaje de Marcas)</option>
+            <option value="Carla">Carla Gil (tutora UE) </option>
+            <option value="Administración">Administración </option>
+          </select>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="comentario" class="form-label">Comentario o consulta</label>
+                <textarea class="form-control" id="comentario" rows="3"></textarea>
+              </div>
+              <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-secondary" type="button">Enviar</button>
+                <button class="btn btn-secondary" type="button">Restablecer</button>
+            </div>
+            
+            
+      </form>
+      <br>
+      <h3><strong>Aquí puedes encontrar el horario de las tutorías</strong></h3>
+      <img src="./images/Tutorías.jpg" class="rounded mx-auto d-block">
+    <img src="./images/UE logo.jpg" style="position: fixed; bottom: 0; right: 0; margin: 10px;">
+</div> 
+</body>
+</html>

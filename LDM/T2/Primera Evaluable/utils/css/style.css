@@ -1,0 +1,16 @@
+body {
+    background-color: rgba(164, 47, 47, 0.7);
+}
+.header-section {
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(173, 102, 102, 0.7);
+    text-align: center;
+}
+.content-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
