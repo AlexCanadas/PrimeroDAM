@@ -8,7 +8,8 @@ public class CalculadoraParte2 {
         int opcion;
         double num1, num2, mayor, menor, resultado;
         String seguir = null;
-       
+        double test;
+        
         do { 
         	System.out.println("Ingrese primer número");
         	num1=sc.nextDouble();
