@@ -1,8 +1,6 @@
-package arraysBidimensionales;
-
 import java.util.Scanner;
 
-public class concesionarioVehilucos {
+public class concesionarioVehiculos {
 
 	public static void main(String[] args) {
 		int opcion;
