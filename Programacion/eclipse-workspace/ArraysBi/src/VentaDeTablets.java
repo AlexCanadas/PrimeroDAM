@@ -14,7 +14,7 @@ public class VentaDeTablets {
 			6.- Salir. */
 		int opcion, opcionVenta;
 		final int FILAS = 100;
-		final int COLUMNAS = 5;
+		final int COLUMNAS = 6;
 		String numeroSerie, dni;
 		boolean tablet=false, cliente=false;
 		Scanner sc = new Scanner (System.in);
@@ -37,8 +37,9 @@ public class VentaDeTablets {
 					numeroSerie=sc.next();
 					//Comprobamos si esta tablet ya está registrada
 					for (int filas=0;filas<FILAS;filas++) {
-						if (tablets[filas][0]!=null && tablets[filas][0].equals(numeroSerie)){
+						if (tablets[filas][0]!=null&&tablets[filas][0].equals(numeroSerie)){
 							System.out.println("Esta tablet ya se registró anteriormente, por favor, seleccione otra opción");
+							System.out.println();
 							tablet=true;
 							break;
 						}
@@ -56,8 +57,8 @@ public class VentaDeTablets {
 									tablets[filas][3]=sc.next();
 									System.out.println("Ingresa el precio de la tablet: ");
 									tablets[filas][4]=sc.next();
-									System.out.println("Ingresa las pulgadas de la pantalla: ");
-									tablets[filas][5]=sc.next();	
+									System.out.println("Esta tablet ha sido registrada correctamente");
+									System.out.println();
 									break;
 							}
 						}
@@ -68,16 +69,17 @@ public class VentaDeTablets {
 					System.out.println("Ingresa el DNI:");
 					dni=sc.next();
 					// Comprobamos si el cliente ya estaba registrado
-					for (int filas=0;filas>FILAS;filas++) {
-						if (clientes[filas][0]!=null && clientes[filas][0].equals(dni)) {
+					for (int filas=0;filas<FILAS;filas++) {
+						if (clientes[filas][0]!=null&&clientes[filas][0].equals(dni)) {
 							System.out.println("Este cliente ya está registrado en el sistema, por favor, elija otra opción");
+							System.out.println();
 							cliente=true;
 							break;
 						}
 					}
 					// Registramos al cliente si se ha encontrado vacío el dni
 					if (!cliente) {
-						for (int filas=0; filas>FILAS;filas++) {
+						for (int filas=0;filas<FILAS;filas++) {
 							if (clientes[filas][0]==null) {
 									clientes[filas][0]=dni;
 									System.out.println("Ingresa el nombre del cliente:");
@@ -86,30 +88,33 @@ public class VentaDeTablets {
 									clientes[filas][2]=sc.next();
 									System.out.println("Ingresa el teléfono del cliente:");
 									clientes[filas][3]=sc.next();
+									System.out.println("Este cliente ha sido registrado correctamente");
+									System.out.println();
 									break;							
 							}
 						}
 					}
 					cliente=false;
 					break;
-				
 				case 3: 
-					// Introducimos DNI y si no existe lo guardamos en [filas][0]
+					// Introducimos DNI y si existe guardamos la fila donde está registrado en filasCliente
 					System.out.println("Introduce el DNI del comprador: ");
 					dni=sc.next();
-					for (int filas=0; filas<FILAS; filas++) {
+					for (int filas=0;filas<FILAS;filas++) {
 						if (clientes[filas][0]!=null&&clientes[filas][0].equals(dni)) {
 							filasCliente=filas;
 							break;
 						}
-					}
-					
+					}	
+					//Opción en caso de no encontrarlo
 					if (filasCliente == -1) {
 						System.out.println("Este cliente no fue dado de alta anteriormente, por favor, registrelo antes de la compra");
+						System.out.println();
+					//Mostramos tablets a la venta
 					}else {
-						System.out.println("Estas son las tables a la venta actualmente: ");
-						for (int filas=0; filas<FILAS; filas++) {
-							if (tablets[filas][0]!= null) {
+						System.out.println("Estas son las tablets a la venta actualmente: ");
+						for (int filas=0;filas<FILAS;filas++) {
+							if (tablets[filas][0]!=null) {
 								System.out.println((filas ++)+". "+tablets[filas][1] +" "+tablets[filas][4]+", numero de serie: "+tablets[filas][0]);
 							}
 						}
@@ -127,13 +132,15 @@ public class VentaDeTablets {
 				            tablets[opcionVenta - 1] = new String[COLUMNAS]; 
 						
 				            System.out.println("Venta realizada. Tablet " + tabletVendida + " vendida a " + clientes[filasCliente][1] + " " + clientes[filasCliente][2]);
+				            System.out.println();
 				        } else {
 				            System.out.println("Opción no válida. Seleccione una opción válida.");
+				            System.out.println();
 				        }
 					}
 					break;
-					
 				case 4:
+					//Mostramos tablets a la venta
 					System.out.println("Tablets actualmente a la venta: ");
 					for (int filas=0; filas<FILAS; filas++) {
 						if (tablets[filas][0]!=null) {
@@ -145,6 +152,7 @@ public class VentaDeTablets {
 					System.out.println("Introduce el CIF del cliente para mostrar las tablets vendidas:");
 				    dni = sc.next();
 				    
+				    //Misma ejecución que anteriormente, si se encuentra el cliente se guarda fila en filasCliente
 				    filasCliente=-1;
 				    for (int filas=0;filas<FILAS;filas++) {
 				        if (clientes[filas][0]!=null&&clientes[filas][0].equals(dni)) {
@@ -153,14 +161,16 @@ public class VentaDeTablets {
 				        }
 				    }
 				    
+				    //Misma ejecución de antes por si no se encuentra el cliente
 				    if (filasCliente==-1) {
 				        System.out.println("Cliente no encontrado en el registro.");
+				        System.out.println();
 				    } else {
 				        System.out.println("Tablets vendidas a " + clientes[filasCliente][1] + " " + clientes[filasCliente][2] + " (CIF: " + dni + "):");
 				        boolean tabletsVendidas=false;
 				        
-				        for (int filas = 0; filas < FILAS; filas++) {
-				            if (clientes[filas][0] != null && clientes[filas][0].equals(dni) && clientes[filas][3] != null && clientes[filas][4] != null) {
+				        for (int filas=0;filas<FILAS;filas++) {
+				            if (clientes[filas][0]!=null&&clientes[filas][0].equals(dni)&&clientes[filas][3]!=null&&clientes[filas][4]!=null) {
 				                System.out.println("   - " + clientes[filas][3] + " " + clientes[filas][4] + ", Numero de serie: " + clientes[filas][5]) ;
 				                tabletsVendidas = true;
 				            }
@@ -168,6 +178,7 @@ public class VentaDeTablets {
 				        
 				        if (!tabletsVendidas) {
 				            System.out.println("No hay tablets vendidas a este cliente.");
+				            System.out.println();
 				        }
 				    }
 				    break;	
@@ -176,7 +187,7 @@ public class VentaDeTablets {
 					System.out.println("¡Que tengas un buen día!");
 					break;
 				default: 
-						System.out.println("Opción incorrecta");
+						System.out.println("Opción incorrecta"); 
 			}
 			
 		}while (opcion!=6);
