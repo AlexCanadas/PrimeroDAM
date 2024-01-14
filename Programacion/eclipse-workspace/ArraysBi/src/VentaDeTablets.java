@@ -115,7 +115,7 @@ public class VentaDeTablets {
 						System.out.println("Estas son las tablets a la venta actualmente: ");
 						for (int filas=0;filas<FILAS;filas++) {
 							if (tablets[filas][0]!=null) {
-								System.out.println((filas ++)+". "+tablets[filas][1] +" "+tablets[filas][4]+", numero de serie: "+tablets[filas][0]);
+								System.out.println((filas+1)+". "+tablets[filas][1] +" "+tablets[filas][4]+" euros, Numero de serie: "+tablets[filas][0]);
 							}
 						}
 						
@@ -149,7 +149,7 @@ public class VentaDeTablets {
 					}
 					
 				case 5:
-					System.out.println("Introduce el CIF del cliente para mostrar las tablets vendidas:");
+					System.out.println("Introduce el DNI del cliente para mostrar las tablets vendidas:");
 				    dni = sc.next();
 				    
 				    //Misma ejecución que anteriormente, si se encuentra el cliente se guarda fila en filasCliente
@@ -171,7 +171,7 @@ public class VentaDeTablets {
 				        
 				        for (int filas=0;filas<FILAS;filas++) {
 				            if (clientes[filas][0]!=null&&clientes[filas][0].equals(dni)&&clientes[filas][3]!=null&&clientes[filas][4]!=null) {
-				                System.out.println("   - " + clientes[filas][3] + " " + clientes[filas][4] + ", Numero de serie: " + clientes[filas][5]) ;
+				                System.out.println("   - " + clientes[filas][3] + " " + clientes[filas][4] + "euros, Numero de serie: " + clientes[filas][5]) ;
 				                tabletsVendidas = true;
 				            }
 				        }
