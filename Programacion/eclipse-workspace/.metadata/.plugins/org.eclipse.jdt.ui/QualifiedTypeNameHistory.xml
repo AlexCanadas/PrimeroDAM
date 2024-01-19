@@ -10,9 +10,9 @@
     <fullyQualifiedTypeName name="double"/>
     <fullyQualifiedTypeName name="javax.print.attribute.standard.Media"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.security.DrbgParameters.NextBytes"/>
     <fullyQualifiedTypeName name="DevolverLetraDni"/>
     <fullyQualifiedTypeName name="java.lang.Character"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
