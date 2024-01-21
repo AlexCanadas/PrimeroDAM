@@ -94,21 +94,21 @@ public class VentaDeTablets {
 				System.out.println("Introduce el código de la tablet a vender: ");
 				codigo=sc.next();
 				for (int filas=0; filas<tablets.length; filas++) {
-					if(!tabletExiste) {
+					if(tablets[filas][0]==null && !tablets[filas][0].equals(codigo)) {
 						System.out.println("La tablet no se ha dado de alta. Debe darse de alta antes de hacer la compra");
 						System.out.println("");
+						tablet=true;
+						break;
 					}
-					tabletExiste=false;
 					if (tablets[filas][5]!=null && tablets[filas][5].equals(clientes[filas][0])) {
 						System.out.println ("Esta tablet ya fue comprada por el cliente con DNI " + tablets[filas][5]);
 						System.out.println("");
 						tablet=true;
 						break;
 					}
-					if (tablets[filas][5].equals(null)) {
+					if (tablets[filas][5]!=null && tablets[filas][0].equals(codigo)) {
 						System.out.println("Introduce el DNI del comprador: ");
 						dni=sc.next();
-						
 						for (int i=0; i<clientes.length; i++) {
 							if (clientes[i][0]!=null && clientes[i][0].equals(dni)) {
 								tablets[filas][5]=dni;
@@ -119,13 +119,6 @@ public class VentaDeTablets {
 								break;
 							}
 						}
-						if (!clienteEncontrado) {
-			                System.out.println("No se encontró un cliente con el DNI proporcionado.");
-			                System.out.println("");
-			            }
-						clienteEncontrado=false;
-			            
-			            break;
 					}
 				}
 				tablet=false;
