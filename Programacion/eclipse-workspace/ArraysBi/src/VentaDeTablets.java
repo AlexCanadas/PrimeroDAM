@@ -13,7 +13,7 @@ public class VentaDeTablets {
 			5.- Mostrar tablets compradas por un cliente en concreto.
 			6.- Salir. */
 		int opcion; 
-		String codigo, dni;
+		String codigo, dni = null;
 		Scanner sc = new Scanner (System.in);
 		final int CLIENTESCOLUMNAS = 4;
 		final int TABLETSCOLUMNAS = 6;
@@ -22,8 +22,8 @@ public class VentaDeTablets {
 		String clientes [][] = new String [FILAS][CLIENTESCOLUMNAS];
 		boolean tablet = false;
 		boolean cliente = false;
-		boolean clienteEncontrado = false;
-		boolean tabletExiste = false;
+		int indiceCliente = -1;
+		int indiceTablet = -1;
 		
 		
 		do {
@@ -91,39 +91,42 @@ public class VentaDeTablets {
 				break;
 				
 			case 3:
-				System.out.println("Introduce el código de la tablet a vender: ");
-				codigo=sc.next();
-				for (int filas=0; filas<tablets.length; filas++) {
-					if(tablets[filas][0]==null && !tablets[filas][0].equals(codigo)) {
-						System.out.println("La tablet no se ha dado de alta. Debe darse de alta antes de hacer la compra");
-						System.out.println("");
-						tablet=true;
-						break;
-					}
-					if (tablets[filas][5]!=null && tablets[filas][5].equals(clientes[filas][0])) {
-						System.out.println ("Esta tablet ya fue comprada por el cliente con DNI " + tablets[filas][5]);
-						System.out.println("");
-						tablet=true;
-						break;
-					}
-					if (tablets[filas][5]!=null && tablets[filas][0].equals(codigo)) {
-						System.out.println("Introduce el DNI del comprador: ");
-						dni=sc.next();
-						for (int i=0; i<clientes.length; i++) {
-							if (clientes[i][0]!=null && clientes[i][0].equals(dni)) {
-								tablets[filas][5]=dni;
-								System.out.println("La tablet con código " + tablets[filas][0] + 
-										" se registró como vendida al cliente con DNI " + clientes[i][0]);
-								System.out.println("");
-								tablet=true;
-								break;
-							}
-						}
-					}
-				}
-				tablet=false;
-				break;
-				
+			    System.out.println("Introduce el código de la tablet a vender: ");
+			    codigo = sc.next();
+			    // Busca la tablet en el array tablets
+			    for (int filas = 0; filas < tablets.length; filas++) {
+			        if (tablets[filas][0] != null && tablets[filas][0].equals(codigo)) {
+			            indiceTablet = filas;
+			            break;
+			        } else if (tablets[filas][0] == null) {
+			            System.out.println("La tablet no se ha dado de alta. Debe darse de alta antes de hacer la compra");
+			            System.out.println("");
+			            tablet = true;
+			            break;
+			        }
+			    }
+			    // Si se encontró la tablet, busca al comprador en el array clientes
+			    if (indiceTablet != -1) {
+			        System.out.println("Introduce el DNI del comprador: ");
+			        dni = sc.next();
+			        for (int i = 0; i < clientes.length; i++) {
+			            if (clientes[i][0] != null && clientes[i][0].equals(dni)) {
+			                indiceCliente = i;
+			                break;
+			            }
+			        }
+			    }
+			    // Realiza las acciones dependiendo de los índices encontrados
+			    if (indiceTablet != -1 && indiceCliente != -1) {
+			        // Registra la venta
+			        tablets[indiceTablet][5] = dni;
+			        System.out.println("La tablet con código " + tablets[indiceTablet][0] +
+			                " se registró como vendida al cliente con DNI " + clientes[indiceCliente][0]);
+			        System.out.println("");
+			    }
+			    tablet = false;
+			    break;
+
 			case 4:
 				
 			case 5:
