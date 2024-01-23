@@ -12,134 +12,180 @@ public class VentaDeTablets {
 			4.- Mostrar tablets disponibles para la venta.
 			5.- Mostrar tablets compradas por un cliente en concreto.
 			6.- Salir. */
-		int opcion; 
-		String codigo, dni = null;
-		Scanner sc = new Scanner (System.in);
-		final int CLIENTESCOLUMNAS = 4;
-		final int TABLETSCOLUMNAS = 6;
-		final int FILAS = 100;
-		String tablets [][] = new String [FILAS][TABLETSCOLUMNAS];
-		String clientes [][] = new String [FILAS][CLIENTESCOLUMNAS];
-		boolean tablet = false;
-		boolean cliente = false;
-		int indiceCliente = -1;
-		int indiceTablet = -1;
-		
+		Scanner sc= new Scanner(System.in);
+		String codigo,DNI;
+		final int filas=50;
+		final int columnasTablets=6;
+		final int columnasClientes=4;
+		boolean tablet_exists=false, cliente_exists=false, tablets_libres=false, compras=false;
+		String tablets [][]= new String [filas][columnasTablets];
+		String clientes [][]= new String [filas][columnasClientes];
+		int opcion, edadcorrecta;
 		
 		do {
-			System.out.println("--------------MENÚ--------------");
-			System.out.println("1. Dar de alta una tablet");
-			System.out.println("2. Dar de alta a un cliente");
-			System.out.println("3. Vender una tablet a un cliente");
-			System.out.println("4. Mostrar tablets disponibles para la venta");
-			System.out.println("5. Mostrar tablets compradas por un cliente en concreto");
-			System.out.println("6. Salir");
+			System.out.println("Menu de opciones: ");
+			System.out.println("1.-Dar de alta una tablet ");
+			System.out.println("2.-Dar de alta un cliente ");
+			System.out.println("3.-Vender una tablet a un cliente ");
+			System.out.println("4.-Mostrar tablets disponibles para la venta ");
+			System.out.println("5.-Mostrar tablets compradas por un cliente en concreto ");
+			System.out.println("6.- Salir ");
 			opcion=sc.nextInt();
-			
 			switch (opcion) {
-			case 1: 
-				System.out.println("Introduce el código de la tablet: ");
-				codigo=sc.next();
-				for (int filas=0; filas<tablets.length; filas++) {
-					if (tablets[filas][0]!=null && tablets[filas][0].equals(codigo)) {
-						System.out.println("Esta tablet ya existe en la base de datos, seleccione otra opción");
-						tablet=true;
-						break;
+			case 1: System.out.println("Escribe el codigo de la tablet ");
+					codigo=sc.next();
+					//Antes de dar de alta tengo que comprobar si existe la tablet ya o no.
+					for(int i=0;i<tablets.length;i++) {
+						if(tablets [i][0] !=null && tablets [i][0].equals(codigo)) {
+							System.out.println("¡Error! El código introducido ya existe en la base de datos");
+							System.out.println("");
+								tablet_exists=true;
+								break;
+						}
 					}
-					if (!tablet) {
-						tablets[filas][0]=codigo;
-						System.out.println("Introduce el número de serie: ");
-						tablets[filas][1]=sc.next();
-						System.out.println("Introduce la marca de la tablet: ");
-						tablets[filas][2]=sc.next();
-						System.out.println("Introduce el color de la tablet: ");
-						tablets[filas][3]=sc.next();
-						System.out.println("Introduce el precio de la tablet: ");
-						tablets[filas][4]=sc.next();
-						System.out.println("Tablet registrada correctamente");
-						System.out.println("");
-						break;
+					//Si no existe la tablet, entonces la damos de alta.
+					if (!tablet_exists) {
+						for(int i=0;i<tablets.length;i++) {
+							if(tablets[i][0]==null) {
+								tablets[i][0]=codigo;
+								System.out.println("Escribe el modelo: ");
+								tablets[i][1]=sc.next();
+								System.out.println("Escribe la marca: ");
+								tablets[i][2]= sc.next();
+								System.out.println("Escribe el color: ");
+								tablets[i][3]=sc.next();
+								System.out.println("La tablet ha sido dada de alta exitosamente");
+								System.out.println("");
+								tablet_exists=true;
+								break;
+							}
+						}
 					}
+				break;
+				
+			case 2: System.out.println("Escribe el DNI del cliente: ");
+					DNI=sc.next();
+					//Aantes de dar de alta a un cliente, tengo que comprobar que existe.
+					for(int i=0;i<clientes.length;i++) {
+						if(clientes[i][0] !=null && clientes[i][0].equals(DNI)) {
+							System.out.println("No se puede dar de alta. Ya está en la base de datos");
+							System.out.println("");
+							cliente_exists=true;
+							break;
+						}
+					}
+					//Si el cliente no existe, entonces lo damos de alta.
+					if(!cliente_exists) {
+						for(int i=0;i<clientes.length;i++) {
+							if(clientes[i][0]==null) {
+								clientes[i][0]=DNI;
+								System.out.println("Escribe el nombre: ");
+								clientes[i][1]=sc.next();
+								System.out.println("Escribe los apellidos: ");
+								sc.nextLine();
+								clientes[i][2]=sc.nextLine();
+								do {
+									System.out.println("Escribe la edad: ");
+									edadcorrecta=sc.nextInt();
+									if (edadcorrecta>18 && edadcorrecta<100) {
+										clientes [i][3]=String.valueOf(edadcorrecta);
+									}
+									else {
+										System.out.println("Edad incorrecta. Debes tener entre 0 y 100 años");
+										System.out.println("");
+									}
+								}while (edadcorrecta<18 || edadcorrecta>100);
+								System.out.println("Escribe el email: ");
+								clientes[i][3]=sc.next();
+								System.out.println("El cliente ha sido dado de alta exitosamente");
+								System.out.println("");
+								cliente_exists=true;
+								break;
+							}
+						}
+					}			
+				break;
+					
+			case 3: System.out.println("Escribe el DNI del cliente: ");
+					DNI=sc.next();
+					//Buscamos que el cliente existe para hacer la venta.
+					for(int i=0;i<clientes.length;i++) {
+						if(clientes[i][0] !=null && clientes[i][0].equals(DNI)) {
+							cliente_exists=true;
+							System.out.println("Escribe el código de la tablet que desea comprar: ");
+							codigo=sc.next();
+							//Buscamos que la tablet existe y no se ha vendido a ningún cliente.
+							for(int j=0;j<tablets.length;j++) {
+								if(tablets[j][0]!=null && tablets[j][0].equals(codigo) && tablets[j][5]==null) {
+									tablet_exists=true;
+									tablets[j][5]=DNI;
+									System.out.println("La tablet ha sido vendida correctamente al cliente con DNI "+ DNI);
+									System.out.println("");
+								}
+								else if(tablets [j][0] !=null && tablets [j][0].equals(codigo)&& tablets[j][5]!=null) {
+									System.out.println("La tablet con codigo "+ codigo + " ya ha sido vendida");
+									System.out.println("");
+								}
+								break;
+							}
+						}
+					}
+	
+				if(!cliente_exists) {
+					System.out.println("El cliente no se ha dado de alta. Debe darse de alta antes de comprar");
+					System.out.println("");
 				}
-				tablet=false;
-				break;
-			case 2:
-				System.out.println("Introduce el DNI del nuevo cliente: ");
-				dni=sc.next();
-				for (int filas=0; filas<clientes.length; filas++) {
-					if (clientes[filas][0]!=null && clientes[filas][0].equals(dni)) {
-						System.out.println("Este cliente ya existe en la base de datos, seleccione otra opción");
-						System.out.println("");
-						cliente=true;
-						break;
-					}
-					if (!cliente) {
-						clientes[filas][0]=dni;
-						System.out.println("Introduce el nombre: ");
-						clientes[filas][1]=sc.next();
-						System.out.println("Introduce los apellidos: ");
-						sc.nextLine();
-						clientes[filas][2]=sc.nextLine();
-						System.out.println("Introduce el teléfono: ");
-						clientes[filas][3]=sc.next();
-						System.out.println("Cliente registrado correctamente");
-						System.out.println("");
-						break;
-					}
+				cliente_exists=false;
+				if(!tablet_exists) {
+					System.out.println("La tablet no se ha dado de alta. Debe darse de alta antes de hacer la compra");
+					System.out.println("");
 				}
-				cliente=false;
-				break;
+				tablet_exists=false;
+			  break;
 				
-			case 3:
-			    System.out.println("Introduce el código de la tablet a vender: ");
-			    codigo = sc.next();
-			    // Busca la tablet en el array tablets
-			    for (int filas = 0; filas < tablets.length; filas++) {
-			        if (tablets[filas][0] != null && tablets[filas][0].equals(codigo)) {
-			            indiceTablet = filas;
-			            break;
-			        } else if (tablets[filas][0] == null) {
-			            System.out.println("La tablet no se ha dado de alta. Debe darse de alta antes de hacer la compra");
-			            System.out.println("");
-			            tablet = true;
-			            break;
-			        }
-			    }
-			    // Si se encontró la tablet, busca al comprador en el array clientes
-			    if (indiceTablet != -1) {
-			        System.out.println("Introduce el DNI del comprador: ");
-			        dni = sc.next();
-			        for (int i = 0; i < clientes.length; i++) {
-			            if (clientes[i][0] != null && clientes[i][0].equals(dni)) {
-			                indiceCliente = i;
-			                break;
-			            }
-			        }
-			    }
-			    // Realiza las acciones dependiendo de los índices encontrados
-			    if (indiceTablet != -1 && indiceCliente != -1) {
-			        // Registra la venta
-			        tablets[indiceTablet][5] = dni;
-			        System.out.println("La tablet con código " + tablets[indiceTablet][0] +
-			                " se registró como vendida al cliente con DNI " + clientes[indiceCliente][0]);
-			        System.out.println("");
-			    }
-			    tablet = false;
-			    break;
-
-			case 4:
-				
-			case 5:
-				
-			
-			case 6: 
-				System.out.print("¡Hasta pronto!");
-				break;
-			}
+			case 4: for(int i=0;i<tablets.length;i++) {
+						if(tablets[i][0]!=null && tablets[i][5]==null ) {
+							System.out.println("Tablet modelo "+tablets[i][1]+" marca "+tablets[i][2]+" de color "+tablets[i][3]);
+							tablets_libres=true;
+						}
+					}
+					if(!tablets_libres) {
+						System.out.println("No hay tablets disponibles para la venta");
+						System.out.println("");
+					} 
+					tablets_libres=false;
+			  break;
+			  
+			case 5:	System.out.println("Escribe el DNI del cliente: ");
+					DNI=sc.next();
+					//Compruebo si el clientes existe
+					for(int i=0;i<clientes.length;i++) {
+						if(clientes[i][0] != null && clientes[i][0].equals(DNI)) {
+							cliente_exists=true;
+							break;
+						}
+					}
+					if(cliente_exists) {
+						for(int i=0;i<tablets.length;i++) {
+							if(tablets[i][5] !=null && tablets[i][5].equals(DNI)) {
+								System.out.println("Tablet modelo "+tablets[i][1]+" marca "+tablets[i][2]+" de color "+tablets[i][3]);
+								compras=true;
+								System.out.println("");
+							}	
+						}
+					
+						if(!compras) {
+							System.out.println("El usuario indicado no ha comprado ninguna tablet");
+							System.out.println("");
+						}	
+					}
+					cliente_exists=false;
+					compras=false;
+					break;
+				case 6: System.out.print("Hasta pronto");
+					break;
+				default: System.out.print("Opcion incorrecta");
+			}	
 		}while(opcion!=6);
-	
-	
-	
-	
-	}
+	}	
 }
