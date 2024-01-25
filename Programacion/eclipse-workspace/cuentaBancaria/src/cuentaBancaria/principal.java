@@ -32,6 +32,8 @@ public class principal {
                     mostrarEstado(c1);
                     break;
                 case 4:
+                	System.out.println("Muchas gracias " + c1.getTitular());
+                	System.out.println("El balance de la cuenta se quedó en: " + c1.getCantidad());
                     System.out.println("¡Que tengas un buen día!");
                     break;
                 default:
