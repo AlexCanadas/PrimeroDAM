@@ -14,8 +14,8 @@ Tendrá dos métodos especiales:
 - retirar(double cantidad): se retira una cantidad a la cuenta, si restando la cantidad actual a la que nos pasan es negativa, 
 la cantidad de la cuenta pasa a ser 0.*/
 	
-	 private String titular;
-	 private double cantidad;
+	 String titular;
+	 double cantidad;
 
 	    // Constructor con titular obligatorio y cantidad opcional
 	    public Cuenta(String titular, double cantidad) {

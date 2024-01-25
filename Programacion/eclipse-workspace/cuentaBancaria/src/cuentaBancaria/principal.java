@@ -35,6 +35,7 @@ public class principal {
                     break;
                 default:
                     System.out.println("Opción no válida. Inténtelo de nuevo.");
+                    System.out.println("");
             }
         } while (opcion != 4);
 
