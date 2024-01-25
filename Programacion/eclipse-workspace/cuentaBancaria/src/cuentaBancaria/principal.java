@@ -7,16 +7,17 @@ public class principal {
 	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String titular;
+        double cantidad = 0;
         int opcion = 0;
-        double retiro = 0;
         
         System.out.println("Ingrese el nombre del titular: ");
         titular = sc.next();
         // Crear una cuenta con titular y cantidad
-        Cuenta c1 = new Cuenta(titular, 1000);
+        Cuenta c1 = new Cuenta(titular, cantidad);
+        c1.setTitular(titular);
         
         do {
-            MostrarMenu(opcion, sc);
+            mostrarMenu(opcion, sc);
             System.out.println("Seleccione una opción: ");
             opcion = sc.nextInt();
 
@@ -34,7 +35,7 @@ public class principal {
                     System.out.println("¡Que tengas un buen día!");
                     break;
                 default:
-                    System.out.println("Opción no válida. Inténtelo de nuevo.");
+                    System.out.println("Opción inválida. Inténtelo de nuevo por favor.");
                     System.out.println("");
             }
         } while (opcion != 4);
@@ -42,7 +43,7 @@ public class principal {
         sc.close();
     }
 
-	public static void MostrarMenu(int opcion, Scanner sc) {
+	public static void mostrarMenu(int opcion, Scanner sc) {
         System.out.println("-- Cuenta --");
         System.out.println("1. Ingresar");
         System.out.println("2. Retirar");

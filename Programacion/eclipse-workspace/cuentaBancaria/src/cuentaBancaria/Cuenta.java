@@ -17,7 +17,7 @@ la cantidad de la cuenta pasa a ser 0.*/
 	 String titular;
 	 double cantidad;
 
-	    // Constructor con titular obligatorio y cantidad opcional
+	    // Creamos constructor con titular obligatorio y cantidad opcional
 	    public Cuenta(String titular, double cantidad) {
 	        this.titular = titular;
 	    }
@@ -63,7 +63,7 @@ la cantidad de la cuenta pasa a ser 0.*/
 
 	    // Método toString para ver todos los datos de la cuenta
 	    public String toString() {
-	        return "Cuenta con titular: " + titular + ", cantidad: " + cantidad + "]";
+	        return "Cuenta con titular: " + titular + ", cantidad: " + cantidad + " ";
 	    }
 	    
 	}
