@@ -1,0 +1,14 @@
+.card-img-top {
+    max-width: 50%; /* Puedes ajustar este valor según tus necesidades */
+    height: auto;
+  }
+
+  .card-text {
+    max-width: 50%; /* Puedes ajustar este valor según tus necesidades */
+    height: auto;
+  }
+
+  .card-body {
+    max-width: 50%; /* Puedes ajustar este valor según tus necesidades */
+    height: auto;
+  }
