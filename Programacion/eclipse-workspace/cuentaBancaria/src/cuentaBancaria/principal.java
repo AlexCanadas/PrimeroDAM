@@ -5,24 +5,68 @@ import java.util.Scanner;
 public class principal {
 
 	public static void main(String[] args) {
-		String iban, nombreTitular;
-		double saldo;
-		Scanner sc = new Scanner (System.in);
+        Scanner sc = new Scanner(System.in);
+        String titular;
+        int opcion = 0;
+        double retiro = 0;
+        
+        System.out.println("Ingrese el nombre del titular: ");
+        titular = sc.next();
+        // Crear una cuenta con titular y cantidad
+        Cuenta c1 = new Cuenta(titular, 1000);
+        
+        do {
+            MostrarMenu(opcion, sc);
+            System.out.println("Seleccione una opción: ");
+            opcion = sc.nextInt();
 
-		Cuenta c1 = new Cuenta (); // Cuenta es el constructor y la clase). c1 es el objeto
-		System.out.println(c1.getNombreTitular());
-		c1.setNombreTitular("Alex");
-		System.out.println(c1.getNombreTitular());
+            switch (opcion) {
+                case 1:
+                    ingresarDinero(c1, sc);
+                    break;
+                case 2:
+                    retirarDinero(c1, sc, retiro);
+                    break;
+                case 3:
+                    mostrarEstado(c1);
+                    break;
+                case 4:
+                    System.out.println("¡Que tengas un buen día!");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Inténtelo de nuevo.");
+            }
+        } while (opcion != 4);
 
-		Cuenta c2 = new Cuenta("12345678", "David");
-		System.out.println("Iban " + c2.getIban());
-		System.out.println("Titular " + c2.getNombreTitular());
-		System.out.println("Saldo " + c2.getSaldo());
-		
-		System.out.println(c1.getSaldo());
-		c1.ingresarDinero(356.8);
-		System.out.println(c1.getSaldo());
-		
+        sc.close();
+    }
+
+	public static void MostrarMenu(int opcion, Scanner sc) {
+        System.out.println("-- Cuenta --");
+        System.out.println("1. Ingresar");
+        System.out.println("2. Retirar");
+        System.out.println("3. Conocer estado actual");
+        System.out.println("4. Salir");
+    }
+	public static void ingresarDinero(Cuenta c1, Scanner sc) {
+		  // Retirar dinero
+        System.out.print("Ingrese la cantidad a ingresar: ");
+        double ingreso = sc.nextDouble();
+        c1.ingresar(ingreso);
+        System.out.println("");
 	}
-
+	public static void retirarDinero(Cuenta c1, Scanner sc, double retiro) {
+		// Retirar dinero
+		System.out.print("Ingrese la cantidad a retirar: ");
+        retiro = sc.nextDouble();
+        c1.retirar(retiro);
+        System.out.println("");
+	}
+	public static void mostrarEstado(Cuenta c1) {
+		// Mostrar información actualizada de la cuenta
+		System.out.println(c1);
+		System.out.println("");
+	}
+	
 }
+
