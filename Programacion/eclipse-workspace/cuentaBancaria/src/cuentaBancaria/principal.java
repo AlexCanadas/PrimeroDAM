@@ -25,7 +25,7 @@ public class principal {
                     ingresarDinero(c1, sc);
                     break;
                 case 2:
-                    retirarDinero(c1, sc, retiro);
+                    retirarDinero(c1, sc);
                     break;
                 case 3:
                     mostrarEstado(c1);
@@ -56,10 +56,10 @@ public class principal {
         c1.ingresar(ingreso);
         System.out.println("");
 	}
-	public static void retirarDinero(Cuenta c1, Scanner sc, double retiro) {
+	public static void retirarDinero(Cuenta c1, Scanner sc) {
 		// Retirar dinero
 		System.out.print("Ingrese la cantidad a retirar: ");
-        retiro = sc.nextDouble();
+        double retiro = sc.nextDouble();
         c1.retirar(retiro);
         System.out.println("");
 	}
