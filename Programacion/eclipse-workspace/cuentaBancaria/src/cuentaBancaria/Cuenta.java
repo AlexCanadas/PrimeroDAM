@@ -63,7 +63,7 @@ la cantidad de la cuenta pasa a ser 0.*/
 
 	    // Método toString para ver todos los datos de la cuenta
 	    public String toString() {
-	        return "Cuenta con titular: " + titular + ", cantidad: " + cantidad + " ";
+	        return "Cuenta con titular: " + titular + ", cantidad: " + cantidad + "";
 	    }
 	    
 	}
