@@ -1,5 +1,7 @@
 package ejercicioAlumnos;
 
+import java.util.Scanner;
+
 public class Alumno {
 	/*Crea una clase Alumno con el método comprobarDNI. La clase contendrá un constructor por defecto, 
 	un constructor con parámetros y los métodos getters y setters.
@@ -9,7 +11,7 @@ public class Alumno {
 	La clase principal la trabajaremos en clase, por ahora tenéis que hacer la clase Alumno.*/
 		
 	String alumno;
-	double notaMedia;
+	String dni;
 	int edad;
 	
 	
@@ -19,9 +21,9 @@ public class Alumno {
 	}
 	
 	// Creamos el constructor con parámetros 
-	public Alumno (String alumno, double notaMedia, int edad) {
+	public Alumno (String alumnos[][], String alumno, String dni, int edad) {
 		this.alumno=alumno;
-		this.notaMedia=notaMedia;
+		this.dni=dni;
 		this.edad=edad;
 	}
 
@@ -34,12 +36,12 @@ public class Alumno {
 		this.alumno = alumno;
 	}
 
-	public double getNotaMedia() {
-		return notaMedia;
+	public String getdni() {
+		return dni;
 	}
 
-	public void setNotaMedia(double notaMedia) {
-		this.notaMedia = notaMedia;
+	public void setNotaMedia(String dni) {
+		this.dni = dni;
 	}
 
 	public int getEdad() {
@@ -51,15 +53,24 @@ public class Alumno {
 	}
 	
 	// Generamos métodos (dar de alta, dar de baja y modificar datos)
-	public void alta(String alumno, double notaMedia, int edad) {
-		
+	public void alta(String alumnos[][], String alumno, String edad, Scanner sc) {
+	      alumnos[0][0]=dni;
+	      System.out.print("Ingrese el nombre del alumno: ");
+	      alumno = sc.next();
+	      alumnos[0][1]=alumno;
+	      System.out.print("Ingrese la edad del alumno: ");
+	      edad = sc.next();
+	      alumnos[0][2]=edad;
+	      System.out.println("");
 	}
 	
-	public void baja (String alumno, double notaMedia, int edad) {
-		
+	public void baja (String dni, Scanner sc) {
+		  System.out.print("Ingrese el DNI del alumno: ");
+	      dni = sc.next();
+	      System.out.println("");
 	}
 	
-	public void modificarDatos (String alumno, double notaMedia, int edad) {
+	public void modificarDatos (String alumno, String dni, int edad) {
 		
 	}
 	

@@ -12,12 +12,12 @@ public class principal {
         
         System.out.println("Ingrese el nombre del titular: ");
         titular = sc.next();
-        // Crear una cuenta con titular y cantidad
+        // Creamos el objeto c1 con titular y cantidad como atributos
         Cuenta c1 = new Cuenta(titular, cantidad);
         c1.setTitular(titular);
         
         do {
-            mostrarMenu(opcion, sc);
+            mostrarMenu();
             System.out.println("Seleccione una opción: ");
             opcion = sc.nextInt();
 
@@ -45,7 +45,7 @@ public class principal {
         sc.close();
     }
 
-	public static void mostrarMenu(int opcion, Scanner sc) {
+	public static void mostrarMenu() {
         System.out.println("-- Cuenta --");
         System.out.println("1. Ingresar");
         System.out.println("2. Retirar");
