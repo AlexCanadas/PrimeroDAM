@@ -14,35 +14,35 @@ Tendrá dos métodos especiales:
 - retirar(double cantidad): se retira una cantidad a la cuenta, si restando la cantidad actual a la que nos pasan es negativa, 
 la cantidad de la cuenta pasa a ser 0.*/
 	
-	 String titular;
-	 double cantidad;
+	 protected String titular;
+	 protected double cantidad;
 
 	    // Creamos constructor con titular obligatorio y cantidad opcional
-	    public Cuenta(String titular, double cantidad) {
+	    protected Cuenta(String titular, double cantidad) {
 	        this.titular = titular;
 	    }
 
 	    // Métodos getters y setters
-	    public String getTitular() {
+	    protected String getTitular() {
 	        return titular;
 	    }
 
-	    public double getCantidad() {
+	    protected double getCantidad() {
 	        return cantidad;
 	    }
 
-	    public void setTitular(String titular) {
+	    protected void setTitular(String titular) {
 	        this.titular = titular;
 	    }
 
-	    public void setCantidad(double cantidad) {
+	    protected void setCantidad(double cantidad) {
 	        if (cantidad >= 0) {
 	            this.cantidad = cantidad;
 	        }
 	    }
 
 	    // Método para ingresar dinero
-	    public void ingresar(double cantidad) {
+	    protected void ingresar(double cantidad) {
 	        if (cantidad > 0) {
 	            this.cantidad += cantidad;
 	            System.out.println("Ingreso exitoso. Nuevo saldo: " + this.cantidad);
@@ -52,7 +52,7 @@ la cantidad de la cuenta pasa a ser 0.*/
 	    }
 
 	    // Método para retirar dinero
-	    public void retirar(double cantidad) {
+	    protected void retirar(double cantidad) {
 	        if (this.cantidad >= cantidad) {
 	            this.cantidad -= cantidad;
 	            System.out.println("Retiro exitoso. Nuevo saldo: " + this.cantidad);

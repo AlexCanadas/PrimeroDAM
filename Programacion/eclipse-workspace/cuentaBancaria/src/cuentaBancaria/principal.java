@@ -8,7 +8,7 @@ public class principal {
         Scanner sc = new Scanner(System.in);
         String titular;
         double cantidad = 0;
-        int opcion = 0;
+        int opcion;
         
         System.out.println("Ingrese el nombre del titular: ");
         titular = sc.next();
@@ -34,6 +34,7 @@ public class principal {
                 case 4:
                 	System.out.println("Muchas gracias " + c1.getTitular());
                 	System.out.println("El balance de la cuenta se quedó en: " + c1.getCantidad());
+                	System.out.println("");
                     System.out.println("¡Que tengas un buen día!");
                     break;
                 default:
@@ -68,7 +69,7 @@ public class principal {
 	}
 	public static void mostrarEstado(Cuenta c1) {
 		// Mostrar información actualizada de la cuenta
-		System.out.println(c1);
+		System.out.println(c1.toString());
 		System.out.println("");
 	}
 	
