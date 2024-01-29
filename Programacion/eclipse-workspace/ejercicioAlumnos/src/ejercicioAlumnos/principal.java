@@ -8,11 +8,7 @@ public class principal {
 		
 		int opcion;
 		Scanner sc = new Scanner (System.in);
-		String alumno = null;
-		String dni = null;
-		String edad = null;
-		String alumnos[][] = new String[100][3];
-		Alumno c1 = new Alumno(alumno);
+	
 		
 		do {
 			mostrarMenu();
@@ -21,14 +17,7 @@ public class principal {
 			
 			switch (opcion) {
 			case 1: 
-				System.out.println("Ingrese el DNI del alumno: ");
-				dni = sc.next();
-				for (int i=0; i<alumnos.length; i++) {
-					if (alumnos[i][0]!=dni && alumnos [i][0]==null) {
-						c1.alta(alumnos, alumno, edad, sc);
-						System.out.println("El alumno " + alumno + " se registró correctamente");
-					}
-				}
+			
 				break;
 			case 2: 
 				
