@@ -26,3 +26,4 @@ public class Alumno {
 		this.dni=dni;
 		this.edad=edad;
 	}
+}
