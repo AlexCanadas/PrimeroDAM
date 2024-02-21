@@ -1,0 +1,11 @@
+/* Estilo para la primera columna (60%) */
+.col-60 {
+    flex: 0 0 60%; /* Establecemos un ancho fijo del 60% */
+    max-width: 60%; /* Limitamos el ancho máximo al 60% */
+}
+
+/* Estilo para la segunda columna (40%) */
+.col-40 {
+    flex: 0 0 40%; /* Establecemos un ancho fijo del 40% */
+    max-width: 40%; /* Limitamos el ancho máximo al 40% */
+}

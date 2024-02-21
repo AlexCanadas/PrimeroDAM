@@ -19,44 +19,68 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Document</title>
+    <h1 class="display-3 text-primary text-center">
+      Sistema de gestión de trabajadores
+    </h1>
   </head>
   <body>
     <main class="container m-4">
-      <h1>Gestor de usuarios</h1>
-      <input
-        placeholder="Introduce el nombre"
-        class="form-control"
-        id="input-nombre"
-      />
-      <input
-        placeholder="Introduce el apellido"
-        class="form-control"
-        id="input-apellido"
-      />
-      <input
-        placeholder="Introduce el correo electrónico"
-        class="form-control"
-        id="input-email"
-      />
-      <select
-        class="form-select"
-        aria-label="Default select example"
-        id="departamento"
-      >
-        <option selected default>
-          Escoje al departamento al que perteneces
-        </option>
-        <option value="IT">IT</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Ventas">Ventas</option>
-        <option value="Administración">Administración</option>
-      </select>
+      <div class="row">
+        <div class="col-60">
+          <h2 class="text-center">Gestor de nuevos trabajadores</h2>
+          <input
+            placeholder="Introduce el nombre"
+            class="form-control"
+            id="input-nombre"
+          />
+          <input
+            placeholder="Introduce el apellido"
+            class="form-control"
+            id="input-apellido"
+          />
+          <input
+            placeholder="Introduce el correo electrónico"
+            class="form-control"
+            id="input-email"
+          />
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            id="departamento"
+          >
+            <option selected default>
+              Escoje al departamento al que perteneces
+            </option>
+            <option value="IT">IT</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Ventas">Ventas</option>
+            <option value="Administración">Administración</option>
+          </select>
 
-      <button class="btn btn-primary" id="boton-confirmar">Confirmar</button>
+          <button class="btn btn-primary" id="boton-confirmar">
+            Confirmar
+          </button>
 
-      <ul id="lista-usuarios" class="list-group"></ul>
-      <li class="list-group-item">Ejemplo</li>
+          <ul id="lista-usuarios" class="list-group"></ul>
+        </div>
+        <div class="col-40">
+          <h2 class="text-center">Trabajadores actualmente</h2>
+          <ul id="lista-trabajadores"></ul>
+        </div>
+      </div>
+      <div class="row">
+        <h2 class="text-center">Trabajadores por departamentos</h2>
+        <div class="container text-center">
+          <div class="row align-items-start">
+            <div class="col" id="it"><b>IT</b></div>
+            <div class="col" id="marketing"><b>Marketing</b></div>
+            <div class="col" id="ventas"><b>Ventas</b></div>
+            <div class="col" id="administracion"><b>Administración</b></div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="./utils/gestor.js"></script>
