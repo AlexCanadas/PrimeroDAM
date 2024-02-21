@@ -19,7 +19,21 @@ boton.addEventListener("click", () => {
             inputApellido.value = "";
             inputEmail.value = "";
             inputDepartamento.value = "";
+            
+        Swal.fire({
+            title: '¡Correcto!',
+            text: 'Usuario agregado correctamente',
+            icon: 'success',
+            confirmButtonText: 'Gracias',
+            timer: 2000
+              })
     } else {
-        alert("No se puede añadir"); 
+        Swal.fire({
+            title: '¡Error!',
+            text: 'Falta algún dato',
+            icon: 'error',
+            confirmButtonText: 'Probar de nuevo',
+            timer: 2000
+          })
 }
 });
