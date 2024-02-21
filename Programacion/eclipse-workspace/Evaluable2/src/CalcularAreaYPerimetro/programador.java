@@ -1,6 +1,6 @@
 package CalcularAreaYPerimetro;
 
-public class programador {
+public class programador extends empleado {
 int lineasDecCodigoPorHora;
 String lenguajeDominante;
 

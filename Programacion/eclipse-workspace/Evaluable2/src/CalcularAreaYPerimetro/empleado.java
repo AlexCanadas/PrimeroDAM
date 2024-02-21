@@ -4,6 +4,7 @@ public class empleado {
 String nombre, dni;
 int edad;
 boolean casado;
+double salario;
 
 //Creamos constructor con parámetros de entrada
 protected empleado (String nombre, String dni, int edad, double salario) {
@@ -39,8 +40,6 @@ public void setCasado(boolean casado) {
 	this.casado = casado;
 }
 
-double salario;
-
 public void setDni(String dni) {
 	this.dni = dni;
 }
@@ -71,13 +70,12 @@ public void setSalario(double salario) {
 
 
 
-
-//toString
-
+//toString para imprimir los datos del empleado por pantalla 
 
 
 
-//Creamos método para aumentar el salario basado en porcentaje
+
+//Creamos método para aumentar el salario basado en porcentaje (este % será un dato pasado como parámetro al método)
 
 
 

@@ -1,5 +1,6 @@
 package CalcularAreaYPerimetro;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -7,7 +8,13 @@ public class main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner (System.in);
 		int opcion;
-
+		String nombre = null, dni = null;
+		int edad = 0;
+		boolean casado;
+		double salario = 0;
+		empleado c1 = new empleado(nombre, dni, edad, salario);
+		ArrayList<empleado> registro = new ArrayList<>();
+		
 		mostrarMenu();
 		System.out.println("Elige que opción deseas realizar: ");
 		opcion = sc.nextInt();
@@ -37,8 +44,12 @@ public class main {
 		System.out.println("4. Salir");
 	}
 	
-	protected static void alta() {
-		
+	protected static void alta(empleado c1, Scanner sc) {
+		 System.out.print("Ingrese el dni del programador a registrar: ");
+	        String dni = sc.next();
+	        for () {
+	        	
+	        }
 	}
 	
 	protected static void baja() {
