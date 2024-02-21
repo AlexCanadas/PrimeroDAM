@@ -13,12 +13,18 @@ boton.addEventListener("click", () => {
         inputApellido.value.length > 0 && 
         inputEmail.value.length > 0 && 
         inputDepartamento.value !== "Escoje al departamento al que perteneces") {
-            listaUsuarios.innerHTML += `<li class='animate__animated animate__zoomInUp list-group-item'>${inputNombre.value} ${inputApellido.value} 
-                ${inputEmail.value} ${inputDepartamento.value}</li>`;
+            let nodo = document.createElement("li");
+            nodo.textContent = `${inputNombre.value} ${inputApellido.value} 
+            ${inputEmail.value} ${inputDepartamento.value}`;
+            nodo.className = "animate__animated animate__zoomInUp list-group-item";
+            listaUsuarios.append(nodo);
+
+            /* listaUsuarios.innerHTML += `<li class='animate__animated animate__zoomInUp list-group-item'>${inputNombre.value} ${inputApellido.value} 
+                ${inputEmail.value} ${inputDepartamento.value}</li>`; */
             inputNombre.value = "";
             inputApellido.value = "";
             inputEmail.value = "";
-            inputDepartamento.value = "";
+            inputDepartamento.value = "Escoje al departamento al que perteneces";
             
         Swal.fire({
             title: '¡Correcto!',
