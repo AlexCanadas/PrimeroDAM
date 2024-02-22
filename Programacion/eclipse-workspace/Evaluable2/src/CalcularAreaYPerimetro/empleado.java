@@ -7,11 +7,11 @@ boolean casado;
 double salario;
 
 //Creamos constructor con parámetros de entrada
-protected empleado (String nombre, String dni, int edad, double salario) {
-    this.nombre = nombre;
-    this.dni = dni;
-    this.edad = edad;
-    this.salario = salario;
+protected empleado (String _nombre, String _dni, int _edad, double _salario) {
+    this.nombre = _nombre;
+    this.dni = _dni;
+    this.edad = _edad;
+    this.salario = _salario;
 }
 
 //Creamos constructor sin parámetros de entrada
@@ -24,8 +24,8 @@ public String getNombre() {
 	return nombre;
 }
 
-public void setNombre(String nombre) {
-	this.nombre = nombre;
+public void setNombre(String _nombre) {
+	this.nombre = _nombre;
 }
 
 public String getDni() {
@@ -36,21 +36,21 @@ public boolean isCasado() {
 	return casado;
 }
 
-public void setCasado(boolean casado) {
-	this.casado = casado;
+public void setCasado(boolean _casado) {
+	this.casado = _casado;
 }
 
-public void setDni(String dni) {
-	this.dni = dni;
+public void setDni(String _dni) {
+	this.dni = _dni;
 }
 
 public int getEdad() {
 	return edad;
 }
 
-public void setEdad(int edad) {
+public void setEdad(int _edad) {
 	if (edad>=18 && edad<=45) {
-	this.edad = edad; 
+	this.edad = _edad; 
 	} else {
 		System.out.println("La edad debe estar comprendida entre 18 y 45 años");
 	}

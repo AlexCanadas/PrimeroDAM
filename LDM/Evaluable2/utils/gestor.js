@@ -10,6 +10,12 @@ let it = document.querySelector("#it");
 let marketing = document.querySelector("#marketing");
 let ventas = document.querySelector("#ventas");
 let administracion = document.querySelector("#administracion");
+let numIT = document.querySelector("#numIT");
+let numMarketing = document.querySelector("#numMarketing");
+let numVentas = document.querySelector("#numVentas");
+let numAdministracion = document.querySelector("#numAdministracion"); 
+
+
 
 boton.addEventListener("click", () => {
     // Verificamos que se hayan ingresado todos los datos necesarios
@@ -35,6 +41,9 @@ boton.addEventListener("click", () => {
 
         // Actualizar la lista de trabajadores por departamento
         actualizarTrabajadoresPorDepartamento();
+
+       // Actualizar numero de trabajadores por departamento
+        actualizarNumeroTrabajadoresPorDepartamento()
 
         // Limpiar el formulario
         inputNombre.value = "";
@@ -67,7 +76,7 @@ function actualizarListaTrabajadores() {
     listaTrabajadores.innerHTML = "";
     listaUsuariosDatos.forEach(usuario => {
         let nodo = document.createElement("li");
-        nodo.textContent = `${usuario.nombre} ${usuario.apellido} ${usuario.email} - ${usuario.departamento}`;
+        nodo.textContent = `${usuario.nombre} ${usuario.apellido}`;
         nodo.className = "list-group-item";
         listaTrabajadores.append(nodo);
     });
@@ -77,7 +86,7 @@ function actualizarListaTrabajadores() {
 function actualizarTrabajadoresPorDepartamento() {
         let ultimoUsuario = listaUsuariosDatos[listaUsuariosDatos.length - 1];
         let nodo = document.createElement("li");
-        nodo.textContent = `${ultimoUsuario.nombre} ${ultimoUsuario.apellido}`;
+        nodo.textContent = `${ultimoUsuario.nombre} ${ultimoUsuario.apellido} - ${ultimoUsuario.email}`;
         nodo.className = "list-group-item";
         switch (ultimoUsuario.departamento) {
             case 'IT':
@@ -93,4 +102,18 @@ function actualizarTrabajadoresPorDepartamento() {
                 administracion.append(nodo);
                 break;
         }   
+}
+
+// Función para actualizar el número de trabajadores por departamento en las columnas correspondientes
+function actualizarNumeroTrabajadoresPorDepartamento() {
+    _numIT = listaUsuariosDatos.filter(usuario => usuario.departamento === 'IT').length;
+    _numMarketing = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Marketing').length;
+    _numVentas = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Ventas').length;
+    _numAdministracion = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Administración').length;
+
+// Mostramos número actualizados
+    numIT.textContent = `${_numIT}`;
+    numMarketing.textContent = `${_numMarketing}`;
+    numVentas.textContent = `${_numVentas}`;
+    numAdministracion.textContent = `${_numAdministracion}`;
 }
