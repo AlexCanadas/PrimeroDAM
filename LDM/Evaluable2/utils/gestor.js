@@ -32,7 +32,7 @@ boton.addEventListener("click", () => {
             email: inputEmail.value,
             departamento: inputDepartamento.value
         };
-
+    
         // Agregar el usuario al array listaUsuariosDatos
         listaUsuariosDatos.push(usuario);
 
@@ -87,7 +87,7 @@ function actualizarTrabajadoresPorDepartamento() {
         let ultimoUsuario = listaUsuariosDatos[listaUsuariosDatos.length - 1];
         let nodo = document.createElement("li");
         nodo.textContent = `${ultimoUsuario.nombre} ${ultimoUsuario.apellido} - ${ultimoUsuario.email}`;
-        nodo.className = "list-group-item";
+        nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
         switch (ultimoUsuario.departamento) {
             case 'IT':
                 it.append(nodo);
@@ -106,14 +106,14 @@ function actualizarTrabajadoresPorDepartamento() {
 
 // Función para actualizar el número de trabajadores por departamento en las columnas correspondientes
 function actualizarNumeroTrabajadoresPorDepartamento() {
-    _numIT = listaUsuariosDatos.filter(usuario => usuario.departamento === 'IT').length;
-    _numMarketing = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Marketing').length;
-    _numVentas = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Ventas').length;
-    _numAdministracion = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Administración').length;
+    let _numIT = listaUsuariosDatos.filter(usuario => usuario.departamento === 'IT').length;
+    let _numMarketing = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Marketing').length;
+    let _numVentas = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Ventas').length;
+    let _numAdministracion = listaUsuariosDatos.filter(usuario => usuario.departamento === 'Administración').length;
 
-// Mostramos número actualizados
-    numIT.textContent = `${_numIT}`;
-    numMarketing.textContent = `${_numMarketing}`;
-    numVentas.textContent = `${_numVentas}`;
-    numAdministracion.textContent = `${_numAdministracion}`;
+// Mostramos números actualizados
+    numIT.textContent =`Número de trabajadores: ${_numIT}`;
+    numMarketing.textContent = `Número de trabajadores: ${_numMarketing}`;
+    numVentas.textContent = `Número de trabajadores: ${_numVentas}`;
+    numAdministracion.textContent = `Número de trabajadores: ${_numAdministracion}`;
 }
