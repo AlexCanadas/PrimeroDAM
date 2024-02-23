@@ -4,7 +4,7 @@ public class Programador extends Empleado {
 int lineasDecCodigoPorHora;
 String lenguajeDominante;
 
-//Creamos constructor con parámetros de entrada
+// Creamos constructor con parámetros de entrada
 public Programador(int lineasDecCodigoPorHora, String lenguajeDominante, String nombre, 
 		String dni, int edad, boolean casado, double salario) {
     super(nombre, dni, edad, casado, salario); // Llama al constructor de la clase base (empleado)
@@ -17,7 +17,7 @@ public Programador () {
 	super();
 }
 
-//Generamos Setters & Getters
+// Generamos Setters & Getters
 public int getLineasDecCodigoPorHora() {
 	return lineasDecCodigoPorHora;
 }
@@ -34,7 +34,7 @@ public void setLenguajeDominante(String lenguajeDominante) {
 	this.lenguajeDominante = lenguajeDominante;
 }
 
-//Métodos
+// Métodos
 
 
 

@@ -45,7 +45,9 @@ public boolean isCasado() {
 public void setCasado(boolean _casado) {
 	this.casado = _casado;
 }
-
+public boolean getCasado() {
+	return casado;
+}
 
 public int getEdad() {
 	return edad;
@@ -82,13 +84,16 @@ protected void clasificacion(int edad) {
 
 //toString para imprimir los datos del empleado por pantalla 
 public String toString () {
-	return "Nombre: " + nombre + ", DNI: " + dni + ", Edad: " + edad + ", Salario: " + salario;
+	return "Nombre: " + nombre + ", DNI: " + dni + ", Edad: " + 
+edad + ", Salario: " + salario;
 }
 
 //Creamos método para aumentar el salario basado en porcentaje (este % será un dato pasado como parámetro al método)
 
 protected void aumentarSalario (int porcentaje) {
-	this.salario = this.salario * (1+porcentaje/100);
+	//salario = salario * (1+porcentaje/100);
+	salario *= (porcentaje / 100)+1; 
+
 }
 
 

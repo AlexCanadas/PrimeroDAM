@@ -9,7 +9,6 @@ public class main {
 		Scanner sc = new Scanner (System.in);
 		int opcion;
 		
-		
 		// Creamos el arrayList;
 		ArrayList<Programador> registro = new ArrayList<>();
 		
@@ -21,15 +20,14 @@ public class main {
 		switch (opcion) {
 		case 1: 
 			 alta(registro, sc);
-				
 			 break;
 			 
 		case 2: 
-			
+			baja (registro, sc);
 			break; 
 			
 		case 3: 
-	
+			aumentarSalario(registro, sc);
 			break; 
 			
 		case 4: 
@@ -70,15 +68,14 @@ public class main {
 		 edad = sc.nextInt();
 			 
 		 System.out.println("Introduce si esta casado (si/no):");
-			 String respuesta = sc.next().toLowerCase(); // Convertimos la respuesta a minúsculas para hacer la 
-			 // comparación más sencilla
+			 String respuesta = sc.next().toLowerCase(); // Cambiamos la respuesta a minúsculas para hacer la comparación más sencilla
 				if (respuesta.equals("si")) {
 				    casado = true;
 				} else if (respuesta.equals("no")) {
 				    casado = false;
 				} else {
 				    System.out.println("Respuesta no válida. Se asumirá que no está casado.");
-				    casado = false; // Si la respuesta no es "si" ni "no", se asume que no está casado
+				    casado = false; // Ponemos no casado si la respuesta no es correcta
 				}
 		 System.out.println("Introduce el salario que comenzará ganando:");
 		 salario = sc.nextDouble();
@@ -96,14 +93,42 @@ public class main {
 
 		 // Agregar el nuevo programador al ArrayList
 		 registro.add(nuevoProgramador);
+		 
+		 System.out.println("El programador con DNI: " + dni + " + nombre: " + nombre 
+		 		+ "ha sido registrado correctamente");
 	}
 	
-	protected static void baja() {
-		
+	protected static void baja(ArrayList<Programador> registro, Scanner sc) {
+		System.out.println("Introduce el DNI del programador a eliminar: ");
+		String dni = sc.next();
+		for (Programador p : registro) {
+			if (dni.equals(p.getDni())) {
+				registro.remove(p);
+				System.out.println("El programador con DNI: " + dni + " y nombre: " + p.getNombre() + " ha sido eliminado");
+				break;
+			}
+			else {
+				System.out.println("Este DNI no existe en la base de datos");
+				break;
+			}
+		}
 	}
 	
-	protected static void aumentarSalario() {
-		
+	protected static void aumentarSalario(ArrayList<Programador> registro, Scanner sc) {
+		System.out.println("Introduce el DNI del programador que recibirá el aumento: ");
+		String dni = sc.next();
+		for (Programador p : registro) {
+			if (dni.equals(p.getDni())) {
+		System.out.println("Introduce que procentaje de aumento de salario va a recibir el programador: ");
+		int porcentaje = sc.nextInt();
+		Empleado empleado = new Empleado(p.getNombre(), p.getDni(), p.getEdad(), p.getCasado(), p.getSalario());
+		System.out.println("El salario actual era de: " + empleado.getSalario());
+		empleado.aumentarSalario(porcentaje);
+		System.out.println("El nuevo salario será de: " + empleado.getSalario());
+			}
+			else {
+				System.out.println("Este DNI no está registrado en la base de datos");
+			}
+		}
 	}
-	
 }
