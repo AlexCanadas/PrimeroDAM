@@ -8,18 +8,10 @@ public class main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner (System.in);
 		int opcion;
-		String nombre = null, dni = null;
-		int edad = 0;
-		boolean casado = false;
-		double salario = 0;
-		int lineasDecCodigoPorHora = 0;
-		String lenguajeDominante = null;
+		
 		
 		// Creamos el arrayList;
-		ArrayList<programador> registro = new ArrayList<>();
-		
-		programador c1 = new programador(lineasDecCodigoPorHora, lenguajeDominante, nombre, dni, edad,
-				casado, salario);
+		ArrayList<Programador> registro = new ArrayList<>();
 		
 	do {
 		mostrarMenu();
@@ -60,20 +52,26 @@ public class main {
 		System.out.println("4. Salir");
 	}
 	
-	protected static void alta(ArrayList<programador> registro, Scanner sc) {
+	protected static void alta(ArrayList<Programador> registro, Scanner sc) {
+		String nombre, dni;
+		int edad;
+		boolean casado;
+		double salario;
+		int lineasDecCodigoPorHora;
+		String lenguajeDominante;
+		
 		 System.out.println("Introduce el DNI:");
-		 String dni = sc.next();
-		    
+		 dni = sc.next();
+		   
 		 System.out.println("Introduce el nombre y apellido:");
-		 String nombre = sc.next();
+		 nombre = sc.next();
 		    
-		 System.out.println("Introduce la edad:");
-		 int edad = sc.nextInt();
-		    
+		 System.out.println("Introduce la edad:"); 
+		 edad = sc.nextInt();
+			 
 		 System.out.println("Introduce si esta casado (si/no):");
 			 String respuesta = sc.next().toLowerCase(); // Convertimos la respuesta a minúsculas para hacer la 
 			 // comparación más sencilla
-				boolean casado;
 				if (respuesta.equals("si")) {
 				    casado = true;
 				} else if (respuesta.equals("no")) {
@@ -83,17 +81,17 @@ public class main {
 				    casado = false; // Si la respuesta no es "si" ni "no", se asume que no está casado
 				}
 		 System.out.println("Introduce el salario que comenzará ganando:");
-		 double salario = sc.nextDouble();
+		 salario = sc.nextDouble();
 		    
 		 System.out.println("Introduce el lenguaje de programación dominante:");
-		 String lenguajeDominante = sc.next();
+		 lenguajeDominante = sc.next();
 		 
 		    
 		 System.out.println("Introduce la cantidad de líneas de código por hora que realiza:");
-		 int lineasDecCodigoPorHora = sc.nextInt();  
+		 lineasDecCodigoPorHora = sc.nextInt();  
 		 
 		 // Crear un nuevo objeto programador con los detalles proporcionados
-		 programador nuevoProgramador = new programador(lineasDecCodigoPorHora, lenguajeDominante, nombre, dni, 
+		 Programador nuevoProgramador = new Programador(lineasDecCodigoPorHora, lenguajeDominante, nombre, dni, 
 				 edad, casado, salario);
 
 		 // Agregar el nuevo programador al ArrayList

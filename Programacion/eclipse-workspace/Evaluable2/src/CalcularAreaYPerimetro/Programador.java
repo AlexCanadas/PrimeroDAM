@@ -1,11 +1,11 @@
 package CalcularAreaYPerimetro;
 
-public class programador extends empleado {
+public class Programador extends Empleado {
 int lineasDecCodigoPorHora;
 String lenguajeDominante;
 
 //Creamos constructor con parámetros de entrada
-public programador(int lineasDecCodigoPorHora, String lenguajeDominante, String nombre, 
+public Programador(int lineasDecCodigoPorHora, String lenguajeDominante, String nombre, 
 		String dni, int edad, boolean casado, double salario) {
     super(nombre, dni, edad, casado, salario); // Llama al constructor de la clase base (empleado)
     this.lineasDecCodigoPorHora = lineasDecCodigoPorHora;
@@ -13,7 +13,7 @@ public programador(int lineasDecCodigoPorHora, String lenguajeDominante, String 
 }
 
 // Creamos constructor sin parámetros de entrada
-public programador () {
+public Programador () {
 	super();
 }
 

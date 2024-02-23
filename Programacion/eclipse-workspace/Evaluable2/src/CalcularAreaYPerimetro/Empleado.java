@@ -1,6 +1,6 @@
 package CalcularAreaYPerimetro;
 
-public class empleado {
+public class Empleado {
 	
 	  String nombre, dni; 
 	  int edad; 
@@ -9,7 +9,7 @@ public class empleado {
 	 
 
 //Creamos constructor con parámetros de entrada
-protected empleado (String _nombre, String _dni, int _edad, boolean _casado, double _salario) {
+protected Empleado (String _nombre, String _dni, int _edad, boolean _casado, double _salario) {
     this.nombre = _nombre;
     this.dni = _dni;
     this.edad = _edad;
@@ -18,7 +18,7 @@ protected empleado (String _nombre, String _dni, int _edad, boolean _casado, dou
 }
 
 //Creamos constructor sin parámetros de entrada
-protected empleado () {
+protected Empleado () {
     
 }
 
