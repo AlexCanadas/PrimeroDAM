@@ -59,14 +59,11 @@ public class main {
 		String lenguajeDominante;
 		
 		 System.out.println("Introduce el DNI:");
-		 dni = sc.next();
-		   
+		 dni = sc.next();	   
 		 System.out.println("Introduce el nombre y apellido:");
-		 nombre = sc.next();
-		    
+		 nombre = sc.next();  
 		 System.out.println("Introduce la edad:"); 
-		 edad = sc.nextInt();
-			 
+		 edad = sc.nextInt(); 
 		 System.out.println("Introduce si esta casado (si/no):");
 			 String respuesta = sc.next().toLowerCase(); // Cambiamos la respuesta a minúsculas para hacer la comparación más sencilla
 				if (respuesta.equals("si")) {
@@ -79,19 +76,16 @@ public class main {
 				}
 		 System.out.println("Introduce el salario que comenzará ganando:");
 		 salario = sc.nextDouble();
-		    
 		 System.out.println("Introduce el lenguaje de programación dominante:");
 		 lenguajeDominante = sc.next();
-		 
-		    
 		 System.out.println("Introduce la cantidad de líneas de código por hora que realiza:");
 		 lineasDecCodigoPorHora = sc.nextInt();  
 		 
-		 // Crear un nuevo objeto programador con los detalles proporcionados
+		 // Creamos un nuevo objeto programador con los detalles proporcionados
 		 Programador nuevoProgramador = new Programador(lineasDecCodigoPorHora, lenguajeDominante, nombre, dni, 
 				 edad, casado, salario);
 
-		 // Agregar el nuevo programador al ArrayList
+		 // Agregamos el nuevo programador al ArrayList
 		 registro.add(nuevoProgramador);
 		 
 		 System.out.println("El programador con DNI: " + dni + " + nombre: " + nombre 
@@ -121,10 +115,9 @@ public class main {
 			if (dni.equals(p.getDni())) {
 		System.out.println("Introduce que procentaje de aumento de salario va a recibir el programador: ");
 		int porcentaje = sc.nextInt();
-		Empleado empleado = new Empleado(p.getNombre(), p.getDni(), p.getEdad(), p.getCasado(), p.getSalario());
-		System.out.println("El salario actual era de: " + empleado.getSalario());
-		empleado.aumentarSalario(porcentaje);
-		System.out.println("El nuevo salario será de: " + empleado.getSalario());
+		System.out.println("El salario actual era de: " + p.getSalario());
+		p.aumentarSalario(porcentaje);
+		System.out.println("El nuevo salario será de: " + p.getSalario());
 			}
 			else {
 				System.out.println("Este DNI no está registrado en la base de datos");
