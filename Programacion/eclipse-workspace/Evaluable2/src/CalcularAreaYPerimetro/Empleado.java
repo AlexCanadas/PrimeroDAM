@@ -1,5 +1,7 @@
 package CalcularAreaYPerimetro;
 
+import java.util.Scanner;
+
 public class Empleado {
 	
 	  String nombre, dni; 
@@ -54,11 +56,15 @@ public class Empleado {
 	}
 	
 	public void setEdad(int _edad) {
-		if (_edad>=18 && _edad<=45) {
-		this.edad = _edad; 
-		} else {
-			System.out.println("La edad debe estar comprendida entre 18 y 45 años");
-		}
+		Scanner scanner = new Scanner(System.in);
+
+	    while (_edad < 18 || _edad > 45) {
+	        System.out.println("La edad debe estar comprendida entre 18 y 45 años.");
+	        System.out.println("Por favor, introduce la edad nuevamente: ");
+	        _edad = scanner.nextInt();
+	    }
+
+	    this.edad = _edad;
 	}
 	
 	public double getSalario() {

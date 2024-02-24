@@ -25,7 +25,7 @@ public class main {
 			break;
 			 
 		case 2: 
-			baja (registro, sc, e);
+			baja (registro, sc);
 			break; 
 			
 		case 3: 
@@ -42,6 +42,8 @@ public class main {
 		}
 	
 	} while (opcion != 4);
+	
+	sc.close();
 }
 
 	public static void mostrarMenu() {
@@ -59,14 +61,11 @@ public class main {
 	    double salario;
 	    int lineasDecCodigoPorHora;
 	    String lenguajeDominante;
-
+	    
 	    System.out.println("Introduce el DNI:");
 	    dni = sc.next();
-	    boolean dniDuplicado = false;
-	    // Comprobamos si ya existe este DNI
-	    comprobarDni(registro, dni);
-	    // Verificamos si el DNI ya está duplicado y pedimos los datos
-	    if (!dniDuplicado) {
+		// Verificamos si el DNI ya está duplicado y pedimos los datos
+	    if (!existeDni(registro,dni)) {
 	        // Solicitamos los datos del nuevo programador
 	        System.out.println("Introduce el nombre y apellido:");
 	        nombre = sc.next();
@@ -96,79 +95,70 @@ public class main {
 	        // Mostramos mensaje de confirmación de alta
 	        System.out.println("El programador con los siguientes datos se ha registrado correctamente: ");
 	        System.out.println(nuevoProgramador.toString());
+	        System.out.println("");
 	    }
 	}
 	
-	protected static void baja(ArrayList<Programador> registro, Scanner sc, Empleado e) {
-		System.out.println("Introduce el DNI del programador a eliminar: ");
-		String dni = sc.next();
-		boolean dniExiste = existeDni(registro, dni);
-		if(dniExiste) {
-			for (Programador p : registro) {
-	            if (dni.equals(p.getDni())) {
-	                registro.remove(p);
-	                // Mostramos mensaje de confirmación de baja
-	                System.out.println("El programador con los siguientes datos se ha dado de baja correctamente: ");
-	                System.out.println(p.toString());
-	                break;
-	            }
-	        }
-		}
-	}
+	protected static void baja(ArrayList<Programador> registro, Scanner sc) {
+        System.out.println("Introduce el DNI del programador a eliminar: ");
+        String dni = sc.next();
+        boolean encontrado = false;
+        for (Programador p : registro) {
+            if (dni.equals(p.getDni())) {
+                registro.remove(p);
+                // Mostramos mensaje de confirmación de baja
+                System.out.println("El programador con el DNI " + dni + " se ha dado de baja correctamente.");
+                encontrado = true;
+                break;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún programador con el DNI " + dni + ".");
+        }
+        System.out.println("");
+    }
 
 	protected static void aumentarSalario(ArrayList<Programador> registro, Scanner sc) {
-		System.out.println("Introduce el DNI del programador que recibirá el aumento: ");
-		String dni = sc.next();
-		for (Programador p : registro) {
-			if (dni.equals(p.getDni())) {
-		System.out.println("Introduce que procentaje de aumento de salario va a recibir el programador: ");
-		int porcentaje = sc.nextInt();
-		System.out.println("El salario actual era de: " + p.getSalario());
-		p.aumentarSalario(porcentaje);
-		System.out.println("El nuevo salario será de: " + p.getSalario());
-			}
-			else {
-				System.out.println("Este DNI no está registrado en la base de datos");
-			}
-		}
-	}
+        System.out.println("Introduce el DNI del programador que recibirá el aumento: ");
+        String dni = sc.next();
+        boolean encontrado = false;
+        for (Programador p : registro) {
+            if (dni.equals(p.getDni())) {
+                System.out.println("Introduce qué porcentaje de aumento de salario va a recibir el programador: ");
+                int porcentaje = sc.nextInt();
+                System.out.println("El salario actual era de: " + p.getSalario());
+                p.aumentarSalario(porcentaje);
+                System.out.println("El nuevo salario será de: " + p.getSalario());
+                encontrado = true;
+                break;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún programador con el DNI " + dni + ".");
+        }
+        System.out.println("");
+    }
 	
-	protected static void comprobarDni(ArrayList<Programador> registro, String dni) {
-		boolean dniDuplicado;
-		for (Programador p : registro) {
-	        if (dni.equals(p.getDni())) {
-	            // Mostramos mensaje sobre el DNI duplicado
-	            System.out.println("Este DNI ya existe en la base de datos");
-	            dniDuplicado = true; // Camabiamos a true en caso de que exista
-	            break;
-	        }
-	    }
-	}
-	
-	protected static boolean existeDni (ArrayList<Programador> registro, String dni) {
-		for (Programador p : registro) {
-			if (dni.equals(p.getDni())) {
-				return true;
-			}
-		}
-		System.out.println("Este DNI no existe en la base de datos");
-		return false;
-
-	}
-	
-	protected static void comprobarRespuesta (String respuesta) {
-		boolean casado;
-		Programador e = new Programador();
-		if (respuesta.equals("si")) {
-            casado = true;
-            e.setCasado(casado);
-        } else if (respuesta.equals("no")) {
-            casado = false;
-            e.setCasado(casado);
+	protected static boolean existeDni(ArrayList<Programador> registro, String dni) {
+        for (Programador p : registro) {
+            if (dni.equals(p.getDni())) {
+                // Mostramos mensaje sobre el DNI duplicado
+                System.out.println("Este DNI ya existe en la base de datos");
+                System.out.println("");
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    protected static boolean comprobarRespuesta(String respuesta) {
+        if (respuesta.equalsIgnoreCase("si")) {
+            return true;
+        } else if (respuesta.equalsIgnoreCase("no")) {
+            return false;
         } else {
             System.out.println("Respuesta no válida. Se asumirá que no está casado.");
-            casado = false;
-            e.setCasado(casado);
+            return false;
         }
-	}
+    }
 }
