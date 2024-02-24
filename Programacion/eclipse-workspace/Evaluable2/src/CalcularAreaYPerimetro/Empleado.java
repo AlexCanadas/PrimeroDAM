@@ -54,7 +54,7 @@ public class Empleado {
 	}
 	
 	public void setEdad(int _edad) {
-		if (edad>=18 && edad<=45) {
+		if (_edad>=18 && _edad<=45) {
 		this.edad = _edad; 
 		} else {
 			System.out.println("La edad debe estar comprendida entre 18 y 45 años");
@@ -81,11 +81,12 @@ public class Empleado {
 			System.out.println("Senior");
 		}
 	}
-	
+
+	@Override
 	//toString para imprimir los datos del empleado por pantalla 
 	public String toString () {
-		return "Nombre: " + nombre + ", DNI: " + dni + ", Edad: " + 
-	edad + ", Salario: " + salario;
+		return "Nombre: " + this.nombre + ", DNI: " + this.dni + ", Edad: " + 
+	this.edad + ", Salario: " + this.salario;
 	}
 
 	//Creamos método para aumentar el salario basado en porcentaje (este % será un dato pasado como parámetro al método)
