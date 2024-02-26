@@ -3,7 +3,6 @@ let inputApellido = document.querySelector("input#input-apellido");
 let inputEmail =document.querySelector("input#input-email");
 let inputDepartamento = document.querySelector("#departamento");
 let boton = document.querySelector("#boton-confirmar");
-let listaUsuarios = document.querySelector("#lista-usuarios");
 let listaUsuariosDatos = [];
 let listaTrabajadores = document.querySelector("#lista-trabajadores");
 let it = document.querySelector("#it");
@@ -15,7 +14,11 @@ let numMarketing = document.querySelector("#numMarketing");
 let numVentas = document.querySelector("#numVentas");
 let numAdministracion = document.querySelector("#numAdministracion"); 
 
-
+// Selecciona los elementos de la tabla por sus IDs
+let departamentoIT = document.getElementById("departamentoIT");
+let departamentoMarketing = document.getElementById("departamentoMarketing");
+let departamentoVentas = document.getElementById("departamentoVentas");
+let departamentoAdministracion = document.getElementById("departamentoAdministracion");
 
 boton.addEventListener("click", () => {
     // Verificamos que se hayan ingresado todos los datos necesarios
@@ -77,31 +80,40 @@ function actualizarListaTrabajadores() {
     listaUsuariosDatos.forEach(usuario => {
         let nodo = document.createElement("li");
         nodo.textContent = `${usuario.nombre} ${usuario.apellido}`;
-        nodo.className = "list-group-item";
+        nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
         listaTrabajadores.append(nodo);
     });
-}
+} 
 
-// Función para actualizar la lista de trabajadores por departamento
+
 function actualizarTrabajadoresPorDepartamento() {
-        let ultimoUsuario = listaUsuariosDatos[listaUsuariosDatos.length - 1];
-        let nodo = document.createElement("li");
-        nodo.textContent = `${ultimoUsuario.nombre} ${ultimoUsuario.apellido} - ${ultimoUsuario.email}`;
+    // Limpia el contenido anterior de los departamentos
+    departamentoIT.textContent = "";
+    departamentoMarketing.textContent = "";
+    departamentoVentas.textContent = "";
+    departamentoAdministracion.textContent = "";
+
+    // Itera sobre la lista de usuarios y los asigna a los departamentos correspondientes
+    listaUsuariosDatos.forEach(usuario => {
+        let nodo = document.createElement("div");
+        nodo.textContent = `${usuario.nombre} ${usuario.apellido} - ${usuario.email}`;
         nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
-        switch (ultimoUsuario.departamento) {
+
+        switch (usuario.departamento) {
             case 'IT':
-                it.append(nodo);
+                departamentoIT.append(nodo);
                 break;
             case 'Marketing':
-                marketing.append(nodo);
+                departamentoMarketing.append(nodo);
                 break;
             case 'Ventas':
-                ventas.append(nodo);
+                departamentoVentas.append(nodo);
                 break;
-            case 'Administración': 
-                administracion.append(nodo);
+            case 'Administración':
+                departamentoAdministracion.append(nodo);
                 break;
-        }   
+        }
+    });
 }
 
 // Función para actualizar el número de trabajadores por departamento en las columnas correspondientes
