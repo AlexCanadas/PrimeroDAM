@@ -80,7 +80,7 @@ function actualizarListaTrabajadores() {
     listaUsuariosDatos.forEach(usuario => {
         let nodo = document.createElement("li");
         nodo.textContent = `${usuario.nombre} ${usuario.apellido}`;
-        nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
+        nodo.className = "animate__animated animate__rollIn list-group-item";
         listaTrabajadores.append(nodo);
     });
 } 
@@ -97,7 +97,7 @@ function actualizarTrabajadoresPorDepartamento() {
     listaUsuariosDatos.forEach(usuario => {
         let nodo = document.createElement("div");
         nodo.textContent = `${usuario.nombre} ${usuario.apellido} - ${usuario.email}`;
-        nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
+        nodo.className = "animate__animated animate__rollIn list-group-item";
 
         switch (usuario.departamento) {
             case 'IT':
