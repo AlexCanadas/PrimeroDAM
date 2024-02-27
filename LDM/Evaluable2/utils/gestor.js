@@ -5,10 +5,6 @@ let inputDepartamento = document.querySelector("#departamento");
 let boton = document.querySelector("#boton-confirmar");
 let listaUsuariosDatos = [];
 let listaTrabajadores = document.querySelector("#lista-trabajadores");
-let it = document.querySelector("#it");
-let marketing = document.querySelector("#marketing");
-let ventas = document.querySelector("#ventas");
-let administracion = document.querySelector("#administracion");
 let numIT = document.querySelector("#numIT");
 let numMarketing = document.querySelector("#numMarketing");
 let numVentas = document.querySelector("#numVentas");
@@ -80,11 +76,10 @@ function actualizarListaTrabajadores() {
     listaUsuariosDatos.forEach(usuario => {
         let nodo = document.createElement("li");
         nodo.textContent = `${usuario.nombre} ${usuario.apellido}`;
-        nodo.className = "animate__animated animate__rollIn list-group-item";
+        nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
         listaTrabajadores.append(nodo);
     });
 } 
-
 
 function actualizarTrabajadoresPorDepartamento() {
     // Limpia el contenido anterior de los departamentos
@@ -97,7 +92,7 @@ function actualizarTrabajadoresPorDepartamento() {
     listaUsuariosDatos.forEach(usuario => {
         let nodo = document.createElement("div");
         nodo.textContent = `${usuario.nombre} ${usuario.apellido} - ${usuario.email}`;
-        nodo.className = "animate__animated animate__rollIn list-group-item";
+        nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
 
         switch (usuario.departamento) {
             case 'IT':
