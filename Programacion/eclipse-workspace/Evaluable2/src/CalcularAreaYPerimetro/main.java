@@ -59,11 +59,12 @@ public class main {
 	    int edad;
 	    boolean casado = false;
 	    double salario;
-	    int lineasDecCodigoPorHora;
+	    int lineasDeCodigoPorHora;
 	    String lenguajeDominante;
 	    
 	    System.out.println("Introduce el DNI:");
 	    dni = sc.next();
+	    System.out.println("Selecciona si quieres dar de alta a un programador o a un empleado: ");
 		// Verificamos si el DNI ya está duplicado y pedimos los datos
 	    if (!existeDni(registro,dni)) {
 	        // Solicitamos los datos del nuevo programador
@@ -83,10 +84,10 @@ public class main {
 	        System.out.println("Introduce el lenguaje de programación dominante:");
 	        lenguajeDominante = sc.next();
 	        System.out.println("Introduce la cantidad de líneas de código por hora que realiza:");
-	        lineasDecCodigoPorHora = sc.nextInt();
+	        lineasDeCodigoPorHora = sc.nextInt();
 
 	        // Creamos un nuevo objeto programador con los detalles proporcionados
-	        Programador nuevoProgramador = new Programador(lineasDecCodigoPorHora, lenguajeDominante, nombre, dni,
+	        Programador nuevoProgramador = new Programador(lineasDeCodigoPorHora, lenguajeDominante, nombre, dni,
 	                edad, casado, salario);
 
 	        // Agregamos el nuevo programador al ArrayList
