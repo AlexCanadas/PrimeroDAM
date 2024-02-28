@@ -1,14 +1,14 @@
-package CalcularAreaYPerimetro;
+package IPM_Tech;
 
 public class Programador extends Empleado {
-	int lineasDecCodigoPorHora;
+	int lineasDeCodigoPorHora;
 	String lenguajeDominante;
 
 	// Creamos constructor con parámetros de entrada
 	public Programador(int lineasDecCodigoPorHora, String lenguajeDominante, String nombre, 
-			String dni, int edad, boolean casado, double salario) {
+		String dni, int edad, boolean casado, double salario) {
 	    super(nombre, dni, edad, casado, salario); // Llama al constructor de la clase base empleado
-	    this.lineasDecCodigoPorHora = lineasDecCodigoPorHora;
+	    this.lineasDeCodigoPorHora = lineasDecCodigoPorHora;
 	    this.lenguajeDominante = lenguajeDominante;
 	}
 	
@@ -19,11 +19,11 @@ public class Programador extends Empleado {
 	
 	// Generamos Setters & Getters
 	public int getLineasDecCodigoPorHora() {
-		return lineasDecCodigoPorHora;
+		return lineasDeCodigoPorHora;
 	}
 	
 	public void setLineasDecCodigoPorHora(int lineasDecCodigoPorHora) {
-		this.lineasDecCodigoPorHora = lineasDecCodigoPorHora;
+		this.lineasDeCodigoPorHora = lineasDecCodigoPorHora;
 	}
 	
 	public String getLenguajeDominante() {
