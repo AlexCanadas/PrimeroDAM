@@ -36,10 +36,10 @@ boton.addEventListener("click", () => {
         listaUsuariosDatos.push(usuario);
 
         // Actualizar la lista de trabajadores generales
-        actualizarListaTrabajadores();
+        actualizarListaTrabajadores(usuario);
 
         // Actualizar la lista de trabajadores por departamento
-        actualizarTrabajadoresPorDepartamento();
+        actualizarTrabajadoresPorDepartamento(usuario);
 
        // Actualizar numero de trabajadores por departamento
         actualizarNumeroTrabajadoresPorDepartamento()
@@ -71,44 +71,32 @@ boton.addEventListener("click", () => {
 });
 
 // Función para actualizar la lista de trabajadores generales
-function actualizarListaTrabajadores() {
-    listaTrabajadores.innerHTML = "";
-    listaUsuariosDatos.forEach(usuario => {
-        let nodo = document.createElement("li");
+function actualizarListaTrabajadores(usuario) {
+    let nodo = document.createElement("li");
         nodo.textContent = `${usuario.nombre} ${usuario.apellido}`;
         nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
-        listaTrabajadores.append(nodo);
-    });
+        listaTrabajadores.append(nodo); 
 } 
 
-function actualizarTrabajadoresPorDepartamento() {
-    // Limpia el contenido anterior de los departamentos
-    departamentoIT.textContent = "";
-    departamentoMarketing.textContent = "";
-    departamentoVentas.textContent = "";
-    departamentoAdministracion.textContent = "";
+function actualizarTrabajadoresPorDepartamento(usuario) {
+    let nodo = document.createElement("div");
+    nodo.textContent = `${usuario.nombre} ${usuario.apellido} - ${usuario.email}`;
+    nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
 
-    // Itera sobre la lista de usuarios y los asigna a los departamentos correspondientes
-    listaUsuariosDatos.forEach(usuario => {
-        let nodo = document.createElement("div");
-        nodo.textContent = `${usuario.nombre} ${usuario.apellido} - ${usuario.email}`;
-        nodo.classList.add("animate__animated", "animate__rollIn", "list-group-item");
-
-        switch (usuario.departamento) {
-            case 'IT':
-                departamentoIT.append(nodo);
-                break;
-            case 'Marketing':
-                departamentoMarketing.append(nodo);
-                break;
-            case 'Ventas':
-                departamentoVentas.append(nodo);
-                break;
-            case 'Administración':
-                departamentoAdministracion.append(nodo);
-                break;
-        }
-    });
+    switch (usuario.departamento) {
+        case 'IT':
+            departamentoIT.append(nodo);
+            break;
+        case 'Marketing':
+            departamentoMarketing.append(nodo);
+            break;
+        case 'Ventas':
+            departamentoVentas.append(nodo);
+            break;
+        case 'Administración':
+            departamentoAdministracion.append(nodo);
+            break;
+    }
 }
 
 // Función para actualizar el número de trabajadores por departamento en las columnas correspondientes
