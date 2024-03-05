@@ -1,5 +1,6 @@
 package EjercicioAlumnos;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -14,6 +15,8 @@ public class Main {
 		 */
 		Scanner sc = new Scanner(System.in);
 		int opcion;
+		ArrayList<Alumno> registro = new ArrayList();
+		Alumno a = new Alumno();
 	
 	do {
 		mostrarMenu();
@@ -22,10 +25,10 @@ public class Main {
 		
 		 switch (opcion) {
          case 1:
-             
+             altaAlumno(registro, sc, a);
              break;
          case 2:
-             
+             bajaAlumno(registro, sc, a);
              break;
          case 3:
             
@@ -49,5 +52,37 @@ public class Main {
         System.out.println("3. Modificar datos de un alumno");
         System.out.println("4. Salir");
     }
+	
+	public static void altaAlumno(ArrayList<Alumno> registro, Scanner sc, Alumno a) {
+		// rellenar
+		Alumno nuevoAlumno = new Alumno(); // Crear una nueva instancia de Alumno
+		System.out.println("Introduce el DNI del alumno a dar de alta: ");
+		String dni = sc.next();
+		if (!a.comprobarDNI(dni, registro, nuevoAlumno)) {
+			nuevoAlumno.setDni(dni);
+	        registro.add(nuevoAlumno);
+	        System.out.println("El alumno con DNI " + nuevoAlumno.getDni() + " ha sido registrado correctamente.\n");
+	    } else {
+	        System.out.println("El alumno con DNI " + dni + " ya está registrado en la base de datos.\n");
+	    }
+	}
+	
+	public static void bajaAlumno(ArrayList<Alumno> registro, Scanner sc, Alumno a) {
+		System.out.println("Introduce el DNI del alumno a dar de baja: ");
+		String dni = sc.next();
+	    a.setDni(dni);
+	    for (Alumno a1 : registro) {
+	        if (a1.equals(a)) {
+	            registro.remove(a1);
+	            System.out.println("El alumno con DNI " + dni + " ha sido eliminado correctamente.\n");
+	            return;
+	        }
+	    }
+	    System.out.println("No se encontró ningún alumno con el DNI " + dni + ".\n");
+	}
+	
+	public static void modificarAlumno(ArrayList<Alumno> registro, Scanner sc, Alumno a) {
+		// rellenar
+	}
 
 }

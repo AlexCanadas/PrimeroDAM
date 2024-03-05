@@ -1,15 +1,17 @@
 package EjercicioAlumnos;
 
+import java.util.ArrayList;
+
 public class Alumno {
 	String dni;
 
 	// Creamos constructores con y sin parámetros
 	public Alumno(String dni) {
-		super();
+		
 		this.dni = dni;
 	}
 	public Alumno() {
-		super();
+		
 	}
 	
 	// Creamos getters y setters
@@ -21,9 +23,27 @@ public class Alumno {
 	}
 	
 	// Creamos el método para comprobar el DNI
-	protected void comprobarDNI() {
-		
+	protected boolean comprobarDNI(String dni, ArrayList<Alumno> registro, Alumno a1) {
+		for (Alumno a : registro) {
+			if (dni.equals(a.getDni())) {
+                return true;
+			}
+		}
+		return false;
 	}
+	
+	// Creamos el método para verificar si existe el DNI
+	protected boolean existeDNI(String dni, ArrayList<Alumno> registro) {
+		for (Alumno a : registro) {
+			if (dni.equals(a.getDni())) {
+	            System.out.println("El DNI " + dni + " ya está registrado en la base de datos.\n");
+	            return true; // El DNI existe en la base de datos
+	        }
+	    }
+	    System.out.println("Este DNI no existe en la base de datos.\n");
+	    return false; // El DNI no existe en la base de datos
+	}
+	
 	
 	
 }
