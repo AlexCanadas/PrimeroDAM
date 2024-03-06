@@ -1,7 +1,10 @@
 package AlquilerVehiculos;
 
+import java.util.Scanner;
+
 public class FurgonetasDeCarga extends Vehiculos {
 	protected double PMA;
+	Scanner sc = new Scanner (System.in);
 	
 	// Constructor con el parámetro extra
     public FurgonetasDeCarga(double PMA) {
@@ -29,6 +32,8 @@ public class FurgonetasDeCarga extends Vehiculos {
 
     @Override
     protected double calcularPrecioAlquiler(int _diasAlquiler, double _precioAlquiler, int _plaza) {
+    	System.out.println("Introduce el PMA de esta fugoneta de carga: ");
+    	PMA = sc.nextDouble();
         double precioFinal = super.getPRECIOALQUILER() * _diasAlquiler * (20 * PMA);
         System.out.println("El precio de alquiler de esta furgoneta de carga con matrícula " + this.getMatricula() + " es de: " + precioFinal + " euros.\n");
         
