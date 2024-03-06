@@ -31,14 +31,13 @@ public class Main {
              bajaAlumno(registro, sc, a);
              break;
          case 3:
-            
+            modificarAlumno(registro, sc, a);
              break;
          case 4:
              System.out.println("¡Que tengas un buen día!");
              break;
          default:
-             System.out.println("Opción inválida. Inténtelo de nuevo por favor.");
-             System.out.println("");
+             System.out.println("Opción inválida. Inténtelo de nuevo por favor. /n");
      }
 	
 	}while(opcion!=4);
@@ -53,13 +52,26 @@ public class Main {
         System.out.println("4. Salir");
     }
 	
+	public static void mostrarMenuModificar() {
+        System.out.println("----- Dato a modificar -----");
+        System.out.println("1. Nombre");
+        System.out.println("2. Dirección");
+        System.out.println("3. Salir");
+    }
+	
 	public static void altaAlumno(ArrayList<Alumno> registro, Scanner sc, Alumno a) {
-		// rellenar
-		Alumno nuevoAlumno = new Alumno(); // Crear una nueva instancia de Alumno
+		// Creamos una nueva instancia de Alumno para poder iterar correctamente
+		Alumno nuevoAlumno = new Alumno(); 
 		System.out.println("Introduce el DNI del alumno a dar de alta: ");
 		String dni = sc.next();
 		if (!a.comprobarDNI(dni, registro, nuevoAlumno)) {
 			nuevoAlumno.setDni(dni);
+			System.out.println("Introduce el nombre del alumno a dar de alta: ");
+			String nombre = sc.next();
+			nuevoAlumno.setNombre(nombre);
+			System.out.println("Introduce la dirección del alumno a dar de alta: ");
+			String direccion = sc.next();
+			nuevoAlumno.setDireccion(direccion);;
 	        registro.add(nuevoAlumno);
 	        System.out.println("El alumno con DNI " + nuevoAlumno.getDni() + " ha sido registrado correctamente.\n");
 	    } else {
@@ -82,7 +94,46 @@ public class Main {
 	}
 	
 	public static void modificarAlumno(ArrayList<Alumno> registro, Scanner sc, Alumno a) {
-		// rellenar
+	    System.out.println("Introduce el DNI del alumno del que modificar datos: ");
+	    String dni = sc.next();
+	    boolean encontrado = false; 
+	    for (Alumno a1 : registro) {
+	        if (a1.getDni().equals(dni)) {
+	            encontrado = true;
+	            mostrarMenuModificar();
+	            int opcion = sc.nextInt();
+	            switch (opcion) {
+	                case 1:
+	                    System.out.println("El nombre actual de este alumno es: " + a1.getNombre());
+	                    System.out.println("Introduce el nuevo nombre de este alumno: ");
+	                    String nombre = sc.next();
+	                    a1.setNombre(nombre);
+	                    System.out.println("Aquí te mostramos los datos de este alumno desde ahora. DNI: " + a1.getDni() +
+	                            " nombre: " + a1.getNombre() + " y dirección: " + a1.getDireccion() + "\n");
+	                    break;
+	                case 2:
+	                    System.out.println("La dirección actual de este alumno es: " + a1.getDireccion());
+	                    System.out.println("Introduce la nueva dirección de este alumno: ");
+	                    String direccion = sc.next();
+	                    a1.setDireccion(direccion);
+	                    System.out.println("Aquí te mostramos los datos de este alumno desde ahora. DNI: " + a1.getDni() +
+	                            " nombre: " + a1.getNombre() + " y dirección: " + a1.getDireccion() + "\n");
+	                    break;
+	                case 3:
+	                    System.out.println("¡Que tengas un buen día!");
+	                    break;
+	                default:
+	                    System.out.println("Opción inválida. Inténtelo de nuevo por favor. \n");
+	            }
+	            break;
+	        }
+	    }
+	    if (!encontrado) {
+	        System.out.println("No se encontró ningún alumno con el DNI " + dni + ".\n");
+	    }
 	}
 
+		
 }
+
+
