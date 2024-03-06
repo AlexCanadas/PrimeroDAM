@@ -6,9 +6,10 @@ public class Alumno {
 	String dni, nombre, direccion;
 	
 	// Creamos constructores con y sin parámetros
-	public Alumno(String dni) {
-		
+	public Alumno(String dni, String nombre, String direccion) {
 		this.dni = dni;
+		this.nombre = nombre;
+		this.direccion = direccion;
 	}
 	public Alumno() {
 		
@@ -43,19 +44,4 @@ public class Alumno {
 		}
 		return false;
 	}
-	
-	// Creamos el método para verificar si existe el DNI
-	/*protected boolean existeDNI(String dni, ArrayList<Alumno> registro) {
-		for (Alumno a : registro) {
-			if (dni.equals(a.getDni())) {
-	            System.out.println("El DNI " + dni + " ya está registrado en la base de datos.\n");
-	            return true; // El DNI existe en la base de datos
-	        }
-	    }
-	    System.out.println("Este DNI no existe en la base de datos.\n");
-	    return false; // El DNI no existe en la base de datos
-	}*/
-	
-	
-	
 }
