@@ -4,11 +4,13 @@ public class Camiones extends Vehiculos {
 	// Constructor vacío
 	public Camiones() {
 		super();
+		precioAlquiler = PRECIOALQUILER;
 	}
 	
 	// Constructor con parámetros
 	public Camiones(String _matricula, int _diasAlquiler, double _precioAlquiler, int _plaza) {
 		super(_matricula, _diasAlquiler, _precioAlquiler, _plaza);
+		precioAlquiler = PRECIOALQUILER;
 	}
 	
 	@Override
