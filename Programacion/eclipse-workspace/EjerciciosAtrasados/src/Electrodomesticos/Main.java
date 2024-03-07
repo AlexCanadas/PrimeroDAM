@@ -1,11 +1,43 @@
 package Electrodomesticos;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		ArrayList<Electrodomestico> e = new ArrayList();
+		Scanner sc = new Scanner (System.in);
+		
+		mostrarMenu();
+		int opcion = sc.nextInt();
+		switch (opcion) {
+		case 1:
+			
+			break;
+		case 2:
+			break;
+		case 3:
+			Television t4 = new Television(400,5,"negro",'C',56,true);
+			e.add((Television)t4);
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			calcularPrecioFinal(e);
+			break;
+		case 8:
+			break;
+		case 9:
+			break;
+		case 10:
+			break;
+			
+		}while(opcion!=10);
 		
 		// Creamos varios objetos Television
 		Television t1 = new Television();
@@ -51,5 +83,29 @@ public class Main {
 		System.out.println("Precio total de todas las lavadoras: " + precioTotalLavadoras + " euros");
 	    System.out.println("Precio total de todas las televisiones: " + precioTotalTelevisiones + " euros");
 	    System.out.println("Precio total de todos los electrodomésticos: " + precioTotalElectrodomesticos + " euros");
+	}
+	
+	public static void mostrarMenu() {
+		System.out.println("----- Menú de opciones -----");
+		System.out.println("1. Dar de alta electrodoméstico");
+		System.out.println("2. Dar de alta lavadora");
+		System.out.println("3. Dar de alta televisor");
+		System.out.println("4. Mostrar precio final de un electrodoméstico");
+		System.out.println("5. Mostrar precio final de todos los electrodomésticos");
+		System.out.println("6. Mostrar precio final de un televisor");
+		System.out.println("7. Mostrar precio final de todos los televisores");
+		System.out.println("8. Mostrar precio final de una lavadora");
+		System.out.println("9. Mostrar precio final de todas las lavadoras");
+		System.out.println("10. Salir");
+	}
+	
+	public static void calcularPrecioFinal(ArrayList<Electrodomestico>listaE) {
+		double precioTotal=0;
+		for(Electrodomestico t4 : listaE) {
+			if(t4 instanceof Television) {
+				precioTotal=((Television)t4).getPrecioBase();
+			}
+		}
+			System.out.println("El precio total de todos los televiores es: " + precioTotal);
 	}
 }

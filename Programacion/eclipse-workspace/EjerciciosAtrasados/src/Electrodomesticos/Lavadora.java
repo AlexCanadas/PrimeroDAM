@@ -3,9 +3,11 @@ package Electrodomesticos;
 public class Lavadora extends Electrodomestico {
 	protected int carga;
 	protected final int CARGA = 5;
+	
 	public Lavadora(int carga) {
 		super();
 		this.carga = carga;
+		precioFinal();
 	}
 	
 	public Lavadora() {
@@ -17,11 +19,13 @@ public class Lavadora extends Electrodomestico {
 	public Lavadora(double _precioBase, double _peso) {
 		super(_precioBase, _peso);
 		carga = CARGA;
+		precioFinal();
 	}
 
 	public Lavadora(double _precioBase, double _peso, String _color, char _consumoEnergetico, int carga) {
 		super(_precioBase, _peso, _color, _consumoEnergetico);
 		this.carga = carga;
+		precioFinal();
 	}
 
 	public int getCarga() {
@@ -34,7 +38,7 @@ public class Lavadora extends Electrodomestico {
 	
 	protected void precioFinal() {
 		if(carga>30) {
-			precioBase += 30;
+			precioBase += 50;
 		}	
 	}
 	

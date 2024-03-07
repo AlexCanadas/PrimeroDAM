@@ -33,12 +33,16 @@ public class Television extends Electrodomestico{
 
 	public Television() {
 		super();
+		resolucion = RESOLUCION; 
+		sintonizadorTdt = SINTONIZADORTDT;
+		precioFinal();
 	 }
 
 	public Television(double _precioBase, double _peso) {
 		super(_precioBase, _peso);
-		color=COLOR;
-		consumoEnergetico=CONSUMOENERGETICO;
+		resolucion = RESOLUCION; 
+		sintonizadorTdt = SINTONIZADORTDT;
+		precioFinal();
 	}
 
 	public Television(double _precioBase, double _peso, String _color, char _consumoEnergetico, double resolucion,
@@ -46,6 +50,7 @@ public class Television extends Electrodomestico{
 		super(_precioBase, _peso, _color, _consumoEnergetico);
 		this.resolucion = resolucion;
 		this.sintonizadorTdt = sintonizadorTdt;
+		precioFinal();
 	}
 	
 	public void precioFinal() {

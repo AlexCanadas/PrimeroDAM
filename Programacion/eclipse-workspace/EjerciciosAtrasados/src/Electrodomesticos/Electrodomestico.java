@@ -8,27 +8,29 @@ public abstract class Electrodomestico {
 	private final double PRECIOBASE=100, PESO=5;
 	protected final String COLOR="blanco";
 	protected char CONSUMOENERGETICO='F';
+	
 	protected Electrodomestico() {
 		precioBase = PRECIOBASE;
 		peso=PESO;
 		color=COLOR;
 		consumoEnergetico=CONSUMOENERGETICO;
-		precioFinal(peso, consumoEnergetico);
+		precioFinal();
 	}
 	public Electrodomestico(double _precioBase, double _peso) {
 		this.precioBase = _precioBase;
 		this.peso = _peso;
 		color=COLOR;
 		consumoEnergetico=CONSUMOENERGETICO;
-		precioFinal(this.peso, this.consumoEnergetico);
+		precioFinal();
 	}
 	public Electrodomestico(double _precioBase, double _peso, String _color, char _consumoEnergetico) {
 		this.precioBase = _precioBase;
 		this.peso = _peso;
 		comprobarColor(color.toLowerCase());
 		comprobarConsumoEnergetico(_consumoEnergetico);
-		precioFinal(this.peso, this.consumoEnergetico);
+		precioFinal();
 	}
+	
 	public double getPrecioBase() {
 		return precioBase;
 	}
