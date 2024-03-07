@@ -6,8 +6,8 @@ public abstract class Electrodomestico {
 	protected char consumoEnergetico;
 	
 	private final double PRECIOBASE=100, PESO=5;
-	private final String COLOR="blanco";
-	private char CONSUMOENERGETICO='F';
+	protected final String COLOR="blanco";
+	protected char CONSUMOENERGETICO='F';
 	protected Electrodomestico() {
 		precioBase = PRECIOBASE;
 		peso=PESO;
@@ -137,5 +137,6 @@ public abstract class Electrodomestico {
 			precioBase += 100;
 		}
 	}
+	protected abstract void precioFinal();
 	
-}
+	}
