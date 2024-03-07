@@ -13,8 +13,9 @@ public class Camiones extends Vehiculos {
 	
 	@Override
 	protected double calcularPrecioAlquiler(int _diasAlquiler, double _precioAlquiler, int _plaza) {
-		double precioFinal = (super.getPRECIOALQUILER() * _diasAlquiler) + 40;
-		System.out.println("El precio de alquiler de este camión con matrícula " + this.getMatricula() + " es de: " + precioFinal + " euros.\n");
+		double precioFinal = (this.getPrecioAlquiler() * _diasAlquiler) + 40;
+		System.out.println("El precio de alquiler de este camión con matrícula " + this.getMatricula() + 
+				" es de: " + precioFinal + " euros.\n");
 		
 		return precioFinal ;
 	}
