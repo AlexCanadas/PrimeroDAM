@@ -14,21 +14,21 @@ public abstract class Electrodomestico {
 		peso=PESO;
 		color=COLOR;
 		consumoEnergetico=CONSUMOENERGETICO;
-		precioFinal();
+		precioFinal(peso, consumoEnergetico);
 	}
 	public Electrodomestico(double _precioBase, double _peso) {
 		this.precioBase = _precioBase;
 		this.peso = _peso;
-		color=COLOR;
+		comprobarColor(color);
 		consumoEnergetico=CONSUMOENERGETICO;
-		precioFinal();
+		precioFinal(peso, consumoEnergetico);
 	}
 	public Electrodomestico(double _precioBase, double _peso, String _color, char _consumoEnergetico) {
 		this.precioBase = _precioBase;
 		this.peso = _peso;
-		comprobarColor(color.toLowerCase());
+		comprobarColor(_color.toLowerCase());
 		comprobarConsumoEnergetico(_consumoEnergetico);
-		precioFinal();
+		precioFinal(_peso, _consumoEnergetico);
 	}
 	
 	public double getPrecioBase() {
@@ -139,6 +139,4 @@ public abstract class Electrodomestico {
 			precioBase += 100;
 		}
 	}
-	protected abstract void precioFinal();
-	
-	}
+}

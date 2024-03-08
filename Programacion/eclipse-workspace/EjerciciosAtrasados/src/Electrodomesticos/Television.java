@@ -55,7 +55,7 @@ public class Television extends Electrodomestico{
 	
 	public void precioFinal() {
 		if(resolucion>40) {
-			this.precioBase *= 1.3;
+			precioBase *= 1.3;
 		}
 		if (sintonizadorTdt) {
 			precioBase +=50;
