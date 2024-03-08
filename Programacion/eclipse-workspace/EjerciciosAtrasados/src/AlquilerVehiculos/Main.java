@@ -24,16 +24,16 @@ public class Main {
 
 		// Calcular precios de alquiler y mostrarlo por pantalla  int _diasAlquiler, double _precioAlquiler, int _plaza
 		for (Coches co : alquilerCoches) {
-			co.calcularPrecioAlquiler(co.getDiasAlquiler(), co.getPrecioAlquiler(), co.getPlaza());
+			co.calcularPrecioAlquiler(co.getDiasAlquiler(), co.getPlaza());
 		}
 		for (Microbuses m : alquilerMicrobuses) {
-			m.calcularPrecioAlquiler(m.getDiasAlquiler(), m.getPrecioAlquiler(), m.getPlaza());
+			m.calcularPrecioAlquiler(m.getDiasAlquiler(), m.getPlaza());
 		}
 		for (FurgonetasDeCarga f : alquilerFurgonetas) {
-			f.calcularPrecioAlquiler(f.getDiasAlquiler(), f.getPrecioAlquiler(), f.getPlaza());
+			f.calcularPrecioAlquiler(f.getDiasAlquiler(), f.getPlaza());
 		}
 		for (Camiones ca : alquilerCamiones) {
-			ca.calcularPrecioAlquiler(ca.getDiasAlquiler(), ca.getPrecioAlquiler(), ca.getPlaza());
+			ca.calcularPrecioAlquiler(ca.getDiasAlquiler(), ca.getPlaza());
 		}
 		
 	}

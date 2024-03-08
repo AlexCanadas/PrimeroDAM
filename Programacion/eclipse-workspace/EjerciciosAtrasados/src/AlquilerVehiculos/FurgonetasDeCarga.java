@@ -33,13 +33,12 @@ public class FurgonetasDeCarga extends Vehiculos {
     }
 
     @Override
-    protected double calcularPrecioAlquiler(int _diasAlquiler, double _precioAlquiler, int _plaza) {
+    protected void calcularPrecioAlquiler(int _diasAlquiler, int _plaza) {
     	System.out.println("Introduce el PMA de esta fugoneta de carga: ");
     	PMA = sc.nextDouble();
         double precioFinal = _diasAlquiler * this.precioAlquiler + (20 * PMA);
         System.out.println("El precio de alquiler de esta furgoneta de carga con matrícula " + this.getMatricula() + 
         		" es de: " + precioFinal + " euros.\n");
-        
-        return precioFinal;
+
     }
 }

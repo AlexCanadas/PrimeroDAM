@@ -1,10 +1,11 @@
 package AlquilerVehiculos;
 
 public class Vehiculos {
-String matricula;
-int diasAlquiler, plaza;
-double precioAlquiler;
-final double PRECIOALQUILER = 50;
+protected String matricula;
+protected int diasAlquiler, plaza;
+protected double precioAlquiler;
+
+protected final double PRECIOALQUILER = 50;
 
 	// Creamos los getters & setters
 	public String getMatricula() {
@@ -36,11 +37,12 @@ final double PRECIOALQUILER = 50;
 	}
 	
 	// Creamos constructor vacío
-	public Vehiculos() {
+	protected Vehiculos() {
+		precioAlquiler = PRECIOALQUILER;
 	}
 	
 	// Creamos constructor con parámetros
-	public Vehiculos(String _matricula, int _diasAlquiler, double _precioAlquiler, int _plaza) {
+	protected Vehiculos(String _matricula, int _diasAlquiler, double _precioAlquiler, int _plaza) {
 		this.matricula = _matricula;
 		this.diasAlquiler = _diasAlquiler;
 		this.precioAlquiler = _precioAlquiler;
@@ -48,10 +50,8 @@ final double PRECIOALQUILER = 50;
 	}
 	
 	// Creamos método para calcular el precio final
-	protected double calcularPrecioAlquiler (int _diasAlquiler, double _precioAlquiler, int _plaza) {
-		double precioAlquiler = PRECIOALQUILER;
+	protected void calcularPrecioAlquiler (int _diasAlquiler, int _plaza) {
 		
-		return precioAlquiler;
 	}
 
 
