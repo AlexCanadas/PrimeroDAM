@@ -8,7 +8,7 @@ public class ConcesionarioVehiculos {
 			int opcion;
 			final int FILAS=100;
 			final int COLUMNAS=7;
-			String matricula;
+			String matricula, dni, nombre;
 			boolean vehiculo=false;
 			Scanner sc = new Scanner(System.in);
 			String vehiculos [][] = new String [FILAS][COLUMNAS];
@@ -19,9 +19,10 @@ public class ConcesionarioVehiculos {
 				System.out.println("2.- Dar de baja un vehículo");
 				System.out.println("3.- Modificar datos de un vehículo");
 				System.out.println("4.- Mostrar datos de un vehiculo");
-				System.out.println("5.- Vender un vehículo a un cliente");
-				System.out.println("6.- Mostrar vehículos a la venta");
-				System.out.println("7.- Salir");
+				System.out.println("5.- Dar de alta a un cliente");
+				System.out.println("6.- Vender un vehículo a un cliente");
+				System.out.println("7.- Mostrar vehículos a la venta");
+				System.out.println("8.- Salir");
 				opcion=sc.nextInt();
 				switch(opcion) {
 					case 1: System.out.println("Dime la matricula");
@@ -77,51 +78,87 @@ public class ConcesionarioVehiculos {
 								}
 							}
 						break;
-					case 4: System.out.println("Dime la matricula");
-							matricula=sc.next();
-							//Buscamos la matricula en el array
+					case 4: 
 							for (int filas=0;filas<FILAS;filas++) {
-								if(vehiculos[filas][0]!=null && vehiculos[filas][0].equals(matricula)) {
-									System.out.println("Matricula: "+vehiculos[filas][0]);
-									System.out.println("Marca: "+vehiculos[filas][1]);
-									System.out.println("Modelo: "+vehiculos[filas][2]);
-									System.out.println("Color: "+vehiculos[filas][3]);
-									System.out.println("Motor: "+vehiculos[filas][4] + "\n");
+								if(vehiculos[filas][0]!=null) {
+									System.out.println("Dime la matricula");
+									matricula=sc.next();
+									//Buscamos la matricula en el array
+									for (filas=0;filas<FILAS;filas++) {
+										if(vehiculos[filas][0]!=null && vehiculos[filas][0].equals(matricula)) {
+											System.out.println("Matricula: "+vehiculos[filas][0]);
+											System.out.println("Marca: "+vehiculos[filas][1]);
+											System.out.println("Modelo: "+vehiculos[filas][2]);
+											System.out.println("Color: "+vehiculos[filas][3]);
+											System.out.println("Motor: "+vehiculos[filas][4] + "\n");
+											break;
+										}
+									}
+								}else {
+									System.out.println("Este vehículo no esta registrado en el sitema \n");
 									break;
 								}
 							}
 							break;	
-					case 5: 
-							for (int filas=0;filas<FILAS;filas++) {
-								boolean cochesVenta = false;
-								if (vehiculos[filas][0]!=null) {
-									System.out.println("Introduce la matrícula del coche que será vendido: ");
-									matricula=sc.next();
-									if(vehiculos[filas][0].equals(matricula) && vehiculos[filas][5]==null) {
-										System.out.println("Introduce el DNI del cliente que adquidirá un vehículo: ");
-										vehiculos[filas][5]=sc.next();
-										System.out.println("Introduce el nombre del comprador: ");
-										vehiculos[filas][6]=sc.next();
-										System.out.println("El vehículo con matrícula " + vehiculos[filas][0] + 
-												" fue vendio al cliente con dni " + vehiculos[filas][5] + " y nombre " + vehiculos[filas][6] + "\n");
-										cochesVenta=true;
-										break;
-									}
-									if(vehiculos[filas][0]!=matricula && vehiculos[filas][0]!=null) {
-										System.out.println("Este vehículo no se encuentra registrado en el sistema \n");
-										break;
-									}
-								}
-								if (!cochesVenta) {
-									System.out.println("No tenemos vehículos a la venta actualmente \n");
-									break;
-								}
-							}
-							break;
-					case 6: System.out.println("Los siguientes vehículos están actualmente a la venta: \n"); 
+					case 5:
+				            System.out.println("Introduce el DNI del nuevo cliente: ");
+				            dni = sc.next();
+				            System.out.println("Introduce el nombre del nuevo cliente: ");
+				            nombre = sc.next();
+	
+				            // Agregar el nuevo cliente al primer vehículo disponible
+				            for (int i = 0; i < vehiculos.length; i++) {
+				                if (vehiculos[i][0] == null) { 
+				                    vehiculos[i][5] = dni; 
+				                    vehiculos[i][6] = nombre; 
+				                    break; 
+			                }
+			            }
+			            break;
+					case 6: 
+					    boolean vehiculoEncontrado = false;
+					    boolean clienteEncontrado = false;
+
+					    System.out.println("Introduce la matrícula del coche que será vendido: ");
+					    matricula = sc.next();
+
+					    // Buscamos el vehículo
+					    for (int filas = 0; filas < FILAS; filas++) {
+					        if (vehiculos[filas][0] != null && vehiculos[filas][0].equals(matricula)) {
+					            vehiculoEncontrado = true;
+					            if (vehiculos[filas][5] == null) {
+					                System.out.println("Introduce el DNI del cliente que adquirirá el vehículo: ");
+					                dni = sc.next();
+					                // Buscamos al cliente
+					                for (int i = 0; i < FILAS; i++) {
+					                    if (vehiculos[i][5] != null && vehiculos[i][5].equals(dni)) {
+					                        clienteEncontrado = true;
+					                        vehiculos[filas][5] = dni;
+					                        System.out.println("El vehículo con matrícula " + vehiculos[filas][0] + 
+					                                           " fue vendido al cliente con DNI " + dni + 
+					                                           " y nombre " + vehiculos[filas][6]);
+					                        break;
+					                    }
+					                }
+								    if (!clienteEncontrado) {
+								    	System.out.println("No se encontró ningún cliente con ese DNI.");
+								    }
+					            } else {
+					                System.out.println("Este vehículo ya ha sido vendido.");
+					            }
+					            break;
+					        }
+					    }
+					    if (!vehiculoEncontrado) {
+					        System.out.println("No se encontró ningún vehículo con esa matrícula.");
+					    }
+					    break;
+
+					case 7: 
 					    	boolean hayVehiculosDisponibles = false;
 					    	for (int filas = 0; filas < vehiculos.length; filas++) {
 						        if (vehiculos[filas][5] == null && vehiculos[filas][0] != null) {
+						        	System.out.println("Los siguientes vehículos están actualmente a la venta: \n"); 
 						            System.out.println("Matrícula: " + vehiculos[filas][0] + ", marca: " + vehiculos[filas][1] + 
 						                ", modelo: " + vehiculos[filas][2] + ", color:" + vehiculos[filas][3] + ", motor:" + vehiculos[filas][4] + "\n");
 						            hayVehiculosDisponibles = true;
@@ -129,13 +166,27 @@ public class ConcesionarioVehiculos {
 					    	}
 					    	if (!hayVehiculosDisponibles) {
 					        System.out.println("No hay vehículos disponibles a la venta en este momento. \n");
+					       
 					    	}
 					    	break;
-					case 7: System.out.print("¡Hasta pronto!");
+					case 8:
+						System.out.println("Introduce el DNI del cliente del que mostrar sus vehículos adquiridos");
+						dni = sc.next();
+						for (int filas =0;filas<FILAS;filas++) {
+							if (vehiculos[filas][5].equals(dni) && vehiculos[filas][0]!=null) {
+								System.out.println("Este cliente tiene los siguientes vehículos: \n" + vehiculos[filas][0] + "\n");
+							}
+							if (vehiculos[filas][5].equals(dni) && vehiculos[filas][0]==null) {
+								System.out.println("Este cliente no tiene vehículos adquiridos \n");
+								break;
+							}
+						}
 						break;
+					case 9: System.out.print("¡Hasta pronto!");
+ 						break;
 					default: System.out.print("Opcion incorrecta \n \n");
 				}
-			} while(opcion!=7);
+			} while(opcion!=9);
 			
 		}
 }
