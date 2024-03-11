@@ -123,13 +123,11 @@ public class Main {
 					}
 				}
 					if (!vehiculoEncontrado) {
-						//vehiculoEncontrado = true;
 						System.out.println("Este vehículo no se encuentra registrado en el sistema.\n");
 					}
 			}
 		}
 			if (!clienteEncontrado) {
-				//clienteEncontrado = true;
 				System.out.println("Este cliente no se encuentra registrado en el sistema.\n");
 			}
 		

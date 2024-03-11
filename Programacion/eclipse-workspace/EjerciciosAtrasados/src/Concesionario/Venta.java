@@ -1,7 +1,5 @@
 package Concesionario;
 
-import java.util.ArrayList;
-
 public class Venta {
 	protected String matricula;
 	protected String dni;
