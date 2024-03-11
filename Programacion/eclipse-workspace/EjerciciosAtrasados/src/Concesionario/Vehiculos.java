@@ -1,7 +1,7 @@
 package Concesionario;
 
 public class Vehiculos {
-	String matricula, color, marca, modelo;
+	protected String matricula, color, marca, modelo;
 
 	// Generamos getters & setters
 	public String getMatricula() {
@@ -38,11 +38,9 @@ public class Vehiculos {
 	
 	// Generamos constructores con y sin parámetros
 	public Vehiculos() {
-		super();
 	}
 
 	public Vehiculos(String matricula, String color, String marca, String modelo) {
-		super();
 		this.matricula = matricula;
 		this.color = color;
 		this.marca = marca;

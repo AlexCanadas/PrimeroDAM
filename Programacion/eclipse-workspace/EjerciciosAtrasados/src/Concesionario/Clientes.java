@@ -1,8 +1,8 @@
 package Concesionario;
 
 public class Clientes {
-	String dni, nombre, direccion;
-	int edad;
+	protected String dni, nombre, direccion;
+	protected int edad;
 	
 	// Generamos getters & setters
 	public String getDni() {
@@ -32,10 +32,9 @@ public class Clientes {
 	
 	// Generamos constructores con y sin parámetros
 	public Clientes() {
-		super();
 	}
+	
 	public Clientes(String dni, String nombre, String direccion, int edad) {
-		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.direccion = direccion;
