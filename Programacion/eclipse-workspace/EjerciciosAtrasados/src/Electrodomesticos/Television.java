@@ -50,6 +50,8 @@ public class Television extends Electrodomestico{
 		super(_precioBase, _peso, _color, _consumoEnergetico);
 		this.resolucion = resolucion;
 		this.sintonizadorTdt = sintonizadorTdt;
+		comprobarColor(_color);
+		comprobarConsumoEnergetico(_consumoEnergetico);
 		precioFinal();
 	}
 	

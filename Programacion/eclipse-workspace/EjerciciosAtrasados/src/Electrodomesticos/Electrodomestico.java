@@ -56,7 +56,7 @@ public abstract class Electrodomestico {
 		this.consumoEnergetico = _consumoEnergetico;
 	}
 	
-	private void comprobarConsumoEnergetico(char letra) {
+	protected void comprobarConsumoEnergetico(char letra) {
 		switch(letra) {
 			case 'A': 
 				consumoEnergetico = 'A';
@@ -82,7 +82,7 @@ public abstract class Electrodomestico {
 		}
 	}
 	
-	private void comprobarColor(String color) {
+	public void comprobarColor(String color) {
 		switch(color) {
 			case "blanco": 
 				color = "blanco";
