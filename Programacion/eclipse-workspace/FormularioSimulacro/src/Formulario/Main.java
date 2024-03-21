@@ -29,6 +29,7 @@ public class Main {
             case 5:
                 if (!f.isEmpty() && verificarDatosCompletos(f.get(f.size() - 1))) {
                     System.out.println("¡Que tengas un buen día! \n");
+                    System.out.println("Datos del formulario completado:");
                 } else {
                     System.out.println("Faltan datos por rellenar.\n");
                 }
