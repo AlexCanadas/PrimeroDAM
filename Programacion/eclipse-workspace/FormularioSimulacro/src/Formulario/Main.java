@@ -79,11 +79,13 @@ public class Main {
         datos.setEmail(email);
     }
 
+    //Método para verificar que tengamos todos los datos
     public static boolean verificarDatosCompletos(DatosFormulario datos) {
         return datos.getNombre() != null && datos.getApellidos() != null && 
         		datos.getDni() != null && datos.getEmail() != null;
     }
-
+    
+    //Método para obtener el último usuario
     public static DatosFormulario obtenerUltimo(ArrayList<DatosFormulario> f) {
         if (f.isEmpty()) {
             f.add(new DatosFormulario());
