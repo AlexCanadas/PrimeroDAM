@@ -38,11 +38,11 @@ public class Main {
 		arrayTest.add(obj);
 		arrayTest.add(new Objeto1("roberto", 30));
 		
-		for (Objeto1 i : arrayTest) {
+		for (Objeto1 i : arrayTest) { //Todos los objetos del arrayList
 			System.out.println(i);
 		}
 		
-		for (Objeto1 i : arrayTest) {
+		for (Objeto1 i : arrayTest) { //Solo el objeto obj 
 			if (i instanceof Objeto1) {
 				if (i.equals(obj)) {
 					System.out.println(i);
@@ -50,7 +50,7 @@ public class Main {
 			}
 		}
 		
-		for (Objeto1 i: arrayTest) {
+		for (Objeto1 i: arrayTest) { //Solo el objeto que tenga de nombre alex
 			if (i.getName().equals("alex")) {
 				System.out.println("Ahora encontramos el objeto de manera mas complicada: " + i);
 			}
