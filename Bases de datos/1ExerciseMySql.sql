@@ -34,3 +34,30 @@ ON a.employeeNumber = d.salesRepEmployeeNumber
 ORDER BY d.TotalVentas DESC
 LIMIT 5;
 
+-- Muestra el número de pedidos y el precio medio de todos los pedidos que hayan realizado los clientes de cada empleado.
+SELECT a.employeeNumber, a.lastName, a.firstName, e.numOrders, e.Avg_payments
+FROM employees AS a
+LEFT JOIN (
+SELECT b.salesRepEmployeeNumber, b.customerNumber, COUNT(c.orderNumber) AS numOrders, ROUND(AVG(d.amount), 2) AS Avg_payments
+FROM customers AS b
+LEFT JOIN orders AS c
+USING(customerNumber)
+LEFT JOIN payments AS d
+USING(customerNumber)
+GROUP BY salesRepEmployeeNumber
+) AS e
+ON a.employeeNumber = e.salesRepEmployeeNumber
+ORDER BY e.Avg_payments DESC
+
+-- Muestra la cantidad total de productos vendidos por línea de producto.
+SELECT productLine, SUM(quantityInStock) AS qtyInStock, SUM(qtyOrdered) AS qtyOrdered
+FROM (
+SELECT a.productLine, a.productCode, a.quantityInStock, b.qtyOrdered
+FROM products AS a
+LEFT JOIN (
+SELECT productCode, SUM(quantityOrdered) AS qtyOrdered
+FROM orderDetails GROUP BY productCode
+) AS b
+USING(productCode)
+) AS q
+GROUP BY productLine;
