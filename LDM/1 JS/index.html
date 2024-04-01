@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <h1 class="text-center" id="titulo">Primera tarea con js</h1>
     <main>
       <section>
-        <h3>
+        <h4>
           1. Crea una función en javascript que indique si un número (que
           introduzca el usuario) es par o impar. <br />
           AYUDA: para poner si el resto de dividir un numero entre 2 es 0, se
           hace así: if(numero % 2 == 0)
-        </h3>
+        </h4>
         <input
           type="number"
           placeholder="Introduce un número:"
@@ -23,10 +27,10 @@
         <output type="number" id="output"></output>
       </section>
       <section>
-        <h3>
+        <h4>
           2. Crea una función en javascript que de los 20 primeros números,
           <br />indique cuales y cuantos son pares. Utiliza la función anterior
-        </h3>
+        </h4>
         <input
           type="number"
           placeholder="Introduce un número:"
@@ -56,18 +60,34 @@
         </div>
       </section>
       <section>
-        <h3>
+        <h4>
           3. Crear una función que pasándole como parámetro una cadena que el
           usuario ha introducido (en un prompt),<br />
           nos diga si la frase está formada por solo mayúsculas o por solo
           minúsculas.
-        </h3>
+        </h4>
         <input
           type="text"
           placeholder="Introduce una frase:"
           id="inputString"
         />
-        <output type="number" id="output"></output>
+        <output type="text" id="outputString"></output>
+      </section>
+      <section>
+        <h4>
+          4. La función replace en Javascript, lo que hace es dada una cadena,
+          reemplaza un carácter que yo le indique (que ya exista en la cadena)
+          por otro que también le indique yo. AYUDA: <br />
+          https://www.w3schools.com/jsref/jsref_replace.asp <br />
+          Sabiendo esto, pide al usuario una cadena y reemplaza por espacios en
+          blanco de la frase, por el carácter /
+        </h4>
+        <input
+          type="text"
+          placeholder="Introduce una frase:"
+          id="inputString"
+        />
+        <output type="text" id="outputString"></output>
       </section>
     </main>
 

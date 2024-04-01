@@ -8,9 +8,13 @@ let numerosImpares = document.querySelector("#numeros-impares");
 let inputString = document.querySelector("#inputString");
 let outputString = document.querySelector("#outputString");
 
+let inputStringDos = document.querySelector("#inputStringDos");
+let outputStringDos = document.querySelector("#outputStringDos");
+
 primerEjercicio();
 segundoEjercicio();
 tercerEjercicio();
+cuartoEjercicio();
 
 function primerEjercicio() { 
     input.addEventListener("input", function() {
@@ -52,7 +56,7 @@ function segundoEjercicio() {
 
 function tercerEjercicio() {
     inputString.addEventListener("input", function() {
-        let cadena = inputString.value
+        let cadena = inputString.value;
 
         if (cadena===cadena.toUpperCase()) {
             outputString.textContent="La cadena solo contiene mayúsculas";
@@ -66,5 +70,12 @@ function tercerEjercicio() {
     });
 }
 
-console.log(inputString);
-console.log(outputString);
+function cuartoEjercicio() {
+    inputStringDos.addEventListener("input", function() {
+        let cadenaDos = inputStringDos.value;
+        let cadenaModificada=cadenaDos.replace(/ /g, '/');
+        outputStringDos.textContent = cadenaModificada;
+    });
+}
+
+
