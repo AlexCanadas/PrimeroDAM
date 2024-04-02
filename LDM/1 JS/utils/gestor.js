@@ -11,6 +11,8 @@ let outputString = document.querySelector("#outputString");
 let inputStringDos = document.querySelector("#inputStringDos");
 let outputStringDos = document.querySelector("#outputStringDos");
 
+let outputRandom = document.querySelector("#outputRandom");
+
 primerEjercicio();
 segundoEjercicio();
 tercerEjercicio();
