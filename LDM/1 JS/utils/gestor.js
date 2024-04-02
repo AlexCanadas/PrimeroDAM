@@ -78,4 +78,6 @@ function cuartoEjercicio() {
     });
 }
 
+console.log(outputStringDos)
+
 
