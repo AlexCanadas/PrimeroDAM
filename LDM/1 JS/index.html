@@ -3,104 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Primera tarea con JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
-    <h1 class="text-center" id="titulo">Primera tarea con js</h1>
-    <main>
-      <section>
-        <h4>
-          1. Crea una función en javascript que indique si un número (que
-          introduzca el usuario) es par o impar. <br />
-          AYUDA: para poner si el resto de dividir un numero entre 2 es 0, se
-          hace así: if(numero % 2 == 0)
-        </h4>
-        <input
-          type="number"
-          placeholder="Introduce un número:"
-          id="input-numero"
-        />
-        <output type="number" id="output"></output>
-      </section>
-      <section>
-        <h4>
-          2. Crea una función en javascript que de los 20 primeros números,
-          <br />indique cuales y cuantos son pares. Utiliza la función anterior
-        </h4>
-        <input
-          type="number"
-          placeholder="Introduce un número:"
-          id="input-numeroDos"
-        />
-        <div class="row">
-          <div class="container text-center">
-            <table class="table text-center">
-              <thead>
-                <tr>
-                  <th scope="col">
-                    <b>Números pares</b><br /><span id="pares"></span>
-                  </th>
-                  <th scope="col">
-                    <b>Números impares</b><br /><span id="impares"></span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td id="numeros-pares"></td>
-                  <td id="numeros-impares"></td>
-                </tr>
-              </tbody>
-            </table>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Primera tarea con JS</h1>
+      <main>
+        <section>
+          <h4>
+            1. Crea una función en JavaScript que indique si un número
+            (introducido por el usuario) es par o impar.
+          </h4>
+          <div class="form-group">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Introduce un número"
+              id="input-numero"
+            />
+            <output class="mt-2" id="output"></output>
           </div>
-        </div>
-      </section>
-      <section>
-        <h4>
-          3. Crear una función que pasándole como parámetro una cadena que el
-          usuario ha introducido (en un prompt),<br />
-          nos diga si la frase está formada por solo mayúsculas o por solo
-          minúsculas.
-        </h4>
-        <input
-          type="text"
-          placeholder="Introduce una frase:"
-          id="inputString"
-        />
-        <output type="text" id="outputString"></output>
-      </section>
-      <section>
-        <h4>
-          4. La función replace en Javascript, lo que hace es dada una cadena,
-          reemplaza un carácter que yo le indique (que ya exista en la cadena)
-          por otro que también le indique yo. AYUDA: <br />
-          https://www.w3schools.com/jsref/jsref_replace.asp <br />
-          Sabiendo esto, pide al usuario una cadena y reemplaza por espacios en
-          blanco de la frase, por el carácter /
-        </h4>
-        <input
-          type="text"
-          placeholder="Introduce una frase:"
-          id="inputStringDos"
-        />
-        <output type="text" id="outputStringDos"></output>
-      </section>
-      <section>
-        <h4>
-          5. Sabiendo que la función matemática random en javascript se
-          implementa así: Num = Math.floor(Math.random() * 10) + 1; <br />
-          Donde num sería un numero aleatorio entre 1 y 10; realiza un programa
-          donde genere 10 números aleatorios entre 1 y 50 e indica cuantos salen
-          mayores de 25
-        </h4>
-        <output type="text" id="outputRandom"></output>
-      </section>
-    </main>
-
+        </section>
+        <section class="mt-4">
+          <h4>
+            2. Crea una función en JavaScript que, de los 20 primeros números,
+            indique cuáles y cuántos son pares. Utiliza la función anterior.
+          </h4>
+          <div class="form-group">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Introduce un número"
+              id="input-numeroDos"
+            />
+          </div>
+          <div class="row">
+            <div class="col">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      Números pares <br />
+                      <span id="paresQty"></span>
+                    </th>
+                    <th scope="col">
+                      Números impares <br />
+                      <span id="imparesQty"></span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="numeros-pares"></td>
+                    <td id="numeros-impares"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section class="mt-4">
+          <h4>
+            3. Crear una función que, pasándole como parámetro una cadena
+            introducida por el usuario (en un prompt), nos diga si la frase está
+            formada solo por mayúsculas o solo por minúsculas.
+          </h4>
+          <button type="button" class="btn btn-dark" id="buttonTres">
+            Pedir cadena de texto
+          </button>
+          <output class="mt-2" id="outputString"></output>
+        </section>
+        <section class="mt-4">
+          <h4>
+            4. Utilizando la función replace en JavaScript, pide al usuario una
+            cadena y reemplaza los espacios en blanco de la frase por el
+            carácter "/".
+          </h4>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Introduce una frase"
+              id="inputStringDos"
+            />
+            <output class="mt-2" id="outputStringDos"></output>
+          </div>
+        </section>
+        <section class="mt-4">
+          <h4>
+            5. Utilizando la función Math.random() en JavaScript, genera 10
+            números aleatorios entre 1 y 50 e indica cuántos son mayores de 25.
+          </h4>
+          <button type="button" class="btn btn-dark" id="buttonCinco">
+            Crear números aleatorios
+          </button>
+          <div class="row mt-2">
+            <div class="col">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      Números > 25 <br />
+                      <span id="mayores"></span>
+                    </th>
+                    <th scope="col">
+                      Números ≤ 25 <br />
+                      <span id="menores"></span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="numMayor"></td>
+                    <td id="numMenor"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
     <script src="utils/gestor.js"></script>
   </body>
 </html>
