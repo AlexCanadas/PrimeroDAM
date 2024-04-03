@@ -2,3 +2,7 @@
 .teal-background { 
     background-color: teal;
   }
+
+  body {
+    background-color: rgba(250, 229, 212, 0.704);
+}

@@ -46,11 +46,12 @@
             </button>
             <br />
             <output id="outputSegundo"></output>
+            <br />
           </div>
         </div>
       </div>
     </section>
-    <section class="container">
+    <section class="container mt-5">
       <h4>3. Elige qué color de fondo quieres poner a la página web:</h4>
       <button type="button" class="btn btn-outline-primary" id="botonAzul">
         Color azul
@@ -95,13 +96,7 @@
       <div class="mb-3 row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-          <input
-            type="text"
-            readonly
-            class="form-control-plaintext"
-            id="staticEmail"
-            value="email@example.com"
-          />
+          <input type="text" class="form-control" id="email" />
         </div>
       </div>
       <div class="dropdown">
@@ -133,7 +128,25 @@
           <li><a class="dropdown-item" href="#">34</a></li>
           <li><a class="dropdown-item" href="#">35</a></li>
         </ul>
+        <div class="mt-2">
+          <button type="button" class="btn btn-primary btn-sm" id="botonDatos">
+            Mostrar datos
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            data-bs-dismiss="toast"
+            id="botonReset"
+          >
+            Reset
+          </button>
+          <output id="outputDatos"></output>
+        </div>
       </div>
+    </section>
+    <section class="container">
+      <h4 class="mt-4 mb-3">5. Pedir nombre, edad y calcular días vividos</h4>
+      <button id="botonDias">Ejecutar</button>
     </section>
     <script src="./utils/gestor.js"></script>
   </body>
