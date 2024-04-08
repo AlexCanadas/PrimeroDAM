@@ -53,7 +53,7 @@ public class Revista extends Articulos {
 		int idRevistaABuscar = sc.nextInt();
 		for (Articulos articulo : catalogo) {
 			if (articulo instanceof Revista) {
-				Revista revista = (Revista) articulo; // (Casting)
+				Revista revista = (Revista) articulo; // Casting
 				if (revista.idRevista == idRevistaABuscar) {
 					catalogo.remove(revista);
 					System.out.println("El libro se ha dado de baja correctamente \n");

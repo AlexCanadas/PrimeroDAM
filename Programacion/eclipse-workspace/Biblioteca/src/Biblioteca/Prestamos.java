@@ -13,6 +13,7 @@ public class Prestamos {
 	protected LocalDate fechaFin;
 	String dniUsuario;
 	int idPrestamo, pkArticulo;
+	double multa;
 	
 	public Prestamos(LocalDate fechaComienzo, LocalDate fechaFin, String dniUsuario, int pkArticulo) {
 		this.idPrestamo = ++contadorPrestamos; // Creamos ID del préstamo automáticamente
@@ -26,6 +27,7 @@ public class Prestamos {
 		this.fechaFin = LocalDate.now();
 		this.dniUsuario = dniUsuario;
 		this.pkArticulo = pkArticulo;
+		
 	}
 
 	public Prestamos() {
@@ -69,6 +71,14 @@ public class Prestamos {
 
 	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+	public double getMulta() {
+		return multa;
+	}
+
+	public void setMulta(int multa) {
+		this.multa = multa;
 	}
 
 	protected Prestamos hacerPrestamo (Scanner sc, String dni) {
@@ -125,10 +135,26 @@ public class Prestamos {
                             diasRestantes);
     }
     
- // Método para calcular los días restantes hasta una fecha específica
+    // Método para calcular los días restantes hasta una fecha específica
     public static long calcularDiasRestantes(LocalDate fechaDevolucion) {
         LocalDate fechaActual = LocalDate.now();
         return ChronoUnit.DAYS.between(fechaActual, fechaDevolucion);
+    }
+    
+    // Penalizamos con un 10% por día en caso de entregar tarde
+    protected void penalizar (Scanner sc) {
+    	System.out.println("Introduce la fecha en la que se produjo la devolución del artículo (dd-MM-yyyy): ");
+    	String inputFecha = sc.next();
+        LocalDate fechaDevolucion = LocalDate.parse(inputFecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    	if (fechaDevolucion.isAfter(fechaFin)) {
+    		long diasRetraso = ChronoUnit.DAYS.between(this.fechaFin, LocalDate.now());
+    		double porcentajeMultaPorDia = 0.10;
+    		this.multa = diasRetraso * porcentajeMultaPorDia;
+    		System.out.println("Al precio final del préstamo se le aplicará un " + this.multa + "% \n");
+    	}else {
+    		this.multa = 0;
+    		System.out.println("El artículo de este préstamo se entrego a tiempo por lo que este préstamo no tendrá penalización");
+    	}
     }
     
 }

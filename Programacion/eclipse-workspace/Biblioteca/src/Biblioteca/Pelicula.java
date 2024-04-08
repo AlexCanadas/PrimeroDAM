@@ -54,7 +54,7 @@ public class Pelicula extends Articulos {
 		int idPeliculaABuscar = sc.nextInt();
 		for (Articulos articulo : catalogo) {
 			if (articulo instanceof Pelicula) {
-				Pelicula pelicula = (Pelicula) articulo;
+				Pelicula pelicula = (Pelicula) articulo; // Casting
 				if (pelicula.idPelicula == idPeliculaABuscar) {
 					catalogo.remove(pelicula);
 					System.out.println("Pelicula eliminada correctamente \n");

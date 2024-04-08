@@ -11,11 +11,11 @@ public class Main {
 		ArrayList <Personas> biblioteca = new ArrayList<>();
 		ArrayList <Articulos> catalogo = new ArrayList<>();
 		ArrayList <Prestamos> prestamos = new ArrayList<>();
-		//Usuarios user = new Usuarios();
-		Administradores admin = new Administradores("Alex", "47411148Y", 33);
-		biblioteca.add(admin);
-		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		
+		Administradores admin = new Administradores("Alex", "47411148Y", 33); // Creo un administrador Alex
+		biblioteca.add(admin);
+		
+		// Comprobamos si es admin, usuario o no está registrado aún
 		System.out.println("Introduce tu DNI:");	
 		String dniIntroducido = sc.next();
 		
@@ -51,12 +51,12 @@ public class Main {
 
 		do {
 		System.out.println("----- Menú Administradores -----");
-		System.out.println("1. Dar de alta a un usuario para poder hacer los préstamos"); //Ok
+		System.out.println("1. Dar de alta a un usuario para poder hacer los préstamos"); 
 		System.out.println("2. Penalizar a un usuario por no haber devuelto en fecha");
-		System.out.println("3. Dar de alta un artículo"); //OK
-		System.out.println("4. Dar de baja artículos"); // OK
-		System.out.println("5. Ver los préstamos de un cliente"); // OK
-		System.out.println("6. Acceder al menú de usuarios"); // OK
+		System.out.println("3. Dar de alta un artículo"); 
+		System.out.println("4. Dar de baja artículos"); 
+		System.out.println("5. Ver los préstamos de un cliente"); 
+		System.out.println("6. Acceder al menú de usuarios"); 
 		System.out.println("7. Salir");
 		opcionAdmin=sc.nextInt();
 		
@@ -83,7 +83,19 @@ public class Main {
 			    break;
 			    
 		case 2: 
-			
+			System.out.println("Introduce el DNI del usuario a penalizar: ");
+			String dni = sc.next();
+			for (Personas buscarUsuario : biblioteca) {
+				if(buscarUsuario.getDni().equals(dni)) {
+					System.out.println("Introduce el ID del préstamo al que añadir una penalización: ");
+					long idPrestamo = sc.nextLong();
+					for (Prestamos buscarPrestamo : prestamos) {
+						if (buscarPrestamo.getIdPrestamo()==idPrestamo) {
+							buscarPrestamo.penalizar(sc);
+						}
+					}
+				}
+			}
 			break;
 			
 		case 3: 
@@ -117,9 +129,11 @@ public class Main {
 					break;
 				}
 			break;
+			
 		case 4: 
 			menuBaja(sc);
 			break;
+			
 		case 5: 
 			System.out.println("Introduce el DNI del usuario del que ver sus préstamos: ");
 			String dniAMostrar = sc.next();
@@ -159,7 +173,7 @@ public class Main {
 			System.out.println("----- Menú Usuarios-----");
 			System.out.println("1. Hacer un préstamo o varios a la vez."); // OK, no varios a la vez
 			System.out.println("2. Hacer una devolución o varias a la vez."); // OK, no varios a la vez
-			System.out.println("3. Ver sus préstamos en activo para ver los días que le quedan para la devolución."); // OK
+			System.out.println("3. Ver sus préstamos en activo para ver los días que le quedan para la devolución.");
 			System.out.println("4. Salir");
 			opcionUsuario=sc.nextInt();
 			
@@ -171,18 +185,21 @@ public class Main {
 					System.out.println("El DNI del usuario adquiriendo el préstamo ID " + nuevoPrestamo_.getIdPrestamo() +
 							" es " + nuevoPrestamo_.getDniUsuario());
 					break;
+					
 				case 2:
 					Prestamos prestamoBaja = new Prestamos();
 					prestamoBaja.hacerDevolucion(sc, prestamos);
 					break;
+					
 				case 3:
 					for (Prestamos verPrestamos : prestamos) {
-							// Mostrar préstamos en activo y dias para la devolucion
+							// Mostrar préstamos en activo y días para la devolucion
 							if (verPrestamos.getDniUsuario().equals(dniIntroducido)) {
 								System.out.println(verPrestamos.toString());
 							}
 					}
 					break;
+					
 				case 4:
 					System.out.println("Que tengas un buen día");
 					break;
