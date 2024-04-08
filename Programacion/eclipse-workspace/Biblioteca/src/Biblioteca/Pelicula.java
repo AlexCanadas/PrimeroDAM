@@ -17,8 +17,6 @@ public class Pelicula extends Articulos {
 		this.director = director;
 	}
 	
-	
-
 	public Pelicula() {
 	}
 
@@ -46,8 +44,6 @@ public class Pelicula extends Articulos {
         return nuevaPelicula;
 	}
 
-
-
 	@Override
 	public void darDeBaja(Scanner sc, ArrayList <Articulos> catalogo) {
 		System.out.println("Introduce el ID de la película: ");
@@ -63,7 +59,6 @@ public class Pelicula extends Articulos {
 			}
 		}
 		System.out.println("No se encontro esta película con el ID especificado \n");
-	
 	}
 
 }
