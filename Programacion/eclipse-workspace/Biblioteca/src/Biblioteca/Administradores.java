@@ -11,5 +11,7 @@ public Administradores(String nombre, String dni, int edad) {
 public Administradores() {
 	super();
 }
-	
+
+
+
 }
