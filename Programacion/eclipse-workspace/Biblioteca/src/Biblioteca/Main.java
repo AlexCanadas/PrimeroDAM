@@ -135,28 +135,34 @@ public class Main {
 			break;
 			
 		case 5: 
+			boolean dniEncontrado = false;
 			System.out.println("Introduce el DNI del usuario del que ver sus préstamos: ");
 			String dniAMostrar = sc.next();
-			for (Personas usuarioPrestamos : biblioteca) {
-				if (usuarioPrestamos instanceof Usuarios) {
-					if (usuarioPrestamos.getDni().equals(dniAMostrar)) {
-						for (Prestamos verPrestamos : prestamos) {
-							verPrestamos.toString();
-						}
-					}
-				}
+
+			for (Prestamos prestamo : prestamos) {
+			    if (prestamo.getDniUsuario().equals(dniAMostrar)) {
+			        dniEncontrado = true;
+			        System.out.println("Préstamo asociado al DNI: " + dniAMostrar);
+			        System.out.println(prestamo.toString()); // Mostramos detalles del préstamo
+			    }
+			}
+
+			if (!dniEncontrado) {
+			    System.out.println("No hay préstamos asociados al DNI proporcionado: " + dniAMostrar);
 			}
 			break;
+			
 		case 6: 
 			menuUsuario(sc, biblioteca, prestamos, catalogo);
 		break;
+		
 		case 7: System.out.println("Que tengas un buen día");
 			break;
 		default: System.out.println("Opción no válida \n");
         	break;
 		}
 		
-		}while (opcionAdmin!=6);
+		}while (opcionAdmin!=7);
 		sc.close();
 	}
 	
@@ -192,13 +198,19 @@ public class Main {
 					break;
 					
 				case 3:
-					for (Prestamos verPrestamos : prestamos) {
-							// Mostrar préstamos en activo y días para la devolucion
-							if (verPrestamos.getDniUsuario().equals(dniIntroducido)) {
-								System.out.println(verPrestamos.toString());
-							}
-					}
-					break;
+					boolean prestamoEncontrado = false;
+				    for (Prestamos verPrestamos : prestamos) {
+				        // Mostrar préstamos en activo y días para la devolucion
+				        if (verPrestamos.getDniUsuario().equals(dniIntroducido)) {
+				            System.out.println(verPrestamos.toString());
+				            prestamoEncontrado = true;
+				        }
+				    }
+				    
+				    if (!prestamoEncontrado) {
+				        System.out.println("No hay préstamos asociados actualmente al DNI proporcionado \n");
+				    }
+				    break;
 					
 				case 4:
 					System.out.println("Que tengas un buen día");

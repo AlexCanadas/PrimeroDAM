@@ -51,20 +51,23 @@ public class Libro extends Articulos {
 	}
 
 	@Override
-	public void darDeBaja(Scanner sc, ArrayList <Articulos> catalogo) {
+	public void darDeBaja(Scanner sc, ArrayList<Articulos>catalogo) {
+		boolean articuloEncontrado = false;
 		System.out.println("Introduce el ID del libro: ");
         int idLibroABuscar = sc.nextInt();
         for (Articulos articulo : catalogo) {
         	if (articulo instanceof Libro) {
         		Libro libro = (Libro) articulo; // Casting
         		if (libro.idLibro == idLibroABuscar) {
+        			articuloEncontrado = true;
         			catalogo.remove(libro);
         			System.out.println("El libro se ha dado de baja correctamente \n");
         			return;
         		}
         	}
         }
-		System.out.println("No se encontró este libro con el ID especificado \n");
+		if (!articuloEncontrado) {System.out.println("No se encontró este libro con el ID especificado \n");
+		}
 	}
 	
 }
