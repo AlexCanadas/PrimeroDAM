@@ -227,6 +227,7 @@ public class Main {
 		System.out.println("No se encuentra este usuario en la base de datos");
 	}
 	
+	//REVISAR, NO FUNCIONA
 	protected static void menuBaja(Scanner sc) {
 		ArrayList <Articulos> catalogo = new ArrayList<>();
 		System.out.println("Selecciona que tipo de artículo quieres dar de baja: ");
