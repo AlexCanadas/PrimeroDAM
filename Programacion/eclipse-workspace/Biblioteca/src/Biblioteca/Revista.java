@@ -28,7 +28,7 @@ public class Revista extends Articulos {
 		System.out.println("Id: " + this.idRevista);
         System.out.println("Nombre: " + this.nombre);
         System.out.println("Fecha de publicación: " + this.fecha);
-		System.out.println("Editor: " + this.editor);
+		System.out.println("Editor: " + this.editor + "\n");
 		
 	}
 

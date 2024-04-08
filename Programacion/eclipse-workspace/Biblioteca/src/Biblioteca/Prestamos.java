@@ -2,20 +2,20 @@ package Biblioteca;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Prestamos {
 	private static int contadorPrestamos = 0;
 	
-	//boolean isPrestamoActive; // Cambiamos true/false al registrar prestamos
 	protected LocalDate fechaComienzo;
 	protected LocalDate fechaFin;
 	String dniUsuario;
 	int idPrestamo, pkArticulo;
 	
 	public Prestamos(LocalDate fechaComienzo, LocalDate fechaFin, String dniUsuario, int pkArticulo) {
-		this.idPrestamo = ++contadorPrestamos; // Asignar ID único al nuevo préstamo
+		this.idPrestamo = ++contadorPrestamos; // Creamos ID del préstamo automáticamente
 		
 		if (fechaComienzo != null) {
 			this.fechaComienzo = fechaComienzo;
@@ -55,13 +55,6 @@ public class Prestamos {
 		this.pkArticulo = pkArticulo;
 	}
 
-	/*
-	 * public boolean isPrestamoActive() { return isPrestamoActive; }
-	 * 
-	 * public void setPrestamoActive(boolean prestamoActive) { isPrestamoActive =
-	 * prestamoActive; }
-	 */
-
     public LocalDate getFecha() {
         return fechaComienzo;
     }
@@ -96,8 +89,10 @@ public class Prestamos {
         
     	Prestamos nuevoPrestamo = new Prestamos(fechaComienzo, fechaFin, dni, idArticulo);
     	
-    	 // Mostrar el ID del préstamo creado
+    	 // Mostramos el ID creado automáticamente y la duración del préstamo
         System.out.println("Préstamo creado con ID: " + nuevoPrestamo.getIdPrestamo());
+        System.out.println("Este préstamos tendrá " + ChronoUnit.DAYS.between(fechaComienzo, fechaFin) + " días");
+        System.out.println("Tenga en cuenta que de pasarse de la fecha estipulada de entrega tendrá una penalización \n");
         
     	return nuevoPrestamo;
     }
@@ -112,21 +107,28 @@ public class Prestamos {
 		}
     }
     
-    public String toString(Prestamos p) {
-		return String.format("Préstamo con ID: " +p.getIdPrestamo() + 
-								"Dni del usuario: " +p.getDniUsuario() + 
-								"ID del artículo: " +p.getPkArticulo() + 
-								"Fecha de comienzo del préstamo: " + p.getFecha() + 
-								"Fecha fin del préstamo: " +p.getFechaFin() +
-								"Cantidad de días para acabar el préstamo: " +p.calcularDiasRestantes(fechaFin) + 
-							"--------------------------------------------------\n" );
-    	
+    @Override
+    public String toString() {
+    	long diasRestantes = ChronoUnit.DAYS.between(this.fechaComienzo, this.fechaFin);
+        return String.format("Préstamo con ID: %d\n" +
+                            "DNI del usuario: %s\n" +
+                            "ID del artículo: %d\n" +
+                            "Fecha de comienzo del préstamo: %s\n" +
+                            "Fecha fin del préstamo: %s\n" +
+                            "Cantidad de días para acabar el préstamo: %d\n" +
+                            "--------------------------------------------------\n",
+                            this.getIdPrestamo(),
+                            this.getDniUsuario(),
+                            this.getPkArticulo(),
+                            this.getFecha(),
+                            this.getFechaFin(),
+                            diasRestantes);
     }
     
  // Método para calcular los días restantes hasta una fecha específica
     public static long calcularDiasRestantes(LocalDate fechaDevolucion) {
         LocalDate fechaActual = LocalDate.now();
-        return fechaActual.until(fechaDevolucion).getDays();
+        return ChronoUnit.DAYS.between(fechaActual, fechaDevolucion);
     }
     
 }

@@ -28,7 +28,7 @@ public class Libro extends Articulos {
 		System.out.println("ISBN: " + this.isbn);
         System.out.println("Nombre: " + this.nombre);
         System.out.println("Fecha de publicación: " + this.fecha);
-		System.out.println("Autor: " + this.autor);
+		System.out.println("Autor: " + this.autor + "\n");
 		
 	}
 
@@ -52,7 +52,7 @@ public class Libro extends Articulos {
 
 	@Override
 	public void darDeBaja(Scanner sc, ArrayList <Articulos> catalogo) {
-		System.out.println("Introduce el ISBN: ");
+		System.out.println("Introduce el ID del libro: ");
         int idLibroABuscar = sc.nextInt();
         for (Articulos articulo : catalogo) {
         	if (articulo instanceof Libro) {
@@ -64,7 +64,7 @@ public class Libro extends Articulos {
         		}
         	}
         }
-		System.out.println("No se encontró este libro con el ISBN especificado \n");
+		System.out.println("No se encontró este libro con el ID especificado \n");
 	}
 	
 }

@@ -28,7 +28,7 @@ public class Pelicula extends Articulos {
 		System.out.println("ID: " + this.idPelicula);
         System.out.println("Nombre: " + this.nombre);
         System.out.println("Fecha de publicación: " + this.fecha);	
-        System.out.println("Director: " + this.director);
+        System.out.println("Director: " + this.director + "\n");
 	}
 
 	@Override

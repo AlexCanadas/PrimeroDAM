@@ -25,7 +25,7 @@ public class Main {
 				Administradores administrador = (Administradores) i;
 				if (administrador.getDni().equals(dniIntroducido)) {
 					System.out.println("Bienvenido administrador " + administrador.getNombre() + "\n");
-					menuAdmin(sc, biblioteca, catalogo);
+					menuAdmin(sc, biblioteca, prestamos, catalogo);
 					encontrado = true;
 					break;
 				}
@@ -45,7 +45,8 @@ public class Main {
 		}
 	}
 
-	public static void menuAdmin(Scanner sc, ArrayList <Personas> biblioteca, ArrayList <Articulos> catalogo) {
+	public static void menuAdmin(Scanner sc, ArrayList <Personas> biblioteca, ArrayList <Prestamos> prestamos,
+			ArrayList <Articulos> catalogo) {
 		int opcionAdmin;
 
 		do {
@@ -54,8 +55,8 @@ public class Main {
 		System.out.println("2. Penalizar a un usuario por no haber devuelto en fecha");
 		System.out.println("3. Dar de alta un artículo"); //OK
 		System.out.println("4. Dar de baja artículos"); // OK
-		System.out.println("5. Ver los préstamos de un cliente");
-		System.out.println("6. Acceder al menú de usuarios");
+		System.out.println("5. Ver los préstamos de un cliente"); // OK
+		System.out.println("6. Acceder al menú de usuarios"); // OK
 		System.out.println("7. Salir");
 		opcionAdmin=sc.nextInt();
 		
@@ -120,9 +121,19 @@ public class Main {
 			menuBaja(sc);
 			break;
 		case 5: 
+			System.out.println("Introduce el DNI del usuario del que ver sus préstamos: ");
+			String dniAMostrar = sc.next();
+			for (Personas usuarioPrestamos : biblioteca) {
+				if (usuarioPrestamos instanceof Usuarios) {
+					if (usuarioPrestamos.getDni().equals(dniAMostrar)) {
+						for (Prestamos verPrestamos : prestamos) {
+							verPrestamos.toString();
+						}
+					}
+				}
+			}
 			break;
 		case 6: 
-			//ArrayList <Prestamos> prestamos = new ArrayList<>();
 			menuUsuario(sc, biblioteca, prestamos, catalogo);
 		break;
 		case 7: System.out.println("Que tengas un buen día");
@@ -140,51 +151,51 @@ public class Main {
 		int opcionUsuario;
 		System.out.println("Por favor, introduce tu DNI: ");
 		String dniIntroducido = sc.next();
-		for (Personas usuarios : biblioteca) {
-			if (usuarios instanceof Usuarios) {
-				Usuarios usuario = new Usuarios();
-				if (usuario.dni.equals(dniIntroducido)) {
-					Prestamos prestamo = new Prestamos();
-					prestamo.hacerPrestamo(sc, dniIntroducido);
+		
+		for (Personas usuario : biblioteca) {
+			if (usuario instanceof Usuarios && usuario.dni.equals(dniIntroducido)) {
+				 
+			do {
+			System.out.println("----- Menú Usuarios-----");
+			System.out.println("1. Hacer un préstamo o varios a la vez."); // OK, no varios a la vez
+			System.out.println("2. Hacer una devolución o varias a la vez."); // OK, no varios a la vez
+			System.out.println("3. Ver sus préstamos en activo para ver los días que le quedan para la devolución."); // OK
+			System.out.println("4. Salir");
+			opcionUsuario=sc.nextInt();
+			
+				switch(opcionUsuario) {
+				case 1: 
+					Prestamos nuevoPrestamo_ = new Prestamos(); // Crear instancia de prestamos
+					nuevoPrestamo_ = nuevoPrestamo_.hacerPrestamo(sc, dniIntroducido);
+					prestamos.add(nuevoPrestamo_);
+					System.out.println("El DNI del usuario adquiriendo el préstamo ID " + nuevoPrestamo_.getIdPrestamo() +
+							" es " + nuevoPrestamo_.getDniUsuario());
+					break;
+				case 2:
+					Prestamos prestamoBaja = new Prestamos();
+					prestamoBaja.hacerDevolucion(sc, prestamos);
+					break;
+				case 3:
+					for (Prestamos verPrestamos : prestamos) {
+							// Mostrar préstamos en activo y dias para la devolucion
+							if (verPrestamos.getDniUsuario().equals(dniIntroducido)) {
+								System.out.println(verPrestamos.toString());
+							}
+					}
+					break;
+				case 4:
+					System.out.println("Que tengas un buen día");
+					break;
+				default: System.out.println("Opción no válida \n");
+		        	break;
 				}
+			
+			}while (opcionUsuario!=4);
+			sc.close();
+			return;
 			}	
 		}
-		
-		do {
-		System.out.println("----- Menú Usuarios-----");
-		System.out.println("1. Hacer un préstamo o varios a la vez.");
-		System.out.println("2. Hacer una devolución o varias a la vez.");
-		System.out.println("3. Ver sus préstamos en activo para ver los días que le quedan para la devolución.");
-		System.out.println("4. Salir");
-		opcionUsuario=sc.nextInt();
-		
-		switch(opcionUsuario) {
-		case 1: 
-			Prestamos nuevoPrestamo_ = new Prestamos();
-			nuevoPrestamo_.hacerPrestamo(sc, dniIntroducido);
-			prestamos.add(nuevoPrestamo_);
-			break;
-		case 2:
-			Prestamos prestamoBaja = new Prestamos();
-			prestamoBaja.hacerDevolucion(sc, prestamos);
-			break;
-		case 3:
-			for (Prestamos verPrestamos : prestamos) {
-					// Mostrar prestamos en activo y dias para la devolucion
-					if (verPrestamos.getDniUsuario().equals(dniIntroducido)) {
-						verPrestamos.toString(verPrestamos);
-					}
-			}
-			break;
-		case 4:
-			System.out.println("Que tengas un buen día");
-			break;
-		default: System.out.println("Opción no válida \n");
-        	break;
-		}
-		
-		}while (opcionUsuario!=6);
-		sc.close();
+		System.out.println("No se encuentra este usuario en la base de datos");
 	}
 	
 	protected static void menuBaja(Scanner sc) {
