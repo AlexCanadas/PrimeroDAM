@@ -21,6 +21,7 @@ let edad = document.getElementById("edad");
 let botonDatos = document.getElementById("botonDatos");
 let botonReset = document.getElementById("botonReset");
 let outputDatos = document.getElementById("outputDatos");
+let dropdown = document.getElementById("dropdown");
 
 let botonDias = document.getElementById("botonDias");
 
@@ -67,20 +68,21 @@ outputSegundo.innerHTML="";
 }
 
 function tercerEjercicio() {
+    document.body.classList.remove('body-azul', 'body-gris', 'body-verde', 'body-rojo', 'body-amarillo');
     botonAzul.addEventListener("click", () => {
-
+        document.body.classList.add("body-azul");
     });
     botonGris.addEventListener("click", () => {
-
+        document.body.classList.add("body-gris");
     });
     botonVerde.addEventListener("click", () => {
-
+        document.body.classList.add("body-verde");
     });
     botonRojo.addEventListener("click", () => {
-
+        document.body.classList.add("body-rojo");
     });
     botonAmarillo.addEventListener("click", () => {
-
+        document.body.classList.add("body-amarillo");
     });
 }
 
@@ -91,7 +93,7 @@ function cuartoEjercicio() {
             apellido : apellidos.value,
             localidad : localidad.value,
             email : email.value,
-            //edad : edad.value NO FUNCIONA DROPDOWN
+           // edad : data-edad.value ARREGLAR DROPDOWN
         };
     let toString = JSON.stringify(usuario);
     alert(toString);
