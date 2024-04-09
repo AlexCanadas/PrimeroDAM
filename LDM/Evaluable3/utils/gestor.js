@@ -35,7 +35,7 @@ fetch('https://dummyjson.com/products')
         resultados.innerHTML = '<p>Ocurrió un error al obtener los productos.</p>';
     });
 
-function dropdownCategory(data) {
+/* function dropdownCategory(data) {
     data.products.category.forEach((item) => {
         let opcion = document.createElement("li");
         opcion.innerHTML += `<li><a class="dropdown-item" href="#">${item.category.value}</a></li>category.value;`
@@ -45,4 +45,4 @@ function dropdownCategory(data) {
 function dropdownMarca() {
 dropdownMarca
 }
-
+ */
