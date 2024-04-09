@@ -1,4 +1,6 @@
 let resultados = document.querySelector("#resultados"); 
+let dropdownCategory = document.querySelector("#dropdownCategory"); 
+let dropdownMarca = document.querySelector("#dropdownMarca"); 
 
 fetch('https://dummyjson.com/products')
     .then((result) => { // Realizar la petición al servidor y obtener el resultado
@@ -33,5 +35,14 @@ fetch('https://dummyjson.com/products')
         resultados.innerHTML = '<p>Ocurrió un error al obtener los productos.</p>';
     });
 
+function dropdownCategory(data) {
+    data.products.category.forEach((item) => {
+        let opcion = document.createElement("li");
+        opcion.innerHTML += `<li><a class="dropdown-item" href="#">${item.category.value}</a></li>category.value;`
+    });
+}
 
+function dropdownMarca() {
+dropdownMarca
+}
 
