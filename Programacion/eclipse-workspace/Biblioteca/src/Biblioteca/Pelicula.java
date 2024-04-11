@@ -7,13 +7,11 @@ import java.util.Scanner;
 
 public class Pelicula extends Articulos {
 
-	String director;
-	protected int idPelicula;
+	protected String director;
 	
 	public Pelicula(int idPelicula, String nombre, LocalDate fechaPublicacion, String director) {
 		super(idPelicula, nombre, fechaPublicacion);
-		
-		this.idPelicula = idPelicula;
+
 		this.director = director;
 	}
 	
@@ -23,7 +21,7 @@ public class Pelicula extends Articulos {
 	@Override
 	protected void mostrarDetalles() {
 		System.out.println("Tipo: Película");
-		System.out.println("ID: " + this.idPelicula);
+		System.out.println("ID: " + this.idArticulo);
         System.out.println("Nombre: " + this.nombre);
         System.out.println("Fecha de publicación: " + this.fecha);	
         System.out.println("Director: " + this.director + "\n");
@@ -46,12 +44,14 @@ public class Pelicula extends Articulos {
 
 	@Override
 	public void darDeBaja(Scanner sc, ArrayList <Articulos> catalogo) {
+		boolean articuloEncontrado = false;
 		System.out.println("Introduce el ID de la película: ");
 		int idPeliculaABuscar = sc.nextInt();
 		for (Articulos articulo : catalogo) {
 			if (articulo instanceof Pelicula) {
 				Pelicula pelicula = (Pelicula) articulo; // Casting
-				if (pelicula.idPelicula == idPeliculaABuscar) {
+				if (pelicula.idArticulo == idPeliculaABuscar) {
+					articuloEncontrado = true;
 					catalogo.remove(pelicula);
 					System.out.println("Pelicula eliminada correctamente \n");
 					return;

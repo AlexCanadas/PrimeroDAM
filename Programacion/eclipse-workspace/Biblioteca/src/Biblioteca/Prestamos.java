@@ -160,22 +160,20 @@ public class Prestamos {
     
     @Override
     public String toString() {
-    	long diasRestantes = ChronoUnit.DAYS.between(this.fechaComienzo, this.fechaFin);
+    	long diasRestantes = ChronoUnit.DAYS.between(fechaComienzo, fechaFin);
         return String.format("Préstamo con ID: %d\n" +
                             "DNI del usuario: %s\n" +
                             "ID del artículo: %d\n" +
                             "Fecha de comienzo del préstamo: %s\n" +
                             "Fecha fin del préstamo: %s\n" +
                             "El préstamo está activo: %b\n" +
-                            "Cantidad de días para acabar el préstamo: %d\n" +
                             "--------------------------------------------------\n",
                             this.getIdPrestamo(),
                             this.getDniUsuario(),
                             this.getPkArticulo(),
                             this.getFecha(),
                             this.getFechaFin(),
-                            this.isActive(), 
-                            diasRestantes);
+                            this.isActive());
     }
     
     // Método para calcular los días restantes hasta una fecha específica

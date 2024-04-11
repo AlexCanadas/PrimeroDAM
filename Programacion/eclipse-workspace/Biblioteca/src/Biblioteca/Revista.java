@@ -7,13 +7,11 @@ import java.util.Scanner;
 
 public class Revista extends Articulos {
 
-	String editor;
-	protected int idRevista;
+	protected String editor;
 	
 	public Revista(int idRevista, String nombre, LocalDate fechaPublicacion, String editor) {
 		super(idRevista, nombre, fechaPublicacion);
-		
-		this.idRevista = idRevista;
+
 		this.editor = editor;
 	}
 	
@@ -25,7 +23,7 @@ public class Revista extends Articulos {
 	@Override
 	protected void mostrarDetalles() {
 		System.out.println("Tipo: Revista");
-		System.out.println("Id: " + this.idRevista);
+		System.out.println("Id: " + this.idArticulo);
         System.out.println("Nombre: " + this.nombre);
         System.out.println("Fecha de publicación: " + this.fecha);
 		System.out.println("Editor: " + this.editor + "\n");
@@ -49,12 +47,14 @@ public class Revista extends Articulos {
 
 	@Override
 	public void darDeBaja(Scanner sc, ArrayList <Articulos> catalogo) {
+		boolean articuloEncontrado = false;
 		System.out.println("Introduce el ID de la revista: ");
 		int idRevistaABuscar = sc.nextInt();
 		for (Articulos articulo : catalogo) {
 			if (articulo instanceof Revista) {
 				Revista revista = (Revista) articulo; // Casting
-				if (revista.idRevista == idRevistaABuscar) {
+				if (revista.idArticulo == idRevistaABuscar) {
+					articuloEncontrado = true;
 					catalogo.remove(revista);
 					System.out.println("El libro se ha dado de baja correctamente \n");
 					return;

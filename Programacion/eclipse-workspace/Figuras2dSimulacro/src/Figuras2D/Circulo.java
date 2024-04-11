@@ -36,4 +36,12 @@ public String toString() {
     return "Círculo [nombre=" + nombre + ", radio=" + radio + "]";
 }
 
+public boolean equals(Circulo c) {
+	boolean iguales = false;
+	if (c.getNombre().equals(this.nombre) && c.getRadio() == this.radio){
+		iguales = true;
+	}
+	return iguales;
+}
+
 }

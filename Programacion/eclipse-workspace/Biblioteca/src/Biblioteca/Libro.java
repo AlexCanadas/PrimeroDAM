@@ -7,9 +7,8 @@ import java.util.Scanner;
 
 public class Libro extends Articulos {
 
-	String autor;
-	long isbn;
-	protected int idLibro;
+	protected String autor;
+	protected long isbn;
 	
 	public Libro(int idLibro, long isbn, String nombre, LocalDate fechaPublicacion, String autor) {
         super(idLibro, nombre, fechaPublicacion);
@@ -24,7 +23,7 @@ public class Libro extends Articulos {
 	@Override
 	protected void mostrarDetalles() {
 		System.out.println("Tipo: Libro");
-		System.out.println("ID: " + this.idLibro);
+		System.out.println("ID: " + this.idArticulo);
 		System.out.println("ISBN: " + this.isbn);
         System.out.println("Nombre: " + this.nombre);
         System.out.println("Fecha de publicación: " + this.fecha);
@@ -47,6 +46,7 @@ public class Libro extends Articulos {
         System.out.println("Introduce el nombre del autor: ");
         String autor = sc.next();
         Libro nuevoLibro = new Libro(idLibro, isbn, nombre, fechaPublicacion, autor);
+        System.out.println("ID libro: " + nuevoLibro.getIdArticulo());
         return nuevoLibro;
 	}
 
@@ -58,7 +58,7 @@ public class Libro extends Articulos {
         for (Articulos articulo : catalogo) {
         	if (articulo instanceof Libro) {
         		Libro libro = (Libro) articulo; // Casting
-        		if (libro.idLibro == idLibroABuscar) {
+        		if (libro.idArticulo == idLibroABuscar) {
         			articuloEncontrado = true;
         			catalogo.remove(libro);
         			System.out.println("El libro se ha dado de baja correctamente \n");

@@ -8,7 +8,8 @@ public class Main {
 	public static void main(String[] args) {
 		int opcion;
 		Scanner sc = new Scanner(System.in);
-		ArrayList<DatosFormulario> f = new ArrayList();
+		ArrayList<DatosFormulario> f = new ArrayList<>();
+		boolean datosCompletados = false;
 		
 		do {
 			mostrarMenu();
@@ -30,6 +31,7 @@ public class Main {
                 if (!f.isEmpty() && verificarDatosCompletos(f.get(f.size() - 1))) {
                     System.out.println("¡Que tengas un buen día! \n");
                     System.out.println("Datos del formulario completado:");
+                    datosCompletados = true;
                 } else {
                     System.out.println("Faltan datos por rellenar.\n");
                 }
@@ -38,7 +40,7 @@ public class Main {
                 System.out.println("Opción no válida \n");
                 break;
 			}
-		}while(opcion!=5);
+		}while(opcion!=5 || datosCompletados);
 	}
 	
 	public static void mostrarMenu() {
