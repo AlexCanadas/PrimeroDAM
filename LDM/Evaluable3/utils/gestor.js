@@ -2,6 +2,21 @@ let resultados = document.getElementById("resultados");
 let dropdownCategory = document.querySelector("#dropdownCategory"); 
 let dropdownMarca = document.querySelector("#dropdownMarca");
 let removeFilterbutton = document.getElementById("remove-filters");
+let range = document.querySelector('#range');
+let priceSelectedInput = document.querySelector('#priceSelected');
+let carrito = document.querySelector('#carrito');
+let precioFinal = document.querySelector('#finalPrice');
+
+var cart = {
+    finalPrice: 0,
+    items: []
+};
+
+range.addEventListener('input', function() {
+    console.log(this.value);
+    priceSelectedInput.innerHTML = this.value.toString();
+    searchFilter("price", this.value);
+  }, false);
 
 removeFilterbutton.addEventListener('click', () => {
     removeFilters();
@@ -9,7 +24,11 @@ removeFilterbutton.addEventListener('click', () => {
 
 let brands     = [];
 let categories = [];
-let products   = [];
+let products   = []; 
+// Variables para los filtros seleccionados. Se rellena cada vez que haces click en un filtro
+let selectedCategory = "";
+let selectedBrand = "";
+let priceSelected = 0;
 
 let selectedFilters = [];
 
@@ -22,7 +41,7 @@ fetch('https://dummyjson.com/products')
         if (data.products.length > 0) {
 
             products = data.products;
-
+            
             addBrands(); // Rellenamos dropdown de Marcas
             addCategories(); // Rellenamos dropdown de Categorías
 
@@ -48,14 +67,11 @@ function addBrands() {
     brands.forEach((item) => {
         // Estructura de cada item del dropdown
         dropdownMarca.innerHTML += `
-            <li><a class="dropdown-item" href="#" onclick="searchByBrand('${item}')">${item}</a></li>
+            <li><a class="dropdown-item" href="#" onclick="searchFilter('brand','${item}')">${item}</a></li>
         `;
     });
 
 }
-
-
-let selectedCategory = ''; // Variable para almacenar el item seleccionado del dropdown
 
 function addCategories() {
     categories = products.map(product => product.category); // Extraer todas las Categorías de los products
@@ -63,42 +79,58 @@ function addCategories() {
     categories.forEach((item) => {
         // Estructura de cada item del dropdown
         dropdownCategory.innerHTML += `
-            <li><a class="dropdown-item" href="#" onclick="searchByCategory('${item}')">${item}</a></li>
+            <li><a class="dropdown-item" href="#" onclick="searchFilter('category','${item}')">${item}</a></li>
         `;
     });
 }
 
-function searchByCategory(category) {
-
-    const arrayProductsfiltered = products.filter(product => product.category === category); // Filtrar products por categoría seleccionada
-    console.log(arrayProductsfiltered);
-
-    resultados.innerHTML = '';
-
-    arrayProductsfiltered.forEach((item) => { // Mostrar los productos filtrados en la resultados
-        fillProduct(item, resultados);
-    });
-
-}
-
-function searchByBrand(brand) {
-    
-    const arrayProductsfiltered = products.filter(product => product.brand === brand); // Filtrar products por Marca seleccionada
-
-    if(arrayProductsfiltered.length === 0 || !arrayProductsfiltered) {  // Verificamos si se encontraron productos filtrados
-        return;
+function searchFilter(filterType, value) { 
+    // Aquí se asigna el filtro a cada variable de su tipo
+    if(filterType ==='brand') {
+       selectedBrand = value;
+    }
+    if(filterType ==='category') {
+        selectedCategory = value;
+     }
+    if(filterType ==='price') {
+        priceSelected = value;
     }
 
-    resultados.innerHTML = '';
-
-    arrayProductsfiltered.forEach((item) => {  // Mostrar los productos filtrados en la resultados
-        fillProduct(item, resultados);
+    let filteredProducts = products.filter(item => { // Filtramos por categorias y marcas con condicionales
+        
+        if (selectedCategory && selectedBrand) {
+            console.log(selectedCategory, selectedBrand);
+            return item.category === selectedCategory && item.brand === selectedBrand;
+        } else if (selectedCategory) {
+            console.log(selectedCategory);
+        return item.category === selectedCategory;
+        } else if (selectedBrand) {
+            console.log(selectedBrand);
+            return item.brand === selectedBrand;
+        } 
     });
 
-}
+    // Si no ha tocado el filtro de marca ni de categoría filteresProducts.length = 0
+    if (priceSelected && filteredProducts.length === 0) {
+        filteredProducts = products.filter(item => { 
+        return parseFloat(priceSelected) <= parseFloat(item.price); // Solo devuelve si el precio del item es menor o igual al seleccionado
+        });
+    }
+    else {
+        filteredProducts = filteredProducts.filter(item => { 
+            // Si se ha seleccionado marca y/o categoría, añadimos el precio
+            return parseFloat(priceSelected) <= parseFloat(item.price); // Solo devuelve si el precio del item es menor o igual al seleccionado
+            });
+    }
+    resultados.innerHTML = '';
 
-function searchFilter(filterType, value) {
-
+    if (filteredProducts.length > 0) { // Comprobamos si hay filtros
+        filteredProducts.forEach(item => { // Rellenamos resultados
+            fillProduct(item, resultados);
+        });
+    }else {
+        fillEmpty(); 
+    }
 }
 
 
@@ -119,12 +151,21 @@ function fillProduct(item, parentDiv) {
     `;
 }
 
-/**
- * Crear botón que llame a esta función
- */
-function removeFilters() {
+function fillEmpty() {
+    resultados.innerHTML = `
+        <div class="col">
+            <p>No se han encontrado resultados</p>
+        </div>
+    `;
+}
 
+function removeFilters() {
+    selectedCategory = "";
+    selectedBrand = "";
     resultados.innerHTML = '';
+    priceSelected = 0;
+    priceSelectedInput.innerHTML = "0";
+    range.value = 0;
 
     products.forEach((item) => {
         fillProduct(item, resultados);
@@ -137,23 +178,36 @@ function addProductToCart(productId) {
 
     console.log('productId', productId);
 
-    const item = products.filter(product => product.id.toString() === productId.toString())[0];
+    let item = null;
+    products.forEach(product => {
+        if(product.id.toString() === productId.toString()) {
+            item = product;
+        }
+    });
 
     // Convierte la cadena JSON nuevamente en un objeto JavaScript
-
     cart.finalPrice += item.price;
     cart.items.push(item);
 
     console.log('cart', cart);
+    
+    // Repintar listado de objetos en el cart
+    carrito.innerHTML = "";
+
+    cart.items.forEach(item => {
+        carrito.innerHTML += `
+            <div class="row mb-3 align-items-center">
+                <div class="col-md-3">
+                    <img src="${item.thumbnail}" style="width: 100%; height: auto;" class="rounded" alt="${item.title}">
+                </div>
+                <div class="col-md-9">
+                    <h5>${item.title}</h5>
+                    <p class = id "qtyCategory">Cantidad: ${item.quantity} </p>
+                    <p>Precio: ${item.price}€</p>
+                </div>
+            </div>
+        `;
+    });
 
 }
 
-/**
- *  
- * document.cookie 
- * 
- */
-var cart = {
-    finalPrice: 0,
-    items: []
-};
