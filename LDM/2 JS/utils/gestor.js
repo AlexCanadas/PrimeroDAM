@@ -68,20 +68,24 @@ outputSegundo.innerHTML="";
 }
 
 function tercerEjercicio() {
-    document.body.classList.remove('body-azul', 'body-gris', 'body-verde', 'body-rojo', 'body-amarillo');
     botonAzul.addEventListener("click", () => {
+        document.body.classList.remove('body-azul', 'body-gris', 'body-verde', 'body-rojo', 'body-amarillo');
         document.body.classList.add("body-azul");
     });
     botonGris.addEventListener("click", () => {
+        document.body.classList.remove('body-azul', 'body-gris', 'body-verde', 'body-rojo', 'body-amarillo');
         document.body.classList.add("body-gris");
     });
     botonVerde.addEventListener("click", () => {
+        document.body.classList.remove('body-azul', 'body-gris', 'body-verde', 'body-rojo', 'body-amarillo');
         document.body.classList.add("body-verde");
     });
     botonRojo.addEventListener("click", () => {
+        document.body.classList.remove('body-azul', 'body-gris', 'body-verde', 'body-rojo', 'body-amarillo');
         document.body.classList.add("body-rojo");
     });
     botonAmarillo.addEventListener("click", () => {
+        document.body.classList.remove('body-azul', 'body-gris', 'body-verde', 'body-rojo', 'body-amarillo');
         document.body.classList.add("body-amarillo");
     });
 }

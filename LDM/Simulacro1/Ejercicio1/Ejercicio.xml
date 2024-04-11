@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Ejercicio 1 -->
+
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+    <mundiales-de-futbol>
+    <mundial>
+        <pais="España" />
+        <1982 />
+    </mundial>
+</mundiales-de-futbol> -->
+
+<mundiales-de-futbol>
+    <mundial>
+        <pais>España</pais>
+        <año>1982</año>
+    </mundial>
+</mundiales-de-futbol>
