@@ -5,7 +5,7 @@ let removeFilterbutton = document.getElementById("remove-filters");
 let range = document.querySelector('#range');
 let priceSelectedInput = document.querySelector('#priceSelected');
 let carrito = document.querySelector('#carrito');
-let precioFinal = document.querySelector('#finalPrice');
+let precioFinal = document.querySelector('#precioFinal');
 
 var cart = {
     finalPrice: 0,
@@ -58,7 +58,6 @@ fetch('https://dummyjson.com/products')
         // En caso de que haya algun error
         resultados.innerHTML = '<p>Ocurrió un error al obtener los productos.</p>';
     });
-
 
 function addBrands() {
     brands = products.map(product => product.brand); // Extraer todas las Marcas de los products
@@ -133,8 +132,7 @@ function searchFilter(filterType, value) {
     }
 }
 
-
-function fillProduct(item, parentDiv) {
+function fillProduct(item, parentDiv) { // Función para rellenar resultados
     parentDiv.innerHTML += `
         <div class="col">
             <div class="card" style="width: 18rem;">
@@ -151,7 +149,7 @@ function fillProduct(item, parentDiv) {
     `;
 }
 
-function fillEmpty() {
+function fillEmpty() { // En caso de que no se encuentren artículos con X filtros
     resultados.innerHTML = `
         <div class="col">
             <p>No se han encontrado resultados</p>
@@ -159,7 +157,7 @@ function fillEmpty() {
     `;
 }
 
-function removeFilters() {
+function removeFilters() { // Quitamos filtros
     selectedCategory = "";
     selectedBrand = "";
     resultados.innerHTML = '';
@@ -170,30 +168,38 @@ function removeFilters() {
     products.forEach((item) => {
         fillProduct(item, resultados);
     });
-    
-
 }
 
 function addProductToCart(productId) {
+    // Comparamos el id que trae el objeto con el array de product
+    let item = products.find(product => product.id.toString() === productId.toString());
 
-    console.log('productId', productId);
+    if (item) {
+        // Sumamos el precio del item al finalPrice del carrito (objeto cart)
+        cart.finalPrice += item.price;
 
-    let item = null;
-    products.forEach(product => {
-        if(product.id.toString() === productId.toString()) {
-            item = product;
+        // Vemos si ya existe en el carrito ese id
+        let existingItem = cart.items.find(cartItem => cartItem.id === item.id);
+
+        if (existingItem) {
+            // Si ya está en el carrito, sumamos la cantidad
+            existingItem.quantity++;
+        } else {
+            // Inicializamos quantity en 1 en caso de que no exista ya en el carrito
+            item.quantity = 1;
+            cart.items.push(item);
         }
-    });
 
-    // Convierte la cadena JSON nuevamente en un objeto JavaScript
-    cart.finalPrice += item.price;
-    cart.items.push(item);
+        // Actualiza el precio final en el HTML
+        if (precioFinal) {
+            precioFinal.textContent = cart.finalPrice;
+        }
+    }
 
-    console.log('cart', cart);
-    
-    // Repintar listado de objetos en el cart
-    carrito.innerHTML = "";
+    // Vaciamos primero
+    carrito.innerHTML = '';
 
+    // Rellenamos el carrito 
     cart.items.forEach(item => {
         carrito.innerHTML += `
             <div class="row mb-3 align-items-center">
@@ -202,12 +208,11 @@ function addProductToCart(productId) {
                 </div>
                 <div class="col-md-9">
                     <h5>${item.title}</h5>
-                    <p class = id "qtyCategory">Cantidad: ${item.quantity} </p>
+                    <p>Cantidad: <span>${item.quantity}</span></p>
                     <p>Precio: ${item.price}€</p>
                 </div>
             </div>
         `;
     });
-
 }
 
