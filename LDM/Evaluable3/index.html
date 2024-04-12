@@ -28,34 +28,45 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="./css/style.css" />
+
+    <div class="container text-center mt-5">
+      <h2 class="text-info">ALEXMARKT</h2>
+      <hr />
+    </div>
   </head>
   <body>
     <section>
-      <div class="container text-center mt-5" id="filter">
-        <p class="display-6">Filtro</p>
-        <div class="row align-items-center">
-          <div class="col">
+      <div class="container mt-5">
+        <div>
+          <span class="display-7" id="filter"
+            ><b>Ajusta los filtros para encontrar el producto deseado</b></span
+          >
+        </div>
+        <div class="row">
+          <div class="col-md-auto">
             <label for="range" class="form-label">Precio</label>
             <input type="range" min="0" max="2000" id="range" value="0" />
             <p><span id="priceSelected"></span>€</p>
           </div>
-        </div>
-        <div class="col">
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Categoría
-            </button>
-            <ul
-              class="dropdown-menu dropdown-menu-dark"
-              id="dropdownCategory"
-            ></ul>
+
+          <div class="col-md-auto">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categoría
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                id="dropdownCategory"
+              ></ul>
+            </div>
           </div>
-          <div class="col">
+
+          <div class="col-md-auto">
             <div class="dropdown">
               <button
                 class="btn btn-secondary dropdown-toggle"
@@ -79,8 +90,10 @@
         <div class="container mt-5">
           <div class="row">
             <div class="col-11">
-              Parte resultados
-              <button id="remove-filters">Delete filters:</button>
+              <h4>Productos disponibles:</h4>
+              <button id="remove-filters">Borrar filtros:</button>
+              <span id="filtrosSeleccionados"></span>
+              <span id="priceHtml"></span>
               <div>
                 <span class="badge text-bg-secondary" id="filter-brand"></span>
                 <span
@@ -91,8 +104,9 @@
               </div>
               <div id="resultados" class="row"></div>
             </div>
-            <div class="col-1">
-              <p class="display-6">Carrito</p>
+
+            <div class="col-1 border-start border-black">
+              <span><h4>Carrito</h4></span>
               <div>
                 <i
                   class="bi bi-cart4"

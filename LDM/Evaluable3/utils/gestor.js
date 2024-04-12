@@ -6,6 +6,8 @@ let range = document.querySelector('#range');
 let priceSelectedInput = document.querySelector('#priceSelected');
 let carrito = document.querySelector('#carrito');
 let precioFinal = document.querySelector('#precioFinal');
+let filtersSelected = document.querySelector('#filtrosSeleccionados');
+let priceHtml = document.querySelector('#priceHtml');
 
 var cart = {
     finalPrice: 0,
@@ -98,13 +100,13 @@ function searchFilter(filterType, value) {
     let filteredProducts = products.filter(item => { // Filtramos por categorias y marcas con condicionales
         
         if (selectedCategory && selectedBrand) {
-            console.log(selectedCategory, selectedBrand);
+            filtersSelected.textContent= selectedCategory + ' ' + selectedBrand; // Rellenamos filtersSelected
             return item.category === selectedCategory && item.brand === selectedBrand;
         } else if (selectedCategory) {
-            console.log(selectedCategory);
+            filtersSelected.textContent= selectedCategory; // Rellenamos filtersSelected
         return item.category === selectedCategory;
         } else if (selectedBrand) {
-            console.log(selectedBrand);
+            filtersSelected.textContent= selectedBrand; // Rellenamos filtersSelected
             return item.brand === selectedBrand;
         } 
     });
@@ -112,12 +114,16 @@ function searchFilter(filterType, value) {
     // Si no ha tocado el filtro de marca ni de categoría filteresProducts.length = 0
     if (priceSelected && filteredProducts.length === 0) {
         filteredProducts = products.filter(item => { 
+        priceHtml.textContent = priceSelected + '€'; // Pintamos el precio en priceHtml (filtros seleccionados)
         return parseFloat(priceSelected) <= parseFloat(item.price); // Solo devuelve si el precio del item es menor o igual al seleccionado
         });
     }
     else {
         filteredProducts = filteredProducts.filter(item => { 
             // Si se ha seleccionado marca y/o categoría, añadimos el precio
+            if (priceSelected) {
+            priceHtml.textContent = priceSelected + '€'; // Pintamos el precio en priceHtml (filtros seleccionados) 
+            }
             return parseFloat(priceSelected) <= parseFloat(item.price); // Solo devuelve si el precio del item es menor o igual al seleccionado
             });
     }
@@ -164,6 +170,8 @@ function removeFilters() { // Quitamos filtros
     priceSelected = 0;
     priceSelectedInput.innerHTML = "0";
     range.value = 0;
+    filtersSelected.innerHTML='';
+    priceHtml.innerHTML='';
 
     products.forEach((item) => {
         fillProduct(item, resultados);
