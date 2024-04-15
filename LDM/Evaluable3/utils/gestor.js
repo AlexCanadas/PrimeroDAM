@@ -18,7 +18,7 @@ range.addEventListener('input', function() {
     console.log(this.value);
     priceSelectedInput.innerHTML = this.value.toString();
     searchFilter("price", this.value);
-  }, false);
+  });
 
 removeFilterbutton.addEventListener('click', () => {
     removeFilters();
@@ -63,8 +63,9 @@ fetch('https://dummyjson.com/products')
 
 function addBrands() {
     brands = products.map(product => product.brand); // Extraer todas las Marcas de los products
-    brands = brands.reduce(function(a,b){ if(a.indexOf(b)<0)a.push(b);return a;}, []); // Eliminar items duplicados
-
+    brands = brands.reduce(function(a,b){ // Eliminar items duplicados
+        if(a.indexOf(b)<0)a.push(b);
+        return a;}, []); 
     brands.forEach((item) => {
         // Estructura de cada item del dropdown
         dropdownMarca.innerHTML += `
@@ -76,7 +77,9 @@ function addBrands() {
 
 function addCategories() {
     categories = products.map(product => product.category); // Extraer todas las Categorías de los products
-    categories = categories.reduce(function(a,b){ if(a.indexOf(b)<0)a.push(b);return a;}, []); // Eliminar items duplicados
+    categories = categories.reduce(function(a,b){  // Eliminar items duplicados
+        if(a.indexOf(b)<0)a.push(b);
+        return a;}, []); 
     categories.forEach((item) => {
         // Estructura de cada item del dropdown
         dropdownCategory.innerHTML += `
@@ -216,11 +219,54 @@ function addProductToCart(productId) {
                 </div>
                 <div class="col-md-9">
                     <h5>${item.title}</h5>
-                    <p>Cantidad: <span>${item.quantity}</span></p>
+                    <p>Cantidad: <span>${item.quantity}</span> <button type="button" class="btn btn-outline-secondary" 
+                    onclick="removeProductFromCart('${item.id}')">
+                    <i class="bi bi-trash"></i></button> </p> 
                     <p>Precio: ${item.price}€</p>
                 </div>
             </div>
         `;
     });
+
+    console.log(cart.items);
 }
 
+// No funciona, priceTotal por actualizar y eliminar solo 1 producto si hay varios
+function removeProductFromCart (productId) {
+    cart.items.forEach((item, index) => {
+        if(productId.toString() === item.id.toString()) {
+            cart.items.splice(index, 1);
+            //cart.finalPrice-=item.price;
+            updateCartView();
+            console.log(`Producto con ID ${productId} eliminado del carrito.`);
+        }
+        else {
+            console.log(`No se encontró ${productId} en el carrito.`);
+        }
+    })
+}
+
+function updateCartView() {
+    // Vacía el contenido del carrito en el HTML
+    carrito.innerHTML = '';
+
+    // Rellena nuevamente el carrito con los productos actualizados en cart.items
+    cart.items.forEach(item => {
+        carrito.innerHTML += `
+            <div class="row mb-3 align-items-center">
+                <div class="col-md-3">
+                    <img src="${item.thumbnail}" style="width: 100%; height: auto;" class="rounded" alt="${item.title}">
+                </div>
+                <div class="col-md-9">
+                    <h5>${item.title}</h5>
+                    <p>Cantidad: <span>${item.quantity}</span> <button type="button" class="btn btn-outline-secondary" 
+                    onclick="removeProductFromCart('${item.id}')">
+                    <i class="bi bi-trash"></i></button> </p> 
+                    <p>Precio: ${item.price}€</p>
+                </div>
+            </div>
+        `;
+    });
+
+
+}
