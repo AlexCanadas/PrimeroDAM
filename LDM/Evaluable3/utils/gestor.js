@@ -236,7 +236,7 @@ function removeProductFromCart (productId) {
     cart.items.forEach((item, index) => {
         if(productId.toString() === item.id.toString()) {
             cart.items.splice(index, 1);
-            //cart.finalPrice-=item.price;
+            //cart.finalPrice-=item.price; VER COMO HACERLO BIEN
             updateCartView();
             console.log(`Producto con ID ${productId} eliminado del carrito.`);
         }
