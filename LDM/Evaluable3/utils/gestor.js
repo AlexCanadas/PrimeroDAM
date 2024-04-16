@@ -8,6 +8,8 @@ let carrito = document.querySelector('#carrito');
 let precioFinal = document.querySelector('#precioFinal');
 let filtersSelected = document.querySelector('#filtrosSeleccionados');
 let priceHtml = document.querySelector('#priceHtml');
+let cartCounter = document.getElementById('cartCounter');
+let inputSearch = document.getElementById('inputSearch');
 
 var cart = {
     finalPrice: 0,
@@ -19,6 +21,19 @@ range.addEventListener('input', function() {
     priceSelectedInput.innerHTML = this.value.toString();
     searchFilter("price", this.value);
   });
+
+//On change de un input y con el e.target.value llamar a globalSearch
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+// Asigna el evento 'change' al campo de entrada
+inputSearch.addEventListener('change', function(event) {
+    console.log(inputSearch);
+    // Obtén el valor actual del campo de entrada cuando cambie
+    let inputString = event.target.value;
+    console.log(inputString);
+    // Llama a la función globalSearch pasando el valor del campo de entrada
+    globalSearch(inputString);
+  });
+
 
 removeFilterbutton.addEventListener('click', () => {
     removeFilters();
@@ -88,6 +103,18 @@ function addCategories() {
     });
 }
 
+
+//Recibe el input de un onChange de un input
+function globalSearch(inputString) {
+ 
+    let filteredProducts = products.filter(item => {
+        let searchString = inputString.toLowerCase();
+        return item.title.toLowerCase().includes(searchString);
+    });
+
+    fillProduct(item, filteredProducts);
+}
+
 function searchFilter(filterType, value) { 
     // Aquí se asigna el filtro a cada variable de su tipo
     if(filterType ==='brand') {
@@ -114,7 +141,7 @@ function searchFilter(filterType, value) {
         } 
     });
 
-    // Si no ha tocado el filtro de marca ni de categoría filteresProducts.length = 0
+    // Si no ha tocado el filtro de marca ni de categoría filteredProducts.length = 0
     if (priceSelected && filteredProducts.length === 0) {
         filteredProducts = products.filter(item => { 
         priceHtml.textContent = priceSelected + '€'; // Pintamos el precio en priceHtml (filtros seleccionados)
@@ -144,7 +171,7 @@ function searchFilter(filterType, value) {
 function fillProduct(item, parentDiv) { // Función para rellenar resultados
     parentDiv.innerHTML += `
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card animate__bounceIn" style="width: 16rem;">
                 <img src="${item.thumbnail}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">${item.title}</h5>
@@ -181,7 +208,8 @@ function removeFilters() { // Quitamos filtros
     });
 }
 
-function addProductToCart(productId) {
+// Funcion para añadir producto al carro
+function addProductToCart(productId) { 
     // Comparamos el id que trae el objeto con el array de product
     let item = products.find(product => product.id.toString() === productId.toString());
 
@@ -197,7 +225,7 @@ function addProductToCart(productId) {
             existingItem.quantity++;
         } else {
             // Inicializamos quantity en 1 en caso de que no exista ya en el carrito
-            item.quantity = 1;
+            item.quantity = 1; // Creamos la propiedad quantity y la inicializamos en 1
             cart.items.push(item);
         }
 
@@ -207,43 +235,67 @@ function addProductToCart(productId) {
         }
     }
 
-    // Vaciamos primero
-    carrito.innerHTML = '';
+    updateCartView(); // Actualizamos el carrito
+    fillCartProductCounter(); 
 
-    // Rellenamos el carrito 
-    cart.items.forEach(item => {
-        carrito.innerHTML += `
-            <div class="row mb-3 align-items-center">
-                <div class="col-md-3">
-                    <img src="${item.thumbnail}" style="width: 100%; height: auto;" class="rounded" alt="${item.title}">
-                </div>
-                <div class="col-md-9">
-                    <h5>${item.title}</h5>
-                    <p>Cantidad: <span>${item.quantity}</span> <button type="button" class="btn btn-outline-secondary" 
-                    onclick="removeProductFromCart('${item.id}')">
-                    <i class="bi bi-trash"></i></button> </p> 
-                    <p>Precio: ${item.price}€</p>
-                </div>
-            </div>
-        `;
-    });
-
-    console.log(cart.items);
 }
 
-// No funciona, priceTotal por actualizar y eliminar solo 1 producto si hay varios
-function removeProductFromCart (productId) {
-    cart.items.forEach((item, index) => {
-        if(productId.toString() === item.id.toString()) {
-            cart.items.splice(index, 1);
-            //cart.finalPrice-=item.price; VER COMO HACERLO BIEN
-            updateCartView();
-            console.log(`Producto con ID ${productId} eliminado del carrito.`);
-        }
-        else {
-            console.log(`No se encontró ${productId} en el carrito.`);
-        }
+// Funcion para rellenar el contador del símbolo del carrito
+function fillCartProductCounter() {
+    let counter = 0;
+
+    cart.items.forEach(item => {
+        counter += item.quantity;
     })
+
+    cartCounter.innerHTML = counter;
+
+    if(counter > 0) {
+        cartCounter.classList.add('filled');
+    } else {
+        cartCounter.classList.remove('filled');
+    }
+
+}
+
+// Funcion para aumentar el item.quantity desde el botón + en el carrito
+function addOneMoreProductToCart(productId) {
+    let indexToSum = cart.items.findIndex(item => item.id.toString() === productId.toString());
+
+    if (indexToSum !== -1) {
+        let productToAdd = cart.items[indexToSum];
+
+        cart.finalPrice += productToAdd.price;
+        productToAdd.quantity++;
+        
+        // Actualizamos el precio final y el html del carrito
+        precioFinal.textContent = cart.finalPrice.toString();
+        updateCartView();
+        fillCartProductCounter();
+    } 
+}
+
+function removeProductFromCart(productId) {
+    let indexToRemove = cart.items.findIndex(item => item.id.toString() === productId.toString());
+
+    if (indexToRemove !== -1) {
+        let itemToRemove = cart.items[indexToRemove];
+
+        if (itemToRemove.quantity === 1) {
+            // Si item.cantidad es 1, eliminamos el item del carrito
+            cart.finalPrice -= itemToRemove.price;
+            cart.items.splice(indexToRemove, 1);
+        } else if (itemToRemove.quantity > 1) {
+            // Si item.cantidad es mayor de 1, eliminamos un item de item.cantidad
+            cart.finalPrice -= itemToRemove.price;
+            itemToRemove.quantity--;
+        }
+
+        // Actualizamos el precio final y el html del carrito
+        precioFinal.textContent = cart.finalPrice.toString();
+        updateCartView();
+        fillCartProductCounter();
+    } 
 }
 
 function updateCartView() {
@@ -259,9 +311,11 @@ function updateCartView() {
                 </div>
                 <div class="col-md-9">
                     <h5>${item.title}</h5>
-                    <p>Cantidad: <span>${item.quantity}</span> <button type="button" class="btn btn-outline-secondary" 
-                    onclick="removeProductFromCart('${item.id}')">
-                    <i class="bi bi-trash"></i></button> </p> 
+                    <p>Cantidad: <span>${item.quantity}</span> 
+                    <button type="button" class="btn btn-outline-secondary" onclick="addOneMoreProductToCart('${item.id}')">
+                    <i class="bi bi-plus-circle"></i></button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="removeProductFromCart('${item.id}')">
+                    <i class="bi bi-dash-circle"></i></button> </p> 
                     <p>Precio: ${item.price}€</p>
                 </div>
             </div>

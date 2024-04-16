@@ -37,10 +37,18 @@
   <body>
     <section>
       <div class="container mt-5">
-        <div>
-          <span class="display-7" id="filter"
-            ><b>Ajusta los filtros para encontrar el producto deseado</b></span
-          >
+        <div class="row">
+          <div class="col-md-auto">
+            <span class="display-7" id="filter"
+              ><b
+                >Ajusta los filtros para encontrar el producto deseado</b
+              ></span
+            >
+          </div>
+          <div class="col-md-auto offset-md-2">
+            <span> <b> Introduce la palabra a buscar:</b></span>
+            <input type="text" id="inputSearch" />
+          </div>
         </div>
         <div class="row">
           <div class="col-md-auto">
@@ -108,13 +116,16 @@
             <div class="col-1 border-start border-black">
               <span><h4>Carrito</h4></span>
               <div>
-                <i
-                  class="bi bi-cart4"
-                  style="font-size: 3rem; cursor: pointer"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasWithBothOptions"
-                  aria-controls="offcanvasWithBothOptions"
-                ></i>
+                <div class="cart-icon-container">
+                  <span id="cartCounter"></span>
+                  <i
+                    class="bi bi-cart4"
+                    style="font-size: 3rem; cursor: pointer"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions"
+                  ></i>
+                </div>
 
                 <div
                   class="offcanvas offcanvas-end"
