@@ -25,6 +25,7 @@ DROP FUNCTION miPrimeraFuncion(); --eliminar funcion
 CALL miPrimeraFuncion(); -- llamar a la función
 
 
+-- Función creando tabla
 DELIMITER $ 
 SELECT * FROM libros $
 CREATE OR REPLACE FUNCTION miPrimeraFuncion (varID INT) 
@@ -86,7 +87,7 @@ SELECT * FROM libros $
 CREATE OR REPLACE FUNCTION factorial (numero INT) 
 RETURNS VARCHAR(50)
 BEGIN
-     DECLARA miVariableResultado INT;
+     DECLARE miVariableResultado INT;
      DECLARE numeroAux INT;
      SET miVariableResultado = numero;
      SET numeroAux = numero;
