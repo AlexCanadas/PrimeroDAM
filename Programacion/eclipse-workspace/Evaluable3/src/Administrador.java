@@ -36,6 +36,40 @@ public class Administrador extends Personas {
 		
 			switch(opcion) {
 			case 1: 
+				System.out.println("Introduce si la habitación a dar de alta es Individual, Doble o Familiar: ");
+				System.out.println("1. Individual");
+				System.out.println("2. Doble");
+				System.out.println("3. Familiar");
+				System.out.println("4. Salir");
+				int respuesta = sc.nextInt();
+				
+				switch(respuesta) {
+				case 1:
+					HabIndividual ind = new HabIndividual();
+					ind.altaHabitacion();
+					break;
+				case 2:
+					HabDoble doble = new HabDoble();
+					doble.altaHabitacion();
+					break;
+				case 3:
+					HabFamiliar fam = new HabFamiliar();
+					fam.altaHabitacion();
+					break;
+				case 4:
+					System.out.println("Volviendo al menú principal de administradores");
+					break;
+				default: System.out.println("Opción incorrecta");
+				
+				
+				}
+				
+				
+				
+				HabIndividual habInd = new HabIndividual();
+				HabDoble habDoble = new HabDoble();
+				HabFamiliar HabFam = new HabFamiliar();
+				
 				break;
 			case 2:
 				break;

@@ -1,24 +1,30 @@
+import java.util.ArrayList;
 
 public abstract class Habitaciones {
-	private boolean estaDisponible;
+	protected boolean estaDisponible=true;
 	private int numHabitacion;
-	private int precioNoche;
+	protected int precioNoche;
 	private double metrosCuadrados;
 	
-	public Habitaciones(boolean estaDisponible, int numHabitacion, int precioNoche, double metrosCuadrados) {
-		this.estaDisponible = estaDisponible;
+	public Habitaciones(int numHabitacion, double metrosCuadrados) {
 		this.numHabitacion = numHabitacion;
-		this.precioNoche = precioNoche;
 		this.metrosCuadrados = metrosCuadrados;
+		this.estaDisponible = true;
+		this.precioNoche = 50;
+	}
+
+	public Habitaciones() {
 	}
 
 	public boolean isEstaDisponible() {
 		return estaDisponible;
 	}
 
-	public void setEstaDisponible(boolean estaDisponible) {
-		this.estaDisponible = estaDisponible;
-	}
+	
+	 public void setEstaDisponible(boolean estaDisponible) { 
+	 this.estaDisponible = estaDisponible; 
+	 }
+	 
 
 	public int getNumHabitacion() {
 		return numHabitacion;
@@ -32,9 +38,11 @@ public abstract class Habitaciones {
 		return precioNoche;
 	}
 
-	public void setPrecioNoche(int precioNoche) {
-		this.precioNoche = precioNoche;
-	}
+	
+	 public void setPrecioNoche(int precioNoche) { 
+		 this.precioNoche = precioNoche;
+	 }
+	 
 
 	public double getMetrosCuadrados() {
 		return metrosCuadrados;
@@ -43,12 +51,15 @@ public abstract class Habitaciones {
 	public void setMetrosCuadrados(double metrosCuadrados) {
 		this.metrosCuadrados = metrosCuadrados;
 	}
+	
+	
+	public abstract void altaHabitacion(ArrayList <Habitaciones> h);
 
+	public abstract void bajaHabitacion(ArrayList <Habitaciones> h);
+
+	public abstract void modificarHabitacion(ArrayList <Habitaciones> h);
 	
-	
-	
-	
-	
+	public abstract String toString();
 	
 	
 }
