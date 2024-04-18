@@ -46,15 +46,15 @@ public class Administrador extends Personas {
 				switch(respuesta) {
 				case 1:
 					HabIndividual ind = new HabIndividual();
-					ind.altaHabitacion();
+					ind.altaHabitacion(h);
 					break;
 				case 2:
 					HabDoble doble = new HabDoble();
-					doble.altaHabitacion();
+					doble.altaHabitacion(h);
 					break;
 				case 3:
 					HabFamiliar fam = new HabFamiliar();
-					fam.altaHabitacion();
+					fam.altaHabitacion(h);
 					break;
 				case 4:
 					System.out.println("Volviendo al menú principal de administradores");
