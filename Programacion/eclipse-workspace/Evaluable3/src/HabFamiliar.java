@@ -50,7 +50,7 @@ public class HabFamiliar extends Habitaciones{
 		
 		HabFamiliar nuevaHab = new HabFamiliar(numHabitacion, metrosCuadrados, numCamas, numNiños);
 		h.add(nuevaHab);
-		nuevaHab.toString();
+		System.out.println(nuevaHab);
 		
 	}
 
@@ -143,7 +143,7 @@ public class HabFamiliar extends Habitaciones{
 	@Override
 	public String toString() {
 		return String.format("Número de habitación: %d\n" +
-                "Metros cuadrados: %f\n" +
+                "Metros cuadrados: %.2f\n" +
                 "Número de camas: %d\n" +
                 "Número de niños: %d\n" +
                 "Está disponible actualmente: %b\n" +

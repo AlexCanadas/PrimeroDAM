@@ -63,7 +63,7 @@ public class Administrador extends Personas {
 				}
 				break;
 			case 2:
-					System.out.println("Introduce si la habitación a dar de alta es Individual, Doble o Familiar: ");
+					System.out.println("Introduce si la habitación a dar de baja es Individual, Doble o Familiar: ");
 					System.out.println("1. Individual");
 					System.out.println("2. Doble");
 					System.out.println("3. Familiar");
@@ -90,7 +90,7 @@ public class Administrador extends Personas {
 					}
 					break;
 			case 3: 
-					System.out.println("Introduce si la habitación a dar de alta es Individual, Doble o Familiar: ");
+					System.out.println("Introduce si la habitación de la que modificar datos es Individual, Doble o Familiar: ");
 					System.out.println("1. Individual");
 					System.out.println("2. Doble");
 					System.out.println("3. Familiar");
@@ -112,7 +112,7 @@ public class Administrador extends Personas {
 						break;
 					case 4:
 						System.out.println("Volviendo al menú principal de administradores \n");
-						break;
+						return;
 					default: System.out.println("Opción incorrecta");
 					}
 					break;
@@ -121,14 +121,18 @@ public class Administrador extends Personas {
 				for (Habitaciones reservadas : h) {
 					if(!reservadas.estaDisponible){
 						System.out.println(reservadas.toString() + "\n");
+						} else if (reservadas.estaDisponible) {
+							System.out.println("Actualmente no hay habitaciones reservadas");
 						}
 					}
 				break;
 			case 5:
 				System.out.println("Habitaciones disponibles: ");
 				for (Habitaciones disponibles : h) {
-					if(!disponibles.estaDisponible){
+					if(disponibles.estaDisponible){
 						System.out.println(disponibles.toString() + "\n");
+						} else if (!disponibles.estaDisponible) {
+							System.out.println("Actualmente no hay habitaciones disponibles");
 						}
 				}
 				break;
@@ -143,7 +147,7 @@ public class Administrador extends Personas {
 				}
 				break;
 			case 7:
-				System.out.println("Que tengas un buen día");
+				System.out.println("Volviendo al menú principal para introducir nuevas credenciales \n");
 				break;
 			default: 
 				System.out.println("Opción no válida \n");

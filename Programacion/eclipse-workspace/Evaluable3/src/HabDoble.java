@@ -50,15 +50,12 @@ public class HabDoble extends Habitaciones {
 		boolean tieneTerraza = false;
 		if (boolTerraza.equals("SI")) {
 			tieneTerraza = true;
-		} else if(boolTerraza.equals("NO")) {
-			tieneTerraza = false;
-		}else {
+		} else if(!boolTerraza.equals("NO")) {
 			System.out.println("Respuesta incorrecta, se entenderá que no tiene terraza");
-			tieneTerraza = false;
 		}
 		HabDoble nuevaHab = new HabDoble(numHabitacion, metrosCuadrados, numCamas, tieneTerraza);
 		h.add(nuevaHab);
-		nuevaHab.toString();
+		System.out.println(nuevaHab);
 	}
 
 	@Override
@@ -154,7 +151,7 @@ public class HabDoble extends Habitaciones {
 	@Override
 	public String toString() {
 		 return String.format("Número de habitación: %d\n" +
-                 "Metros cuadrados: %f\n" +
+                 "Metros cuadrados: %.2f\n" +
                  "Número de camas: %d\n" +
                  "Tiene terraza: %b\n" +
                  "Está disponible actualmente: %b\n" +

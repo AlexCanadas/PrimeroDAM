@@ -38,15 +38,13 @@ public class HabIndividual extends Habitaciones {
 		boolean bañoPrivado = false;
 		if (boolRespuesta.equals("SI")) {
 			bañoPrivado = true;
-		} else if (boolRespuesta.equals("NO")) {
-			bañoPrivado = false;
-		} else {
+		} else if (!boolRespuesta.equals("NO")) {
 			System.out.println("Respuesta no válida, se asumirá que no tiene baño \n");
-		}
+		} 
 		HabIndividual nuevaHab = new HabIndividual(numHabitacion, metrosCuadrados, bañoPrivado);
-		nuevaHab.toString();
 		h.add(nuevaHab);
-		nuevaHab.toString();
+		System.out.println("Habitación creada correctamente");
+        System.out.println(nuevaHab);
 	}
 
 	@Override
@@ -133,7 +131,7 @@ public class HabIndividual extends Habitaciones {
 	public String toString() {
 		
         return String.format("Número de habitación: %d\n" +
-                            "Metros cuadrados: %f\n" +
+                            "Metros cuadrados: %.2f\n" +
                             "Tiene baño privado: %b\n" +
                             "Está disponible actualmente: %b\n" +
                             "Precio por noche: %d\n" +

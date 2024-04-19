@@ -7,54 +7,74 @@ public class Main {
 		ArrayList <Personas> personas = new ArrayList<>();
 		Administrador nuevoAdmin = new Administrador("alex", "password", "test@email.com", 1);
 		personas.add(nuevoAdmin);
+		Cliente nuevoCliente = new Cliente("cliente1", "password", "cliente@email.com", "clienteNombre");
+		personas.add(nuevoCliente);
 		ArrayList <Reservas> reservas = new ArrayList<>();
 		ArrayList <Habitaciones> habitaciones = new ArrayList<>();
 		
 		Scanner sc = new Scanner (System.in);
+		int opcion;
 		
-		System.out.println("¡Bienvenido!");
-		System.out.println("Comprobemos tus credenciales \n");
-		System.out.println("Introduce tu alias: ");
-		String aliasIntroducido = sc.next();
-		for (Personas personaABuscar : personas) {
-			if (personaABuscar instanceof Administrador) {
-				if (personaABuscar.getAlias().equals(aliasIntroducido)) {
-					System.out.println("Introduce tu contraseña: ");
-					String contraseñaIntroducida = sc.next();
-					if (personaABuscar.getContraseña().equals(contraseñaIntroducida)) {
-						Administrador admin = new Administrador();
-						admin.menuAdmin(personas, habitaciones, reservas, aliasIntroducido);
+		do {
+			System.out.println("¡Bienvenido!");
+			
+			System.out.println("1. Introducir credenciales");
+			System.out.println("2. Salir");
+			opcion = sc.nextInt();
+			
+			switch(opcion) {
+				case 1:
+				System.out.println("Comprobemos tus credenciales \n");
+				System.out.println("Introduce tu alias: ");
+				String aliasIntroducido = sc.next();
+				
+				boolean aliasEncontrado = false;
+				
+				for (Personas personaABuscar : personas) {
+					if (personaABuscar instanceof Administrador) {
+						if (personaABuscar.getAlias().equals(aliasIntroducido)) {
+							aliasEncontrado = true;
+							System.out.println("Introduce tu contraseña: ");
+							String contraseñaIntroducida = sc.next();
+							if (personaABuscar.getContraseña().equals(contraseñaIntroducida)) {
+								Administrador admin = new Administrador();
+								admin.menuAdmin(personas, habitaciones, reservas, aliasIntroducido);
+							}
+							else {
+								System.out.println("Contraseña incorrecta, por favor, inténtelo de nuevo: ");
+								return;
+							}
+						}
 					}
-					else {
-						System.out.println("Contraseña incorrecta, por favor, inténtelo de nuevo: ");
-						return;
+					if (personaABuscar instanceof Cliente) {
+						if (personaABuscar.getAlias().equals(aliasIntroducido)) {
+							aliasEncontrado = true;
+							System.out.println("Introduce tu contraseña: ");
+							String contraseñaIntroducida = sc.next();
+							if (personaABuscar.getContraseña().equals(contraseñaIntroducida)) {
+								Cliente cliente = new Cliente();
+								cliente.menuCliente(personas, habitaciones, reservas, aliasIntroducido);
+							}
+							else {
+								System.out.println("Contraseña incorrecta, por favor, inténtelo de nuevo: ");
+								return;
+							}
+						}
 					}
 				}
-			}
-			if (personaABuscar instanceof Cliente) {
-				if (personaABuscar.getAlias().equals(aliasIntroducido)) {
-					System.out.println("Introduce tu contraseña: ");
-					String contraseñaIntroducida = sc.next();
-					if (personaABuscar.getContraseña().equals(contraseñaIntroducida)) {
-						Cliente cliente = new Cliente();
-						cliente.menuCliente(personas, habitaciones, reservas, aliasIntroducido);
-					}
-					else {
-						System.out.println("Contraseña incorrecta, por favor, inténtelo de nuevo: ");
-						return;
-					}
+				if (!aliasEncontrado) {
+					System.out.println("No encontramos tu alias en el sistema, por favor, contacte con un administrador.");
 				}
-			}
-			if (!personaABuscar.getAlias().equals(aliasIntroducido)) {
-				System.out.println("No encontramos tu alias en el sistema, por favor, contacte con un administrador.");
 				break;
+				case 2: 
+					System.out.println("¡Que tengas un buen día!");
+					break;
+				default: 
+					System.out.println("Opción no válida");
 			}
-		}
+		}while(opcion!=2);
 		
+		sc.close();
 	}
-
-
-	
-	
 	
 }

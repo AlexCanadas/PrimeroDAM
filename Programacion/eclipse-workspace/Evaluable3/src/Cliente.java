@@ -58,27 +58,36 @@ public static void menuCliente(ArrayList <Personas> p, ArrayList <Habitaciones> 
 			}
 			break;
 		case 2:
+			boolean habEncontrada = false;
 			for (Habitaciones comprobarHabitaciones : h) {
 				if (comprobarHabitaciones.estaDisponible) {
-					comprobarHabitaciones.toString();
+					habEncontrada = true;
+					System.out.println(comprobarHabitaciones);
 				}
+			}
+			if (!habEncontrada) {
+				System.out.println("No hay habitaciones disponibles en este momento \n");
 			}
 			break;
 		case 3: 
+			boolean reservaEncontrada = false;
 			for (Reservas comprobarReservas : r) {
 				if (comprobarReservas.getAliasCliente().equals(alias)) {
 					if (comprobarReservas.reservaActiva) {
-						comprobarReservas.toString();
+						reservaEncontrada = true;
+						System.out.println(comprobarReservas);
 					}
 				}
 			}
+			if (!reservaEncontrada) {
+				System.out.println("No tienes reservas hechas actualmente \n");
+			}
 			break;
 		case 4:
-			System.out.println("Que tengas un buen día");
-			break;
+			System.out.println("Volviendo al menú principal para introducir nuevas credenciales \n");
+			return;
 		default: 
 			System.out.println("Opción no válida \n");
-			break;
 		}
 		
 	}while(opcion!=4);
