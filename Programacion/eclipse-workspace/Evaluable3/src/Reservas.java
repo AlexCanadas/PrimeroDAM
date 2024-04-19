@@ -5,6 +5,7 @@ public class Reservas {
 	private int numHabitacion; 
 	private String aliasCliente;
 	private int nochesReserva;
+	protected boolean reservaActiva;
 	
 	public Reservas(LocalDate fechaComienzo, int numHabitacion, String aliasCliente, 
 			int nochesReserva) {
@@ -12,6 +13,7 @@ public class Reservas {
 		this.numHabitacion = numHabitacion;
 		this.aliasCliente = aliasCliente;
 		this.nochesReserva = nochesReserva;
+		this.reservaActiva = true;
 	}
 
 	public Reservas() {
@@ -50,16 +52,26 @@ public class Reservas {
 		this.nochesReserva = nochesReserva;
 	}
 	
-    public String toString() { // ARREGLAR
+	public boolean isReservaActiva() {
+		return reservaActiva;
+	}
+
+	public void setReservaActiva(boolean reservaActiva) {
+		this.reservaActiva = reservaActiva;
+	}
+	
+    public String toString() {
 		return String.format("Alias de cliente: %s\n" +
 				"Número de habitación: %d\n" +
 				"Fecha comienzo: %s\n" +
 				"Noches reservadas: %d\n" +
-				"--------------------------------------------------\n"
+				"Reserva Activa: %b\n" +
+				"--------------------------------------------------\n",
 				this.getAliasCliente(),
 				this.getNumHabitacion(),
 				this.getFechaComienzo(),
-				this.getNochesReserva());
+				this.getNochesReserva(),
+				this.isReservaActiva());
     }
     
 }

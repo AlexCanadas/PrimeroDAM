@@ -135,10 +135,10 @@ public class Administrador extends Personas {
 			case 6:
 				System.out.println("Introduce el alias del cliente: ");
 				String aliasIntroducido = sc.next();
-				Reservas reserva = new Reservas ();
 				for (Reservas verReserva : r) {
 					if (verReserva.getAliasCliente().equals(aliasIntroducido)) {
-						
+						System.out.println("Las reservas de este cliente son:");
+						System.out.println(verReserva.toString());
 					}
 				}
 				break;
