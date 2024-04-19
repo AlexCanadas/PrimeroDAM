@@ -38,27 +38,32 @@ public static void menuCliente(ArrayList <Personas> p, ArrayList <Habitaciones> 
 		case 1: 
 			System.out.println("Introduce que habitación quieres reservar: ");
 			int hab = sc.nextInt();
+			boolean habEncontrada = false;
+			
 			for (Habitaciones habABuscar : h) {
 				if (habABuscar.getNumHabitacion()==hab) {
+					habEncontrada = true;
 					System.out.println("Introduce la fecha en la que quieres reservar (dd-MM-yyyy): ");
 					String fechaIntroducida = sc.next();
 					LocalDate fechaAReservar = LocalDate.parse(fechaIntroducida, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 					System.out.println("Introduce de cuantas noches será la reserva: ");
 					int noches = sc.nextInt();
-							for (Reservas nuevaReserva : r) {
-								if(nuevaReserva.getNumHabitacion()==hab) {
-									Reservas reserva = new Reservas(fechaAReservar, hab, alias, noches);
-									r.add(nuevaReserva);
-									reserva.setReservaActiva(true);
-									habABuscar.setEstaDisponible(false);
-									System.out.println("Habitación reservada correctamente \n" + nuevaReserva.toString());
-								}
-							}
+						if (habABuscar.isEstaDisponible()) {
+							Reservas nuevaReserva = new Reservas(fechaAReservar, hab, alias, noches);
+							r.add(nuevaReserva);
+							nuevaReserva.setReservaActiva(true);
+							habABuscar.setEstaDisponible(false);
+							System.out.println("Habitación " + nuevaReserva.getNumHabitacion() + "reservada correctamente");
+							System.out.println(nuevaReserva.toString());
+						}else {
+							System.out.println("Lo sentimos, esta habitación no está disponible");
+						}
+						break;
 				}
 			}
 			break;
 		case 2:
-			boolean habEncontrada = false;
+			habEncontrada = false;
 			for (Habitaciones comprobarHabitaciones : h) {
 				if (comprobarHabitaciones.estaDisponible) {
 					habEncontrada = true;

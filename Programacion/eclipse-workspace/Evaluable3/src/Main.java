@@ -63,7 +63,7 @@ public class Main {
 					}
 				}
 				if (!aliasEncontrado) {
-					System.out.println("No encontramos tu alias en el sistema, por favor, contacte con un administrador.");
+					System.out.println("No encontramos tu alias en el sistema, por favor, contacte con un administrador \n");
 				}
 				break;
 				case 2: 
