@@ -43,15 +43,22 @@ public class HabDoble extends Habitaciones {
 		int numHabitacion = sc.nextInt();
 		System.out.println("Introduce los metros cuadrados de la habitación: ");
 		double metrosCuadrados = sc.nextDouble();
-		System.out.println("Introduce si tiene baño privado (SI O NO: ");
+		System.out.println("Introduce el nuevo número de camas de esta habitación: ");
 		int numCamas = sc.nextInt();
 		System.out.println("Tiene terraza (SI O NO):");
-		boolean tieneTerraza = sc.nextBoolean();
-		
+		String boolTerraza = sc.next().toUpperCase();
+		boolean tieneTerraza = false;
+		if (boolTerraza.equals("SI")) {
+			tieneTerraza = true;
+		} else if(boolTerraza.equals("NO")) {
+			tieneTerraza = false;
+		}else {
+			System.out.println("Respuesta incorrecta, se entenderá que no tiene terraza");
+			tieneTerraza = false;
+		}
 		HabDoble nuevaHab = new HabDoble(numHabitacion, metrosCuadrados, numCamas, tieneTerraza);
 		h.add(nuevaHab);
 		nuevaHab.toString();
-		
 	}
 
 	@Override

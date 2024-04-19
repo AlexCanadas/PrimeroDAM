@@ -34,9 +34,17 @@ public class HabIndividual extends Habitaciones {
 		System.out.println("Introduce los metros cuadrados de la habitación: ");
 		double metrosCuadrados = sc.nextDouble();
 		System.out.println("Introduce si tiene baño privado (SI O NO: ");
-		boolean bañoPrivado = sc.nextBoolean();
-		
+		String boolRespuesta = sc.next().toUpperCase();
+		boolean bañoPrivado = false;
+		if (boolRespuesta.equals("SI")) {
+			bañoPrivado = true;
+		} else if (boolRespuesta.equals("NO")) {
+			bañoPrivado = false;
+		} else {
+			System.out.println("Respuesta no válida, se asumirá que no tiene baño \n");
+		}
 		HabIndividual nuevaHab = new HabIndividual(numHabitacion, metrosCuadrados, bañoPrivado);
+		nuevaHab.toString();
 		h.add(nuevaHab);
 		nuevaHab.toString();
 	}
