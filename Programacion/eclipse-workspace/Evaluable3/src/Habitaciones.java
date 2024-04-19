@@ -59,6 +59,8 @@ public abstract class Habitaciones {
 
 	public abstract void modificarHabitacion(ArrayList <Habitaciones> h);
 	
+	public abstract boolean existeNumHab(ArrayList <Habitaciones> h, int numHab);
+	
 	public abstract String toString();
 	
 	

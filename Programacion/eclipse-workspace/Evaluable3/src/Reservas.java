@@ -4,16 +4,18 @@ public class Reservas {
 	private LocalDate fechaComienzo;
 	private int numHabitacion; 
 	private String aliasCliente;
-	private int duracionNoches;
 	private int nochesReserva;
 	
-	public Reservas(LocalDate fechaComienzo, int numHabitacion, String aliasCliente, int duracionNoches,
+	public Reservas(LocalDate fechaComienzo, int numHabitacion, String aliasCliente, 
 			int nochesReserva) {
 		this.fechaComienzo = fechaComienzo;
 		this.numHabitacion = numHabitacion;
 		this.aliasCliente = aliasCliente;
-		this.duracionNoches = duracionNoches;
 		this.nochesReserva = nochesReserva;
+	}
+
+	public Reservas() {
+
 	}
 
 	public LocalDate getFechaComienzo() {
@@ -40,14 +42,6 @@ public class Reservas {
 		this.aliasCliente = aliasCliente;
 	}
 
-	public int getDuracionNoches() {
-		return duracionNoches;
-	}
-
-	public void setDuracionNoches(int duracionNoches) {
-		this.duracionNoches = duracionNoches;
-	}
-
 	public int getNochesReserva() {
 		return nochesReserva;
 	}
@@ -56,6 +50,16 @@ public class Reservas {
 		this.nochesReserva = nochesReserva;
 	}
 	
-    
+    public String toString() { // ARREGLAR
+		return String.format("Alias de cliente: %s\n" +
+				"Número de habitación: %d\n" +
+				"Fecha comienzo: %s\n" +
+				"Noches reservadas: %d\n" +
+				"--------------------------------------------------\n"
+				this.getAliasCliente(),
+				this.getNumHabitacion(),
+				this.getFechaComienzo(),
+				this.getNochesReserva());
+    }
     
 }

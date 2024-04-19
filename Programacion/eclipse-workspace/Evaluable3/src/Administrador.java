@@ -57,29 +57,90 @@ public class Administrador extends Personas {
 					fam.altaHabitacion(h);
 					break;
 				case 4:
-					System.out.println("Volviendo al menú principal de administradores");
+					System.out.println("Volviendo al menú principal de administradores \n");
 					break;
 				default: System.out.println("Opción incorrecta");
-				
-				
 				}
-				
-				
-				
-				HabIndividual habInd = new HabIndividual();
-				HabDoble habDoble = new HabDoble();
-				HabFamiliar HabFam = new HabFamiliar();
-				
 				break;
 			case 2:
-				break;
+					System.out.println("Introduce si la habitación a dar de alta es Individual, Doble o Familiar: ");
+					System.out.println("1. Individual");
+					System.out.println("2. Doble");
+					System.out.println("3. Familiar");
+					System.out.println("4. Salir");
+					respuesta = sc.nextInt();
+					
+					switch(respuesta) {
+					case 1:
+						HabIndividual ind = new HabIndividual();
+						ind.bajaHabitacion(h);
+						break;
+					case 2:
+						HabDoble doble = new HabDoble();
+						doble.bajaHabitacion(h);
+						break;
+					case 3:
+						HabFamiliar fam = new HabFamiliar();
+						fam.bajaHabitacion(h);
+						break;
+					case 4:
+						System.out.println("Volviendo al menú principal de administradores \n");
+						break;
+					default: System.out.println("Opción incorrecta");
+					}
+					break;
 			case 3: 
-				break;
+					System.out.println("Introduce si la habitación a dar de alta es Individual, Doble o Familiar: ");
+					System.out.println("1. Individual");
+					System.out.println("2. Doble");
+					System.out.println("3. Familiar");
+					System.out.println("4. Salir");
+					respuesta = sc.nextInt();
+					
+					switch(respuesta) {
+					case 1:
+						HabIndividual ind = new HabIndividual();
+						ind.modificarHabitacion(h);
+						break;
+					case 2:
+						HabDoble doble = new HabDoble();
+						doble.modificarHabitacion(h);
+						break;
+					case 3:
+						HabFamiliar fam = new HabFamiliar();
+						fam.modificarHabitacion(h);
+						break;
+					case 4:
+						System.out.println("Volviendo al menú principal de administradores \n");
+						break;
+					default: System.out.println("Opción incorrecta");
+					}
+					break;
 			case 4:
+				System.out.println("Habitaciones reservadas: ");
+				for (Habitaciones reservadas : h) {
+					if(!reservadas.estaDisponible){
+						System.out.println(reservadas.toString() + "\n");
+						}
+					}
 				break;
 			case 5:
+				System.out.println("Habitaciones disponibles: ");
+				for (Habitaciones disponibles : h) {
+					if(!disponibles.estaDisponible){
+						System.out.println(disponibles.toString() + "\n");
+						}
+				}
 				break;
-			case 6: 
+			case 6:
+				System.out.println("Introduce el alias del cliente: ");
+				String aliasIntroducido = sc.next();
+				Reservas reserva = new Reservas ();
+				for (Reservas verReserva : r) {
+					if (verReserva.getAliasCliente().equals(aliasIntroducido)) {
+						
+					}
+				}
 				break;
 			case 7:
 				System.out.println("Que tengas un buen día");
