@@ -70,7 +70,7 @@ public class Main {
 					System.out.println("¡Que tengas un buen día!");
 					break;
 				default: 
-					System.out.println("Opción no válida");
+					System.out.println("Opción no válida \n");
 			}
 		}while(opcion!=2);
 		

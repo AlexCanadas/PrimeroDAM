@@ -53,7 +53,7 @@ public class Administrador extends Personas {
 					doble.altaHabitacion(h);
 					break;
 				case 3:
-					HabFamiliar fam = new HabFamiliar();
+					HabFamiliar fam = new HabFamiliar(); // COMPROBAR BIEN
 					fam.altaHabitacion(h);
 					break;
 				case 4:

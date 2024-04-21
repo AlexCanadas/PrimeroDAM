@@ -43,7 +43,7 @@ public class HabFamiliar extends Habitaciones{
 		int numHabitacion = sc.nextInt();
 		System.out.println("Introduce los metros cuadrados de la habitación: ");
 		double metrosCuadrados = sc.nextDouble();
-		System.out.println("Introduce si tiene baño privado (SI O NO: ");
+		System.out.println("Introduce el número de camas de esta habitación: ");
 		int numCamas = sc.nextInt();
 		System.out.println("Introduce el número de niños que dormirán en la habitación: ");
 		int numNiños = sc.nextInt();
@@ -79,14 +79,14 @@ public class HabFamiliar extends Habitaciones{
 		int numHab = sc.nextInt();
 		
 		for (Habitaciones modHab : h) {
-			if (modHab instanceof HabDoble) {
+			if (modHab instanceof HabFamiliar) {
 				if (modHab.getNumHabitacion()==numHab) {
 					System.out.println("Indica que dato quieres modificar de la habitacion: ");
 					do {
 						System.out.println("1. Número de habitación");
 						System.out.println("2. Metros cuadrados");
 						System.out.println("3. Cambiar el número de camas");	
-						System.out.println("4. Cambiar si tiene terraza o no");
+						System.out.println("4. Cambiar número de niños");
 						System.out.println("5. Salir");
 						opcion = sc.nextInt();
 		
@@ -96,6 +96,7 @@ public class HabFamiliar extends Habitaciones{
 							int nuevoNumeroHabitacion = sc.nextInt();
 							if (!existeNumHab(h, nuevoNumeroHabitacion)) {
 								modHab.setNumHabitacion(nuevoNumeroHabitacion);
+								System.out.println("Modificado el número de habitación al " + modHab.getNumHabitacion());
 							}else {
 								System.out.println("Ya existe una habitación con este numéro \n");
 							}
@@ -109,14 +110,14 @@ public class HabFamiliar extends Habitaciones{
 						case 3: 
 							System.out.println("Introduce el nuevo número de camas de esta habitación: ");
 							int numCamasNuevo = sc.nextInt();
-							((HabDoble) modHab).setNumCamas(numCamasNuevo);
+							((HabFamiliar) modHab).setNumCamas(numCamasNuevo);
 							System.out.println("Modificado el numero de camas \n");
 							break;
 						case 4: 
 							System.out.println("Introduce cuantos niños hay ahora en esta habitación: ");
 							int numNiñosNuevo = sc.nextInt();
-							((HabFamiliar) modHab).setNumCamas(numNiñosNuevo);
-							System.out.println("Modificado el numero de camas \n");
+							((HabFamiliar) modHab).setNumNiños(numNiñosNuevo);
+							System.out.println("Modificado el numero de niños en esta habitación \n");
 							break;
 						case 5: 
 							System.out.println("Volviendo al menú de administradores \n");
