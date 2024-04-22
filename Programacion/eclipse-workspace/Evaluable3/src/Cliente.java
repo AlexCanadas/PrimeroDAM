@@ -59,7 +59,7 @@ public static void menuCliente(ArrayList <Personas> p, ArrayList <Habitaciones> 
 							r.add(nuevaReserva);
 							nuevaReserva.setReservaActiva(true);
 							habABuscar.setEstaDisponible(false);
-							System.out.println("Habitación " + nuevaReserva.getNumHabitacion() + "reservada correctamente");
+							System.out.println("Habitación " + nuevaReserva.getNumHabitacion() + " reservada correctamente");
 							System.out.println(nuevaReserva.toString());
 							
 							try {

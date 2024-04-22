@@ -12,3 +12,10 @@ Noches reservadas: 3
 Reserva Activa: true
 --------------------------------------------------
 
+Alias de cliente: cliente1
+Número de habitación: 4
+Fecha comienzo: 2024-08-11
+Noches reservadas: 4
+Reserva Activa: true
+--------------------------------------------------
+

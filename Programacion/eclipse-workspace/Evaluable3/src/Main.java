@@ -77,7 +77,7 @@ public class Main {
 						System.out.println("Opción no válida \n");
 				}
 			}catch (InputMismatchException e) {
-				System.err.println("Error: Debes ingresar el número 1 o el 2");
+				System.err.println("Error: Debes ingresar el número 1 o el 2 \n");
 	            sc.next(); // Limpiamos el scanner
 	            opcion = 0; // Valor inválido para volver al bucle
 				
