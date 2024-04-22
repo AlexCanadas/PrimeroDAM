@@ -1,0 +1,14 @@
+Alias de cliente: cliente1
+Número de habitación: 1
+Fecha comienzo: 2024-04-23
+Noches reservadas: 2
+Reserva Activa: true
+--------------------------------------------------
+
+Alias de cliente: cliente1
+Número de habitación: 2
+Fecha comienzo: 2024-07-30
+Noches reservadas: 3
+Reserva Activa: true
+--------------------------------------------------
+

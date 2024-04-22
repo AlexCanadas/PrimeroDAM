@@ -24,7 +24,7 @@ public class Administrador extends Personas {
 		int opcion; 
 		Scanner sc = new Scanner (System.in);
 		do {
-			System.out.println("----- Menú Administradores-----");
+			System.out.println("\n----- Menú Administradores-----");
 			System.out.println("1. Dar de alta una habitación."); 
 			System.out.println("2. Dar de baja una habitación."); 
 			System.out.println("3. Modificar datos de una habitación.");
@@ -53,7 +53,7 @@ public class Administrador extends Personas {
 					doble.altaHabitacion(h);
 					break;
 				case 3:
-					HabFamiliar fam = new HabFamiliar(); // COMPROBAR BIEN
+					HabFamiliar fam = new HabFamiliar();
 					fam.altaHabitacion(h);
 					break;
 				case 4:

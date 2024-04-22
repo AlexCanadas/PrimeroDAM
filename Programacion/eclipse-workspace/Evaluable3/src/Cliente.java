@@ -1,3 +1,8 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -5,6 +10,7 @@ import java.util.Scanner;
 
 public class Cliente extends Personas {
 	private String nombre;
+	static String rutaArchivo = "Reservas.txt";
 
 public Cliente(String alias, String contraseña, String email, String nombre) {
 	super(alias, contraseña, email);
@@ -27,7 +33,7 @@ public static void menuCliente(ArrayList <Personas> p, ArrayList <Habitaciones> 
 	int opcion; 
 	Scanner sc = new Scanner (System.in);
 	do {
-		System.out.println("----- Menú Clientes-----");
+		System.out.println("\n----- Menú Clientes-----");
 		System.out.println("1. Reservar una habitación con fecha concreta"); 
 		System.out.println("2. Ver todas las habitaciones que están disponibles"); 
 		System.out.println("3. Comprobar si tienes reservas actualmente");
@@ -55,6 +61,27 @@ public static void menuCliente(ArrayList <Personas> p, ArrayList <Habitaciones> 
 							habABuscar.setEstaDisponible(false);
 							System.out.println("Habitación " + nuevaReserva.getNumHabitacion() + "reservada correctamente");
 							System.out.println(nuevaReserva.toString());
+							
+							try {
+								File archivo = new File(rutaArchivo); // Instanciamos la clase File
+								if (!archivo.exists()) {
+									archivo.createNewFile();
+								}
+									// Pasamos true para que solo añada la información en el fichero "archivo"
+						            FileWriter fw = new FileWriter(archivo, true);
+
+						            // Crear un BufferedWriter para escribir en el archivo
+						            BufferedWriter bw = new BufferedWriter(fw);
+						            
+						            bw.write(nuevaReserva.toString());  // Escribir los datos de la reserva en el archivo
+						            bw.newLine(); // Saltar a una nueva línea para la próxima reserva
+						            
+						            bw.close();
+							
+							}catch (IOException e) {
+					            System.err.println("Error al guardar la reserva: " + e.getMessage());
+							}
+							
 						}else {
 							System.out.println("Lo sentimos, esta habitación no está disponible");
 						}
