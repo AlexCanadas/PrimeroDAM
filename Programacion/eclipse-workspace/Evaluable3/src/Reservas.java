@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Reservas {
-	private LocalDate fechaComienzo;
+	private LocalDate fechaComienzo, fechaFin;
 	private int numHabitacion; 
 	private String aliasCliente;
 	private int nochesReserva;
@@ -14,6 +14,7 @@ public class Reservas {
 		this.aliasCliente = aliasCliente;
 		this.nochesReserva = nochesReserva;
 		this.reservaActiva = true;
+		fechaFin = this.fechaComienzo.plusDays(this.nochesReserva);
 	}
 
 	public Reservas() {
@@ -26,6 +27,14 @@ public class Reservas {
 
 	public void setFechaComienzo(LocalDate fechaComienzo) {
 		this.fechaComienzo = fechaComienzo;
+	}
+	
+	public LocalDate getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 
 	public int getNumHabitacion() {
@@ -64,14 +73,18 @@ public class Reservas {
 		return String.format("Alias de cliente: %s\n" +
 				"Número de habitación: %d\n" +
 				"Fecha comienzo: %s\n" +
+				"Fecha fin: %s\n" +
 				"Noches reservadas: %d\n" +
 				"Reserva Activa: %b\n" +
 				"--------------------------------------------------\n",
 				this.getAliasCliente(),
 				this.getNumHabitacion(),
 				this.getFechaComienzo(),
+				this.getFechaFin(),
 				this.getNochesReserva(),
 				this.isReservaActiva());
     }
+
+	
     
 }

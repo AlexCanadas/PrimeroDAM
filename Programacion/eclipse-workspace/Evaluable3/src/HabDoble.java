@@ -43,7 +43,7 @@ public class HabDoble extends Habitaciones {
 		int numHabitacion = sc.nextInt();
 		System.out.println("Introduce los metros cuadrados de la habitación: ");
 		double metrosCuadrados = sc.nextDouble();
-		System.out.println("Introduce el nuevo número de camas de esta habitación: ");
+		System.out.println("Introduce el número de camas de esta habitación: ");
 		int numCamas = sc.nextInt();
 		System.out.println("Tiene terraza (SI O NO):");
 		String boolTerraza = sc.next().toUpperCase();
@@ -150,7 +150,8 @@ public class HabDoble extends Habitaciones {
 	
 	@Override
 	public String toString() {
-		 return String.format("Número de habitación: %d\n" +
+		 return String.format("Habitacion DOBLE \n" +
+				 "Número de habitación: %d\n" +
                  "Metros cuadrados: %.2f\n" +
                  "Número de camas: %d\n" +
                  "Tiene terraza: %b\n" +

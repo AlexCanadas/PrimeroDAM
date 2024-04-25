@@ -130,7 +130,8 @@ public class HabIndividual extends Habitaciones {
 	@Override
 	public String toString() {
 		
-        return String.format("Número de habitación: %d\n" +
+        return String.format("Habitacion INDIVIDUAL \n" +
+        					"Número de habitación: %d\n" +
                             "Metros cuadrados: %.2f\n" +
                             "Tiene baño privado: %b\n" +
                             "Está disponible actualmente: %b\n" +

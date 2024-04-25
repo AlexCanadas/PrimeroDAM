@@ -1,7 +1,7 @@
 
 public abstract class Personas {
 	
-	private String alias;
+	protected String alias;
 	private String contraseña;
 	private String email;
 

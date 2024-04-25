@@ -143,7 +143,8 @@ public class HabFamiliar extends Habitaciones{
 	
 	@Override
 	public String toString() {
-		return String.format("Número de habitación: %d\n" +
+		return String.format("Habitacion FAMILIAR \n" +
+				"Número de habitación: %d\n" +
                 "Metros cuadrados: %.2f\n" +
                 "Número de camas: %d\n" +
                 "Número de niños: %d\n" +
