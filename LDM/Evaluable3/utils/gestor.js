@@ -22,19 +22,6 @@ range.addEventListener('input', function() {
     searchFilter("price", this.value);
   });
 
-//On change de un input y con el e.target.value llamar a globalSearch
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
-// Asigna el evento 'change' al campo de entrada
-inputSearch.addEventListener('change', function(event) {
-    console.log(inputSearch);
-    // Obtén el valor actual del campo de entrada cuando cambie
-    let inputString = event.target.value;
-    console.log(inputString);
-    // Llama a la función globalSearch pasando el valor del campo de entrada
-    globalSearch(inputString);
-  });
-
-
 removeFilterbutton.addEventListener('click', () => {
     removeFilters();
 });
