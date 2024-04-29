@@ -37,19 +37,16 @@ LIMIT 5;
 
 
 -- Muestra el número de pedidos y el precio medio de todos los pedidos que hayan realizado los clientes de cada empleado.
-SELECT a.employeeNumber, a.lastName, a.firstName, e.numOrders, e.Avg_payments
-FROM employees AS a
-LEFT JOIN (
-SELECT b.salesRepEmployeeNumber, b.customerNumber, COUNT(c.orderNumber) AS numOrders, ROUND(AVG(d.amount), 2) AS Avg_payments
-FROM customers AS b
-LEFT JOIN orders AS c
-USING(customerNumber)
-LEFT JOIN payments AS d
-USING(customerNumber)
-GROUP BY salesRepEmployeeNumber
-) AS e
-ON a.employeeNumber = e.salesRepEmployeeNumber
-ORDER BY e.Avg_payments DESC
+SELECT A.employeeNumber, A.lastName, A.firstName, COUNT(A.orderNumber) AS numeroPedidos, AVG(A.subtotal_Aux) AS precioMedioPedidos 
+FROM (
+    SELECT employees.employeeNumber, employees.lastName, employees.firstName, orders.orderNumber, SUM(orderdetails.quantityOrdered * orderdetails.priceEach) AS subtotal_Aux 
+    FROM employees 
+    LEFT JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber 
+    LEFT JOIN orders USING(customernumber) 
+    LEFT JOIN orderdetails USING(orderNumber) 
+    GROUP BY employees.employeeNumber, employees.lastName, employees.firstName, orders.orderNumber 
+    ) A 
+    GROUP BY A.employeeNumber, A.lastName, A.firstName;
 
 
 -- Muestra la cantidad total de productos vendidos por línea de producto.
@@ -145,3 +142,41 @@ BEGIN
     END WHILE;
     RETURN total;
 END $
+
+
+-- Escribe una función que dado el ID de un pedido devuelva el precio total de ese pedido, calculándolo a partir de detalles_pedido
+DELIMITER $
+CREATE FUNCTION precioTotalPedido(numPedido INT)
+RETURNS DOUBLE
+BEGIN 
+DECLARE resultado DOUBLE;
+SELECT SUM(subtotal) INTO resultado
+FROM detalles_pedido
+WHERE id_pedido = numPedido;
+RETURN resultado;
+END$
+
+
+-- Escribe un procedimiento para actualizar la tabla de empleados que reciba como parámetro id_empleado e id_oficina. 
+-- Tras comprobar si la oficina introducida existe debemos actualizar si existe y no hacer nada si no existe.
+DELIMITER $ 
+CREATE PROCEDURE actualizarEmpleados(numEmpleado INT, numOficina INT)
+BEGIN
+    DECLARE oficina_existe BOOLEAN;
+
+    -- Verificar si la oficina con numOficina existe
+    SELECT COUNT(*) > 0 INTO oficina_existe
+    FROM oficinas
+    WHERE id_oficina = numOficina;
+
+    -- Si oficina_existe es TRUE, actualizar el id_oficina del empleado numEmpleado
+    IF oficina_existe THEN
+        UPDATE empleados
+        SET id_oficina = numOficina
+        WHERE id_empleado = numEmpleado;
+        SELECT 'Empleado actualizado correctamente.' AS mensaje;
+    ELSE
+        SELECT 'La oficina especificada no existe.' AS mensaje;
+    END IF;
+END$
+
