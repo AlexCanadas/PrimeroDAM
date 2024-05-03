@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning</title>
+
+    <!-- Librerías de bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Librería de iconos de bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Librería de sweetalert (no usado) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Librería de animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <div class="container text-center mt-3">
+      <h2>Amazon</h2>
+      <hr style="border-top: 4px solid rgb(2, 2, 17); width: 100%" />
+    </div>
+  </head>
+
+  <body>
+    <section>
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col-md-auto">
+            <span><b>Ajusta los filtros como quieras:</b></span>
+          </div>
+          <div class="col-md-auto">
+            <label for="range" class="form-label">Precio</label>
+            <input type="range" min="0" max="2000" id="range" value="0" />
+            <p><span id="priceSelected"> </span>€</p>
+          </div>
+          <div class="col-md-auto">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categoría
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                id="dropdownCategory"
+              ></ul>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Marca
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                id="dropdownMarca"
+              ></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section>
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-11">
+              <h4>Productos disponibles</h4>
+              <button id="borrarFiltros">Borrar filtros</button>
+              <span id="priceHtml"></span>
+              <span id="filtersSelected"></span>
+              <div class="row mt-3 border-top" id="resultados"></div>
+            </div>
+
+            <div class="col-1 border-start border-black">
+              <h4>Carrito</h4>
+              <div>
+                <div class="cart-icon-container">
+                  <span id="cartCounter"></span>
+                  <i
+                    class="bi bi-cart4"
+                    style="font-size: 3rem; cursor: pointer"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions"
+                  ></i>
+                </div>
+
+                <div
+                  class="offcanvas offcanvas-end"
+                  data-bs-scroll="true"
+                  tabindex="-1"
+                  id="offcanvasWithBothOptions"
+                  aria-labelledby="offcanvasWithBothOptionsLabel"
+                >
+                  <div class="offcanvas-header">
+                    <h5
+                      class="offcanvas-title"
+                      id="offcanvasWithBothOptionsLabel"
+                    >
+                      Carrito de compras
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="offcanvas"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="offcanvas-body">
+                    <div>
+                      <b>Precio total: <span id="precioFinal">0</span>€</b>
+                    </div>
+                    <div class="row" id="carrito"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./utils/gestor.js"></script>
+  </body>
+</html>
