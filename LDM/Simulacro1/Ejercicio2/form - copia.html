@@ -24,8 +24,12 @@
     <div class="contact_form">
       <div class="formulario">
         <div class="container">
-          <h1>Formulario de contacto</h1>
-          <h3>Escríbenos y en breve los pondremos en contacto contigo</h3>
+          <div class="text-center">
+            <h1>Formulario de contacto</h1>
+          </div>
+          <h3>
+            <b>Escríbenos y en breve los pondremos en contacto contigo</b>
+          </h3>
 
           <form action="form.php" method="post">
             <p>
@@ -67,7 +71,7 @@
               <label for="mensaje" class="colocar_mensaje">
                 <span class="obligatorio">Mensaje *</span>
               </label>
-              <input type="text" />
+              <textarea name="mensaje" rows="4" required></textarea>
             </p>
 
             <button type="submit" name="enviar_formulario" id="enviar">
