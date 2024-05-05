@@ -5,9 +5,11 @@
 <biblioteca>
     <libro>
         <titulo>La vida está en otra parte</titulo>
-        <autor>Milan Kundera</autor>
+        <autor>
+            <nombre>Milan Kundera</nombre>
+        </autor>
         <fechaPublicacion>
-            <año>1973</año>
+            <anio>1973</anio>
         </fechaPublicacion>
     </libro>
     <libro>
@@ -17,7 +19,7 @@
             <fechaNacimiento>28/03/1936</fechaNacimiento>
         </autor>
         <fechaPublicacion>
-            <año>1972</año>
+            <anio>1972</anio>
         </fechaPublicacion>
     </libro>
     <libro>
@@ -27,7 +29,7 @@
             <fechaNacimiento>28/03/1936</fechaNacimiento>
         </autor>
         <fechaPublicacion>
-            <año>1969</año>
+            <anio>1969</anio>
         </fechaPublicacion>
     </libro>
 </biblioteca>

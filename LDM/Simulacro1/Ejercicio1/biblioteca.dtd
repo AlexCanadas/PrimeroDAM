@@ -2,11 +2,9 @@
 <!ELEMENT biblioteca (libro+)>
 <!ELEMENT libro (titulo, autor, fechaPublicacion)>
 <!ELEMENT titulo (#PCDATA)>
-
 <!ELEMENT autor (nombre, fechaNacimiento?)>
 <!ELEMENT nombre (#PCDATA)>
-<!ELEMENT fechaNacimiento (#PCDATA)>
-
-<!ELEMENT fechaPublicacion (año)>
-<!ELEMENT año (#PCDATA)>
+<!ELEMENT fechaNacimiento (#PCDATA)?>
+<!ELEMENT fechaPublicacion (anio)>
+<!ELEMENT anio (#PCDATA)>
 ]>
