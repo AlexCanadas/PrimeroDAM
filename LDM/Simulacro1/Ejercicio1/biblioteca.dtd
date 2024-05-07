@@ -1,10 +1,7 @@
-<!DOCTYPE biblioteca [
 <!ELEMENT biblioteca (libro+)>
 <!ELEMENT libro (titulo, autor, fechaPublicacion)>
 <!ELEMENT titulo (#PCDATA)>
-<!ELEMENT autor (nombre, fechaNacimiento?)>
-<!ELEMENT nombre (#PCDATA)>
-<!ELEMENT fechaNacimiento (#PCDATA)?>
-<!ELEMENT fechaPublicacion (anio)>
-<!ELEMENT anio (#PCDATA)>
-]>
+<!ELEMENT autor (#PCDATA)>
+<!ATTLIST autor fechaNacimiento CDATA #IMPLIED>
+<!ELEMENT fechaPublicacion EMPTY>
+<!ATTLIST fechaPublicacion año CDATA #REQUIRED>
