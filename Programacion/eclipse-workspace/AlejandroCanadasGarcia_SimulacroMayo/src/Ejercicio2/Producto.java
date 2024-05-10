@@ -1,7 +1,7 @@
 package Ejercicio2;
 
 public abstract class Producto {
-    private double precio;
+    protected double precio;
     protected String marca, modelo, memoria;
     protected int descuento;
 
