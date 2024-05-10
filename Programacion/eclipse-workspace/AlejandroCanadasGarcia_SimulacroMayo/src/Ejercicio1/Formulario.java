@@ -5,83 +5,94 @@ import java.util.Scanner;
 
 public class Formulario {
 
-	public static void main(String[] args) {
-		int opcion;
-		Scanner sc = new Scanner(System.in);
-		ArrayList<DatosFormulario> f = new ArrayList<>();
-		boolean datosCompletados = false;
-		
-		do {
-			mostrarMenu();
-			opcion = sc.nextInt();
-			switch (opcion) {
-			case 1:
-                rellenarUsuario(sc, f);
-                break;
-            case 2:
-                rellenarContraseña(sc, f);
-                break;
-            case 3:
-                rellenarDni(sc, f);
-                break;
-            case 4:
-                if (!f.isEmpty() && verificarDatosCompletos(f.get(f.size() - 1))) {
-                    System.out.println("¡Que tengas un buen día! \n");
-                    obtenerUltimo(f);
-                    System.out.println(f);
-                    datosCompletados = true;
-                } else {
-                    System.out.println("Faltan datos por rellenar.\n");
-                }
-                break;
-            default:
-                System.out.println("Opción no válida \n");
-                break;
-			}
-		}while(opcion!=4 || datosCompletados);
-		
-	}
-	
-	public static void mostrarMenu() {
-		System.out.println("----- Menú de opciones -----");
-		System.out.println("1. Rellenar usuario");
-		System.out.println("2. Rellenar contraseña");
-		System.out.println("3. Rellenar DNI");
-		System.out.println("4. Salir");
-	}
+    public static void main(String[] args) {
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+        Usuario usuarioActual = null;
+        boolean datosCompletos = false;
 
-	public static void rellenarUsuario(Scanner sc, ArrayList<DatosFormulario> f) {
-        System.out.println("Introduce el nombre de usuario: ");
-        String nombreUsuario = sc.next();
-        DatosFormulario datos = obtenerUltimo(f);
-        datos.setUsuario(nombreUsuario);
+        do {
+            MostrarMenu();
+            opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    usuarioActual = new Usuario();  // Nuevo Usuario
+                    rellenarNombreYApellidos(sc, usuarioActual);
+                    break;
+
+                case 2:
+                    if (usuarioActual != null) {
+                        rellenarContraseña(sc, usuarioActual);
+                    }
+                    break;
+
+                case 3:
+                    if (usuarioActual != null) {
+                        rellenarDni(sc, usuarioActual);
+                    }
+                    break;
+
+                case 4:
+                    if (usuarioActual != null && verificarDatosCompletos(usuarioActual)) {
+                        listaUsuarios.add(usuarioActual);  // Añadimos si está completo
+                        System.out.println("¡Que tengas un buen día! \n" + usuarioActual);
+                        datosCompletos = true;
+                    } else {
+                        System.out.println("Faltan datos por rellenar.\n");
+                    }
+                    break;
+
+                default:
+                    System.out.println("Opción no válida, inténtelo nuevamente");
+            }
+
+        } while (opcion != 4 || !datosCompletos);
+
+        sc.close();
     }
 
-    public static void rellenarContraseña(Scanner sc, ArrayList<DatosFormulario> f) {
+    public static void MostrarMenu() {
+        System.out.println("\nMenú de opciones");
+        System.out.println("1. Rellenar usuario");
+        System.out.println("2. Rellenar contraseña");
+        System.out.println("3. Rellenar DNI");
+        System.out.println("4. Finalizar");
+    }
+
+    public static void rellenarNombreYApellidos(Scanner sc, Usuario usuario) {
+        System.out.println("Introduce el nombre: ");
+        String nombre = sc.nextLine();
+        System.out.println("Introduce los apellidos: ");
+        String apellidos = sc.nextLine();
+        usuario.setNombre(nombre);
+        usuario.setApellido(apellidos);
+    }
+
+    public static void rellenarContraseña(Scanner sc, Usuario usuario) {
         System.out.println("Introduce la contraseña: ");
-        String contraseña = sc.next();
-        DatosFormulario datos = obtenerUltimo(f);
-        datos.setContraseña(contraseña);
+        String contraseña = sc.nextLine();
+        usuario.setContraseña(contraseña);
     }
 
-    public static void rellenarDni(Scanner sc, ArrayList<DatosFormulario> f) {
+    public static void rellenarDni(Scanner sc, Usuario usuario) {
         System.out.println("Introduce el DNI: ");
-        String dni = sc.next();
-        DatosFormulario datos = obtenerUltimo(f);
-        datos.setDni(dni);
+        String dni = sc.nextLine();
+        try {
+            LongitudDNINoValidaException.validarDNI(dni);
+            UltimoDigitoNoLetraException.validarDNI2(dni);
+            usuario.setDni(dni);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    //Método para verificar que tengamos todos los datos
-    public static boolean verificarDatosCompletos(DatosFormulario datos) {
-        return datos.getUsuario() != null && datos.getContraseña() != null && 
-        		datos.getDni() != null;
-    }
-    
-    //Método para obtener el último usuario
-    public static DatosFormulario obtenerUltimo(ArrayList<DatosFormulario> f) {
-        if (f.isEmpty()) {
-            f.add(new DatosFormulario());
-        }
-        return f.get(f.size() - 1);
+    public static boolean verificarDatosCompletos(Usuario usuario) {
+        return usuario.getNombre() != null && !usuario.getNombre().isEmpty() &&
+               usuario.getApellido() != null && !usuario.getApellido().isEmpty() &&
+               usuario.getDni() != null && !usuario.getDni().isEmpty() &&
+               usuario.getContraseña() != null && !usuario.getContraseña().isEmpty();
     }
 }

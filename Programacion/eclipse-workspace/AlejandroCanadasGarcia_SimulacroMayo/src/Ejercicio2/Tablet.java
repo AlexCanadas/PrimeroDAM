@@ -38,13 +38,13 @@ public class Tablet extends Producto {
 		this.descuento = descuento;
 	}
 	
-	/*
-	 * public boolean equals(Object o) { if (o instanceof TelefonoMovil) { return
-	 * this.marca.equals(((Tablet)o).getMarca()) &&
-	 * this.modelo.equals(((Tablet)o).getModelo()) &&
-	 * this.memoria.equals(((Tablet)o).getMemoria()); }else { return
-	 * super.equals(o); } }
-	 */
+	
+	public boolean equals(Object o) { if (o instanceof Tablet) { return
+	  this.marca.equals(((Tablet)o).getMarca()) &&
+	  this.modelo.equals(((Tablet)o).getModelo()) &&
+	  this.memoria.equals(((Tablet)o).getMemoria()); }else { return
+	  super.equals(o); } }
+	 
 
 	@Override
     public String toString() {
