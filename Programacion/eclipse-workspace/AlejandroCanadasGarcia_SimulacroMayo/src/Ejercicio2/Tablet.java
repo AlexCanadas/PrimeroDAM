@@ -1,18 +1,12 @@
 package Ejercicio2;
 
 public class Tablet extends Producto {
-    protected String marca, modelo, memoria;
-    protected int descuento;
 
     public Tablet(double precio, String marca, String modelo, String memoria, int descuento) {
-        super(precio);
-        this.marca = marca;
-        this.modelo = modelo;
-        this.memoria = memoria;
-        this.descuento = descuento;
-    }
+		super(precio, marca, modelo, memoria, descuento);
+	}
 
-    public String getMarca() {
+	public String getMarca() {
         return marca;
     }
 
@@ -43,19 +37,31 @@ public class Tablet extends Producto {
 	public void setDescuento(int descuento) {
 		this.descuento = descuento;
 	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof TelefonoMovil) {
+			return this.marca.equals(((Tablet)o).getMarca()) 
+					&& this.modelo.equals(((Tablet)o).getModelo()) &&
+					this.memoria.equals(((Tablet)o).getMemoria());
+		}else {
+			return super.equals(o);
+		}
+	}
 
 	@Override
     public String toString() {
         return "\nTablet: \n" +
-                "Marca: " + marca + "\n" +
-                "Modelo: " + modelo + "\n" +
+                "Marca: " + getMarca() + "\n" +
+                "Modelo: " + getModelo() + "\n" +
                 "Precio original: " + getPrecio() + "€\n" +
-                "Descuento: " + getDescuento() + "%\n";
+                "Descuento: " + getDescuento() + "%\n" +
+                "Precio final: " + calcularPrecioFinal() + "€\n";
     }
 
 	@Override
 	public double calcularPrecioFinal() {
-		double descuentoExacto = getPrecio() * (getDescuento()/100);
+		
+		double descuentoExacto = getPrecio() * (getDescuento() / 100.0);
 		double precioFinal = getPrecio() - descuentoExacto;
 		
 		return precioFinal;
