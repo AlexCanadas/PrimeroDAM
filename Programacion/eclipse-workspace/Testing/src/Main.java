@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -52,9 +53,20 @@ public class Main {
 		
 		for (Objeto1 i: arrayTest) { //Solo el objeto que tenga de nombre alex
 			if (i.getName().equals("alex")) {
-				System.out.println("Ahora encontramos el objeto de manera mas complicada: " + i);
+				System.out.println("Ahora encontramos el objeto de manera mas complicada: " + i + "\n");
 			}
 		}
+		
+		try {
+			//ArrayList <Objeto1> variable = Objeto1.lista();
+			for (Objeto1 p : Objeto1.lista()) {
+				System.out.println(p.getName() + p.getHairColor() + p.getAge());
+				
+			}
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		
 		
 	}
 

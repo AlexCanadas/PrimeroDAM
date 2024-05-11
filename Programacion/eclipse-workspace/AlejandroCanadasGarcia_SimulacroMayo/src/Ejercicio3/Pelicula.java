@@ -46,11 +46,11 @@ public class Pelicula {
 		}
 	    
 		public String toString() {
-	        return "Película: " +
-	               "título=" + titulo +
-	               ", director='" + director +
-	               ", puntuaciones=" + puntuacion1 + ", " + puntuacion2 + ", " + puntuacion3 +
-	               ", puntuación media=" + PuntuacionMedia();
+	        return "\nPelícula: " +
+	               "\ntítulo: " + titulo +
+	               "\ndirector: '" + director +
+	               "\npuntuaciones: " + puntuacion1 + ", " + puntuacion2 + ", " + puntuacion3 +
+	               "\npuntuación media: " + PuntuacionMedia();
 	    }
 		
 		public static ArrayList<Pelicula> leerPeliculas(String nombreFichero) throws IOException {

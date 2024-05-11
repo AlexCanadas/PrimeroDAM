@@ -18,7 +18,7 @@ ArrayList<Pelicula> peliculasArray = new ArrayList<Pelicula>();
 		
 		//Se recorre el ArrayList con un foreach
         for (Pelicula item : peliculasArray) {
-            System.out.println("Película: " + item.getTitulo() + ", Director: " + item.getDirector() + ", Puntuación Media: " + item.PuntuacionMedia());
+        	System.out.println(item);
         }
         
         // Leer películas desde el fichero
