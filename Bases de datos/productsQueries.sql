@@ -37,7 +37,7 @@ LEFT JOIN empleados b ON a.id_representante_ventas = b.id_empleado
 WHERE a.id_representante_ventas = 3;
 
 --¿Cuál es el total de pagos realizados por cada cliente?
-SELECT a.id_cliente, a.nombre, SUM(b.id_pago) totalNumPagos
+SELECT a.id_cliente, a.nombre, COUNT(b.id_pago) totalNumPagos
 FROM clientes a
 LEFT JOIN pagos b USING (id_cliente)
 GROUP BY id_cliente;
