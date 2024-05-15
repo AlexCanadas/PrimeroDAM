@@ -61,3 +61,19 @@ FROM clientes a
 LEFT JOIN pedidos b USING(id_cliente)
 LEFT JOIN pagos c USING(id_cliente)
 GROUP BY id_cliente;
+
+-- Saca cuantos empleados reportan a que persona, incluyendo sus datos (con resultados vacíos)
+SELECT a.id_empleado, a.nombre, a.apellido, a.puesto, b.numEmpleados
+FROM empleados a 
+LEFT JOIN (
+    		SELECT id_reporta_a, COUNT(id_empleado) numEmpleados 
+    		FROM empleados 
+    		GROUP BY id_reporta_a) b
+            ON a.id_empleado = b.id_reporta_a;
+
+-- Saca cuantos empleados reportan a que persona, incluyendo sus datos (sin resultados vacíos)
+SELECT a.id_empleado, a.nombre, a.apellido, a.puesto, COUNT(b.id_empleado) numEmpleados 
+FROM empleados a 
+LEFT JOIN empleados b ON a.id_empleado = b.id_reporta_a
+GROUP BY b.id_reporta_a
+ORDER BY a.id_empleado ASC;
