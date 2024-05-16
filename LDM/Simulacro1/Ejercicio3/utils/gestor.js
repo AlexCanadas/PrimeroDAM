@@ -21,8 +21,6 @@ let web = inputWeb.value;
 let asunto = inputAsunto.value;
 let mensaje = inputMensaje.value;
 
-console.log(nombre);
-
 if(nombre&&email&&telefono&&asunto&&mensaje) {
   
 let nuevaRespuesta = {
@@ -35,6 +33,8 @@ let nuevaRespuesta = {
 };
 
 console.log(nuevaRespuesta);
+respuestas.push(nuevaRespuesta);
+console.log(respuestas);
 
 output.innerHTML = `
             <div class="resultado">
