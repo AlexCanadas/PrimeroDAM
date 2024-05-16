@@ -129,3 +129,13 @@ p{
 	outline:0;
 	border: 1px solid #97d848;
 }
+
+.resultado {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	max-width: 600px;
+	margin: 20px auto;
+}

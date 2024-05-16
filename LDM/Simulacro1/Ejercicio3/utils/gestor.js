@@ -13,7 +13,6 @@ let respuestas = [];
 formulario.addEventListener("submit", function(event) {
     event.preventDefault(); // Previene el envío del formulario y la recarga de la página
     
-    
 // Obtener los valores de los campos del formulario
 let nombre = inputNombre.value;
 let email = inputEmail.value;
@@ -38,13 +37,15 @@ let nuevaRespuesta = {
 console.log(nuevaRespuesta);
 
 output.innerHTML = `
-            <h3>Datos del Formulario</h3>
-            <p><strong>Nombre:</strong> ${nuevaRespuesta.nombre}</p>
-            <p><strong>Email:</strong> ${nuevaRespuesta.email}</p>
-            <p><strong>Teléfono:</strong> ${nuevaRespuesta.telefono}</p>
-            <p><strong>Web:</strong> ${nuevaRespuesta.web}</p>
-            <p><strong>Asunto:</strong> ${nuevaRespuesta.asunto}</p>
-            <p><strong>Mensaje:</strong> ${nuevaRespuesta.mensaje}</p>
+            <div class="resultado">
+                <h2>Datos del Formulario</h3>
+                <p><strong>Nombre:</strong> ${nuevaRespuesta.nombre}</p>
+                <p><strong>Email:</strong> ${nuevaRespuesta.email}</p>
+                <p><strong>Teléfono:</strong> ${nuevaRespuesta.telefono}</p>
+                <p><strong>Web:</strong> ${nuevaRespuesta.web}</p>
+                <p><strong>Asunto:</strong> ${nuevaRespuesta.asunto}</p>
+                <p><strong>Mensaje:</strong> ${nuevaRespuesta.mensaje}</p>
+            </div>
         `;
 
 // Limpiar los campos del formulario después del envío
