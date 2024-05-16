@@ -1,0 +1,80 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulario de contacto</title>
+    <!-- <link rel="stylesheet" type="text/css" href="contact-form.css" /> -->
+    <link rel="stylesheet" href="./css/contact-form.css" />
+  </head>
+
+  <body>
+    <!-- formulario de contacto en html y css -->
+
+    <div class="contact_form">
+      <div class="formulario">
+        <div class="text-center">
+          <h1>Formulario de contacto</h1>
+        </div>
+        <h3>
+          <b>Escríbenos y en breve los pondremos en contacto contigo</b>
+        </h3>
+
+        <form action="form.php" method="post">
+          <p>
+            <label for="nombre" class="colocar_nombre">
+              <span class="obligatorio">Nombre *</span>
+            </label>
+            <input id="inputNombre" type="text" />
+          </p>
+
+          <p>
+            <label for="email" class="colocar_email">
+              <span class="obligatorio">Email *</span>
+            </label>
+            <input id="inputEmail" type="email" />
+          </p>
+
+          <p>
+            <label for="telefone" class="colocar_telefono">
+              <span class="obligatorio">Teléfono *</span>
+            </label>
+            <input id="inputTelefono" type="number" />
+          </p>
+
+          <p>
+            <label for="website" class="colocar_website">
+              <span class="obligatorio">Sitio Web</span>
+            </label>
+            <input id="inputWeb" type="text" />
+          </p>
+
+          <p>
+            <label for="asunto" class="colocar_asunto">
+              <span class="obligatorio">Asunto *</span>
+            </label>
+            <input id="inputAsunto" type="text" />
+          </p>
+
+          <p>
+            <label for="mensaje" class="colocar_mensaje">
+              <span class="obligatorio">Mensaje *</span>
+            </label>
+            <textarea
+              id="inputMensaje"
+              name="mensaje"
+              rows="4"
+              required
+            ></textarea>
+          </p>
+
+          <button type="submit" name="enviar_formulario" id="enviar">
+            <p>Enviar</p>
+          </button>
+
+          <p class="aviso">
+            <span class="obligatorio"> * </span>los campos son obligatorios.
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

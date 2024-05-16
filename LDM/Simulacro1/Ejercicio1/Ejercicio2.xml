@@ -8,5 +8,5 @@
 
 <mediosDeTransporte>
     <bicicleta velocidad="100km/h" />
-    <patinete velocidadMaxima="50 km/h" />
+    <patinete velocidadMaxima="50km/h" />
 </mediosDeTransporte>

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE biblioteca SYSTEM "./biblioteca.dtd">
+
 <biblioteca>
     <libro>
-        <titulo>La vida esta en otra parte </titulo>
+        <titulo>La vida está en otra parte</titulo>
         <autor>Milan Kundera</autor>
-        <fechaPublicacion año="1973"></fechaPublicacion>
+        <fechaPublicacion año="1973"/>
     </libro>
     <libro>
-        <titulo>Pantaleon y las visitadoras</titulo>
+        <titulo>Pantaleón y las visitadoras</titulo>
         <autor fechaNacimiento="28/03/1936">Mario Vargas Llosa</autor>
-        <fechaPublicacion año="1973"></fechaPublicacion>
+        <fechaPublicacion año="1973"/>
     </libro>
     <libro>
-        <titulo>Conversacion en la catedral</titulo>
-        <autor fechaNacimiento="28/03/1936">Mario Vargas LLosa</autor>
-        <fechaPublicacion año="1969"></fechaPublicacion>
+        <titulo>Conversación en la catedral</titulo>
+        <autor fechaNacimiento="28/03/1936">Mario vargas Llosa</autor>
+        <fechaPublicacion año="1936"/>
     </libro>
 </biblioteca>
