@@ -51,10 +51,8 @@ output.innerHTML = `
 // Limpiar los campos del formulario después del envío
 formulario.reset();
 
-// Opcional: mostrar un mensaje de éxito al usuario
 alert("¡Respuesta enviada con éxito!");
 } else {
-    // Mostrar un mensaje de error si algún campo requerido está vacío
     alert("Por favor completa todos los campos requeridos.");
 }
 });
