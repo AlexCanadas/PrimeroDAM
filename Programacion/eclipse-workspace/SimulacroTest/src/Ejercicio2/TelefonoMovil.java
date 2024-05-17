@@ -4,12 +4,10 @@ public class TelefonoMovil extends Producto {
 
 	public TelefonoMovil() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public TelefonoMovil(String modelo, String marca, double precio, double descuento) {
 		super(modelo, marca, precio, descuento);
-
 	}
 
 	@Override

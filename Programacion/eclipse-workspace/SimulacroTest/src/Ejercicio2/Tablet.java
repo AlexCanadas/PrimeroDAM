@@ -4,12 +4,10 @@ public class Tablet extends Producto {
 
 	public Tablet() {
 		super();
-
 	}
 
 	public Tablet(String modelo, String marca, double precio, double descuento) {
 		super(modelo, marca, precio, descuento);
-
 	}
 
 	@Override
