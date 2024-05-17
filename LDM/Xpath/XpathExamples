@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPathExpressions>
+    <Expression name="Sacar libros con precio mayor a 35">
+        /bookstore/book[price>35.00]
+    </Expression>
+    <Expression name="Sacar todos los libros con atributo children">
+        /bookstore/book[@category='children']
+    </Expression>
+    <Expression name="Sacar libros con apellido autor Smith">
+        //book[author/last-name='Smith']
+    </Expression>
+    <Expression name="Sacar el texto de libros de mas del 2010">
+        //book[year>2010]/title/text()
+    </Expression>
+    <Expression name="Sacar el texto de libros de mas del 2010 y tienen atributo web">
+        //book[year>2010 and @category="web"]/title/text()
+    </Expression>
+    <Expression name="Sacar el primer nodo de book">
+        /bookstore/book[1]
+    </Expression>
+    <Expression name="Sacar la suma de todos los precios que tengan atributo web">
+        sum(/bookstore/book[@category="web"]/price/text())
+    </Expression>
+    <Expression name="Contar cuantos libros tienen atributo web">
+        count(/bookstore/book[@category="web"])
+    </Expression>
+    <Expression name="Sacar los libros que su titulo sea mayor que 12">
+        //book/title[string-length(text())>12]
+    </Expression>
+</XPathExpressions>
