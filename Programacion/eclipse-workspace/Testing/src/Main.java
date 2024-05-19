@@ -1,4 +1,7 @@
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -49,24 +52,37 @@ public class Main {
 		 * (i.getName().equals("alex")) {
 		 * System.out.println("Ahora encontramos el objeto de manera mas complicada: " +
 		 * i + "\n"); } }
-		 */
-
-		/*
+		 * 
+		 * 
+		 * 
 		 * System.out.println("Dime el DNI: "); String dni = sc.next(); try {
 		 * DniExcepction.comprobarDni(dni); System.out.println("Dni correcto"); } catch
 		 * (Exception e) { System.out.println(e.getMessage()); }
 		 */
 
-		try {
-			prueba = Objeto1.salida("src/test.txt", prueba);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		/*
+		 * try { prueba = Objeto1.salida("src/test.txt", prueba); } catch
+		 * (FileNotFoundException e) { e.printStackTrace(); } catch (IOException e) {
+		 * e.printStackTrace(); }
+		 * 
+		 * for (Objeto1 x : prueba) { System.out.println(x); }
+		 */
 
-		for (Objeto1 x : prueba) {
-			System.out.println(x);
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("src/test.txt"));
+			String linea = br.readLine();
+			if (linea != null) {
+				try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/test.txt", true))) {
+					// Objeto1 obj = new Objeto1("Alex", "Negro", 33, true);
+					// String elementos[];
+					// bw.newLine();
+					bw.write("Hola mundo");
+				}
+
+			}
+
+		} catch (Exception e) {
+			e.getMessage();
 		}
 
 	}

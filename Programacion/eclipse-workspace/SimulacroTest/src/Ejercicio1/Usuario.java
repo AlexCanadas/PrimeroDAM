@@ -1,23 +1,24 @@
 package Ejercicio1;
 
 public class Usuario {
+	String usuario, contraseña, dni;
 
-	protected String nombre, apellido, contraseña, dni;
-
-	public String getNombre() {
-		return nombre;
+	public Usuario(String usuario, String contraseña, String dni) {
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+		this.dni = dni;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public Usuario() {
+
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getContraseña() {
@@ -36,22 +37,9 @@ public class Usuario {
 		this.dni = dni;
 	}
 
-	public Usuario(String nombre, String apellido, String contraseña, String dni) {
-
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.contraseña = contraseña;
-		this.dni = dni;
-	}
-
-	public Usuario() {
-
-	}
-
 	@Override
 	public String toString() {
-		return "Datos del formulario: \n" + "Nombre: " + nombre + "\n" + "Apellido: " + apellido + "\n" + "Contraseña: "
-				+ contraseña + "\n" + "DNI: " + dni;
+		return "\n Usuario \n {usuario: " + usuario + " \n contraseña: " + contraseña + " \n dni: " + dni + "}";
 	}
 
 }

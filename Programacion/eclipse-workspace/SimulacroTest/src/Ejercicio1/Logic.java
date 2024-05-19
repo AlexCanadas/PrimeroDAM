@@ -1,16 +1,15 @@
 package Ejercicio1;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Logic {
-	Scanner sc = new Scanner(System.in);
-	ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-	int opcion;
-	boolean datosCompletos = false;
-	Usuario usuarioActual = new Usuario();
 
-	public void iniciarAplicacion() {
+	public static void iniciarAplicacion() {
+
+		int opcion;
+		Scanner sc = new Scanner(System.in);
+		Usuario nuevoUsuario = new Usuario();
+		boolean salir = false;
 
 		do {
 			mostrarMenu();
@@ -19,73 +18,73 @@ public class Logic {
 
 			switch (opcion) {
 			case 1:
-				rellenarNombreYApellidos(sc, usuarioActual);
+				rellenarUsuario(sc, nuevoUsuario);
 				break;
 			case 2:
-				rellenarContraseña(sc, usuarioActual);
+				rellenarContraseña(sc, nuevoUsuario);
 				break;
 			case 3:
-				rellenarDni(sc, usuarioActual);
+				rellenarDni(sc, nuevoUsuario);
 				break;
 			case 4:
-				if (verificarDatosCompletos(usuarioActual)) {
-					datosCompletos = true;
-					listaUsuarios.add(usuarioActual);
-					System.out.println("Que tengas un buen día \n");
-					System.out.println(usuarioActual);
-				} else {
-					System.out.println("Faltan datos por rellenar");
+				if (datosCompletos(nuevoUsuario)) {
+					salir = true;
+					System.out.println(nuevoUsuario);
+					System.out.println("¡Que tengas un buen día!");
 				}
 				break;
 			default:
 				System.out.println("Opción incorrecta, inténtelo de nuevo \n");
 			}
 
-		} while (opcion != 4 || !datosCompletos);
+		} while (opcion != 4 || !salir);
+
 		sc.close();
 
 	}
 
 	public static void mostrarMenu() {
-		System.out.println("\nMenú de opciones");
-		System.out.println("1. Rellenar usuario");
-		System.out.println("2. Rellenar contraseña");
-		System.out.println("3. Rellenar DNI");
-		System.out.println("4. Finalizar");
+		System.out.println("----Menú de opciones----");
+		System.out.println("1. Introduce el nombre de usuario");
+		System.out.println("2. Introduce la contraseña del usuario");
+		System.out.println("3. Introduce el DNI del usuario");
+		System.out.println("4. Salir");
 	}
 
-	public static void rellenarNombreYApellidos(Scanner sc, Usuario usuario) {
-		System.out.println("Introduce el nombre: ");
+	public static void rellenarUsuario(Scanner sc, Usuario nuevoUsuario) {
+		System.out.println("Introduce el nombre del usuario: ");
 		String nombre = sc.nextLine().trim();
-		System.out.println("Introduce los apellidos: ");
-		String apellidos = sc.nextLine().trim();
-		usuario.setNombre(nombre);
-		usuario.setApellido(apellidos);
+		nuevoUsuario.setUsuario(nombre);
 	}
 
-	public static void rellenarContraseña(Scanner sc, Usuario usuario) {
-		System.out.println("Introduce la contraseña: ");
+	public static void rellenarContraseña(Scanner sc, Usuario nuevoUsuario) {
+		System.out.println("Introduce la contraseña del usuario: ");
 		String contraseña = sc.nextLine().trim();
-		usuario.setContraseña(contraseña);
+		nuevoUsuario.setContraseña(contraseña);
 	}
 
-	public static void rellenarDni(Scanner sc, Usuario usuario) {
-		System.out.println("Introduce el DNI: ");
+	public static void rellenarDni(Scanner sc, Usuario nuevoUsuario) {
+		System.out.println("Introduce el DNI del usuario: ");
 		String dni = sc.nextLine().trim();
 		try {
-			LongitudDNINoValidaException.validarDni(dni);
-			UltimoDigitoNoLetraException.validarDni2(dni);
-			usuario.setDni(dni);
+			LongitudDNINoValidaException.comprobarLongitudDni(dni);
+			UltimoDigitoNoLetraException.comprobarUltimoDigito(dni);
+			nuevoUsuario.setDni(dni);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
 
 	}
 
-	public static boolean verificarDatosCompletos(Usuario usuario) {
-		return usuario.getNombre() != null && !usuario.getNombre().isEmpty() && usuario.getApellido() != null
-				&& !usuario.getApellido().isEmpty() && usuario.getContraseña() != null
-				&& !usuario.getContraseña().isEmpty() && usuario.getDni() != null && !usuario.getDni().isEmpty();
+	public static boolean datosCompletos(Usuario nuevoUsuario) {
+		if (nuevoUsuario.getUsuario() != null && nuevoUsuario.getContraseña() != null
+				&& nuevoUsuario.getDni() != null) {
+			return true;
+		} else {
+			System.out.println("Faltan datos por rellenar \n");
+		}
+		return false;
 
 	}
+
 }

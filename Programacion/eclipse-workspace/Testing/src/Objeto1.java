@@ -121,4 +121,12 @@ public class Objeto1 {
 		}
 	}
 
+	public static void escribirAlgoEnArchivo(String nombreArchivo) {
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter("src/test.txt"));
+		} catch (Exception e) {
+
+		}
+	}
+
 }
