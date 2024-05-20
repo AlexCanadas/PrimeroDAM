@@ -18,8 +18,8 @@ formulario.addEventListener("submit", function(event) {
     console.log(nuevaRespuesta);
 
     if(nuevaRespuesta.nombre && nuevaRespuesta.email && nuevaRespuesta.telefono && nuevaRespuesta.asunto && nuevaRespuesta.mensaje) {
-        console.log(nuevaRespuesta);
         respuestas.push(nuevaRespuesta);
+        console.log(respuestas);
 
         output.innerHTML= `
                 <div class="resultado">
@@ -37,7 +37,7 @@ formulario.addEventListener("submit", function(event) {
 
         alert("¡Respuesta enviada con éxito!");
     }else {
-        alert("Faltan datos por rellenar");
+        alert("Hubo un problema técnico :(");
     }
 })
 
