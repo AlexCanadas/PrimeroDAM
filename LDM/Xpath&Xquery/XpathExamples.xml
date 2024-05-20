@@ -27,4 +27,7 @@
     <Expression name="Sacar los libros que su titulo sea mayor que 12">
         //book/title[string-length(text())>12]
     </Expression>
+    <Expression name="Sacar los libros que su autor tenga de apellido Ray">
+        //book[author[contains(., "Ray")]]
+    </Expression>
 </XPathExpressions>

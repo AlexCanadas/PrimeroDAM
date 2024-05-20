@@ -1,0 +1,75 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulario de contacto</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/contact-form.css" />
+  </head>
+
+  <body>
+    <!-- formulario de contacto en html y css -->
+
+    <div class="contact_form">
+      <div class="formulario">
+        <h1>Formulario de contacto</h1>
+        <h3>Escríbenos y en breve los pondremos en contacto contigo</h3>
+
+        <form id="formulario" action="form.php" method="post">
+          <p>
+            <label for="nombre" class="colocar_nombre">
+              <span class="obligatorio">Nombre *</span>
+            </label>
+            <input id="inputNombre" type="text" required />
+          </p>
+
+          <p>
+            <label for="email" class="colocar_email">
+              <span class="obligatorio">Email *</span>
+            </label>
+            <input id="inputEmail" type="text" required />
+          </p>
+
+          <p>
+            <label for="telefone" class="colocar_telefono"> </label>
+            <span class="obligatorio">Teléfono *</span>
+            <input id="inputTelefono" type="number" required />
+          </p>
+
+          <p>
+            <label for="website" class="colocar_website">
+              <span>Web</span></label
+            >
+            <input id="inputWeb" type="text" />
+          </p>
+
+          <p>
+            <label for="asunto" class="colocar_asunto">
+              <span class="obligatorio">Asunto *</span>
+            </label>
+            <input id="inputAsunto" type="text" required />
+          </p>
+
+          <p>
+            <label for="mensaje" class="colocar_mensaje">
+              <span class="obligatorio">Mensaje *</span>
+            </label>
+            <textarea id="inputMensaje" required></textarea>
+          </p>
+
+          <button type="submit" name="enviar_formulario" id="enviar">
+            <p>Enviar</p>
+          </button>
+
+          <p class="aviso">
+            <span class="obligatorio"> * </span>los campos son obligatorios.
+          </p>
+        </form>
+      </div>
+    </div>
+    <section>
+      <div id="output"></div>
+    </section>
+
+    <script src="./utils/gestor.js"></script>
+  </body>
+</html>
