@@ -5,12 +5,14 @@ xquery version "3.1";
 for $item in /bookstore/book (: Recorremos todos los books :)
 let $anio := $item/year/text() (: Guardamos el contenido de year de cada item en anio :)
 where $anio > 2010 and $item/price < 30 (: Condición para filtrar datos :)
+return $anio
 
 (: Order by :)
 for $item in /bookstore/book 
 let $anio := $item/year/text() 
 where $anio > 2010 and $item/price < 30 
 order by $item/price, $anio (: Ordenamos por precio y si hubiese iguales, ordena por precio :)
+return $anio
 
 (: Return :)
 for $item in /bookstore/book 
@@ -38,4 +40,5 @@ return <li>$libro/title/text()</li>
 
 (: Devuelve li con libros que tengan precio mayor a 30  :)
 for $i in //book[price<30]
-return "<li>"+$i/@category+"</li>"
+let $output = "<li>"+$i/@category+"</li>"
+return $output
