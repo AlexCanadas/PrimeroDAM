@@ -30,4 +30,28 @@
     <Expression name="Sacar los libros que su autor tenga de apellido Ray">
         //book[author[contains(., "Ray")]]
     </Expression>
+
+
+
+    <Expression name="Obtén las películas que duran más de 150 minutos">
+        //pelicula[@duracion>150]/titulo/text()
+    </Expression>
+
+    <Expression name="Obtén el título de las películas que están en ingles">
+        //pelicula[@idioma="Inglés"]/titulo/text()
+    </Expression>
+
+    <Expression name="Obtener el país de origen de la película titulada: El caballero osculo">
+        //pelicula[titulo="El Caballero de la Noche"]/@pais
+    </Expression>
+
+    <Expression name= "Obtener las películas de Quentin Tarantino">
+        //pelicula[director="Quentin Tarantino"]/titulo/text()
+    </Expression>
+
+    <Expression name="Obtener el título de todas aquellas películas que tengan una media superior a 9 y además estén en inglés">
+        //pelicula[calificacion>9 and @idioma="Inglés"]/titulo/text()
+    </Expression>
+
+
 </XPathExpressions>

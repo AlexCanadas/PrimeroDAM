@@ -38,6 +38,39 @@ let $anio := $libro/year
 where $anio > 2009 and $libro/price < 60
 return <li>$libro/title/text()</li>
 
+
+
+(: Obtener el nombre de todos los jugadores  :)
+for $i in //jugador
+let $resultado := //jugador/nombre/text()
+return $resultado
+
+(: Obtener el equipo de todos los jugadores  :)
+for $i in //jugador
+let $resultado := //jugador/@equipo
+return $resultado
+
+(: Obtener todos los jugadores con una media superior a 9  :)
+for $i in //jugador
+let $resultado := //jugador/nombre/text()
+where $i/calificacion>9
+return $resultado
+
+(: Obtener todos los jugadores del FC Barcelona  :)
+for $jugador in /jugadores/jugador
+where $jugador/@equipo = 'FC Barcelona'
+return $jugador/nombre/text()
+
+(: Obtener el nombre de todos los jugadores con edad inferior a 25 y que además tengan una media superior a 9  :)
+for $i in //jugador
+where $i[@edad<25 and $i/calificacion>9]
+return $i
+
+
+
+
+
+
 (: Devuelve li con libros que tengan precio mayor a 30  :)
 for $i in //book[price<30]
 let $output = "<li>"+$i/@category+"</li>"
