@@ -1,5 +1,6 @@
-John,Blonde,25,true
-Jane,Black,30,false
-Doe,Red,40,true
 Alex,castaño,33,true
 Hola mundo
+Esto es un ejemplo de escritura
+Alex,castaño,33,true
+Hola mundo
+Esto es un ejemplo de escritura

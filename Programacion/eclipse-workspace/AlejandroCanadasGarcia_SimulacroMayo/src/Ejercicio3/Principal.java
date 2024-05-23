@@ -25,8 +25,7 @@ public class Principal {
 		try {
 			ArrayList<Pelicula> variable = Pelicula.leerPeliculas("peliculas.txt", peliculasArray);
 			for (Pelicula p : variable) {
-				System.out.println("Película: " + p.getTitulo() + ", Director: " + p.getDirector()
-						+ ", Puntuación Media: " + p.PuntuacionMedia());
+				System.out.println(p);
 			}
 		} catch (IOException e) {
 			System.out.println("\nError al leer el archivo: " + e.getMessage());

@@ -88,7 +88,6 @@ public class Objeto1 {
 
 			String linea;
 			while ((linea = br.readLine()) != null) {
-				// System.out.println("Leyendo línea: " + linea);
 				String[] elementos = linea.split(",");
 
 				String name = elementos[0].trim();
@@ -97,8 +96,6 @@ public class Objeto1 {
 				boolean isMarried = Boolean.parseBoolean(elementos[3].trim());
 				Objeto1 nuevoObj = new Objeto1(name, haircolor, age, isMarried);
 				loquesea.add(nuevoObj);
-				// System.out.println("Objeto añadido: " + nuevoObj);
-
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -117,15 +114,13 @@ public class Objeto1 {
 			bw.newLine();
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw e; // Re-lanzar la excepción para que el llamador pueda manejarla
 		}
 	}
 
-	public static void escribirAlgoEnArchivo(String nombreArchivo) {
-		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("src/test.txt"));
-		} catch (Exception e) {
-
+	public static void escribirAlgoEnArchivo(String nombreArchivo) throws IOException {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+			bw.write("Esto es un ejemplo de escritura");
+			bw.newLine();
 		}
 	}
 
