@@ -1,47 +1,42 @@
 package Figuras2D;
 
-public class Circulo {
-String nombre;
-double radio;
+public class Circulo extends Figuras2D {
+	private double radio;
 
-//Constructor con parámetros
-public Circulo(String nombre, double radio) {
-	this.nombre = nombre;
-	this.radio = radio;
-}
-
-//Getters & Setters
-public String getNombre() {
-	return nombre;
-}
-
-public void setNombre(String nombre) {
-	this.nombre = nombre;
-}
-
-public double getRadio() {
-	return radio;
-}
-
-public void setRadio(double radio) {
-	this.radio = radio;
-}
-
-//Calculamos perímetro
-public double calcularPerimetro() {
-    return 2 * Math.PI * radio;
-}
-
-public String toString() {
-    return "Círculo [nombre=" + nombre + ", radio=" + radio + "]";
-}
-
-public boolean equals(Circulo c) {
-	boolean iguales = false;
-	if (c.getNombre().equals(this.nombre) && c.getRadio() == this.radio){
-		iguales = true;
+	public Circulo(String nombre, double radio) {
+		super(nombre);
+		this.radio = radio;
 	}
-	return iguales;
-}
+
+	public double getRadio() {
+		return radio;
+	}
+
+	public void setRadio(double radio) {
+		this.radio = radio;
+	}
+
+	@Override
+	public double calcularPerimetro() {
+		return 2 * Math.PI * radio;
+	}
+
+	@Override
+	public String toString() {
+		return "Circulo{" + "Nombre='" + getNombre() + '\'' + ", radio=" + radio + ", perímetro: " + calcularPerimetro()
+				+ '}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		if (!super.equals(o))
+			return false;
+		Circulo circulo = (Circulo) o;
+		return Double.compare(circulo.radio, radio) == 0;
+	}
 
 }

@@ -1,47 +1,52 @@
 package Figuras2D;
 
-public class Rectangulo {
-String nombre;
-double base, altura;
+public class Rectangulo extends Figuras2D {
+	private double base;
+	private double altura;
 
-//Constructor con parámetros
-public Rectangulo(String nombre, double base, double altura) {
-	this.nombre = nombre;
-	this.base = base;
-	this.altura = altura;
-}
+	public Rectangulo(String nombre, double base, double altura) {
+		super(nombre);
+		this.base = base;
+		this.altura = altura;
+	}
 
-public String getNombre() {
-	return nombre;
-}
+	public double getBase() {
+		return base;
+	}
 
-public void setNombre(String nombre) {
-	this.nombre = nombre;
-}
+	public void setBase(double base) {
+		this.base = base;
+	}
 
-public double getBase() {
-	return base;
-}
+	public double getAltura() {
+		return altura;
+	}
 
-public void setBase(double base) {
-	this.base = base;
-}
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
 
-public double getAltura() {
-	return altura;
-}
+	@Override
+	public double calcularPerimetro() {
+		return 2 * (base + altura);
+	}
 
-public void setAltura(double altura) {
-	this.altura = altura;
-}
+	@Override
+	public String toString() {
+		return "Rectangulo{" + "nombre='" + getNombre() + '\'' + ", base=" + base + ", altura=" + altura
+				+ ", perímetro: " + calcularPerimetro() + '}';
+	}
 
-//Calculamos perímetro
-public double calcularPerimetro() {
-    return 2 * (base + altura);
-}
-
-public String toString() {
-    return "Rectángulo [nombre=" + nombre + ", base=" + base + ", altura=" + altura + "]";
-}
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		if (!super.equals(o))
+			return false;
+		Rectangulo that = (Rectangulo) o;
+		return Double.compare(that.base, base) == 0 && Double.compare(that.altura, altura) == 0;
+	}
 
 }
