@@ -1,0 +1,9 @@
+<!ELEMENT jugadores (jugador+)>
+<!ELEMENT jugador (nombre, posicion, calificacion)>
+<!ATTLIST jugador id CDATA #REQUIRED>
+<!ATTLIST jugador equipo CDATA #REQUIRED>
+<!ATTLIST jugador nacionalidad CDATA #REQUIRED>
+<!ATTLIST jugador edad CDATA #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT posicion (#PCDATA)>
+<!ELEMENT calificacion (#PCDATA)>

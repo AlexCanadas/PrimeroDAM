@@ -1,0 +1,11 @@
+<!ELEMENT catalogoPeliculas (pelicula+)>
+<!ELEMENT pelicula (titulo, director, genero, anio, calificacion)>
+<!ATTLIST pelicula id CDATA #REQUIRED>
+<!ATTLIST pelicula idioma CDATA #REQUIRED>
+<!ATTLIST pelicula duracion CDATA #REQUIRED>
+<!ATTLIST pelicula pais CDATA #REQUIRED>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT genero (#PCDATA)>
+<!ELEMENT anio (#PCDATA)>
+<!ELEMENT calificacion (#PCDATA)>

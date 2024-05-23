@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogoPeliculas SYSTEM "./peliculas.dtd">
 
 <catalogoPeliculas>
 <pelicula id="1" idioma="Inglés" duracion="175" pais="EEUU">
