@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Lenguaje de marcas</h2>
+    </header>
+
+    <section class="nosotros">
+      <h2>Sobre nosotros</h2>
+      <p>
+        Esta página se realiza para poder practicar para el examen de lenguaje
+        de marcas
+      </p>
+    </section>
+
+    <section class="info">
+      <div>
+        <h2>Asignaturas</h2>
+        <p>Estas son las asignaturas que cursarás durante el curso</p>
+        <div class="asignaturas">
+          <div class="asignatura1">
+            <img src="" alt="" />
+            <p>?</p>
+            <h4>Asignatura 1</h4>
+            <p>Descripción asignatura 1</p>
+          </div>
+          <div class="asignatura2">
+            <img src="" alt="" />
+            <p>?</p>
+            <h4>Asignatura 2</h4>
+            <p>Descripción asignatura 2</p>
+          </div>
+          <div class="asignatura3">
+            <img src="" alt="" />
+            <p>?</p>
+            <h4>Asignatura 3</h4>
+            <p>Descripción asignatura 3</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Contacto</h2>
+        <p>
+          Puedes contactarnos a través del siguiente formulario para que te
+          demos información sobre el ciclo
+        </p>
+        <form>
+          <div class="contacto">
+            <p class="rellenar">
+              <label for="nombre" class="colocar_nombre">
+                <span class="obligatorio">Nombre *</span>
+              </label>
+              <input id="inputNombre" type="text" required />
+            </p>
+
+            <p class="rellenar">
+              <label for="email" class="colocar_email">
+                <span class="obligatorio">Email *</span>
+              </label>
+              <input id="inputEmail" type="text" required />
+            </p>
+
+            <p class="rellenar">
+              <label for="mensaje" class="colocar_mensaje">
+                <span class="obligatorio">Mensaje *</span>
+              </label>
+              <textarea id="inputMensaje" required></textarea>
+            </p>
+          </div>
+          <button>Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy;2024. Lenguaje de marcas. Universidad Europea</p>
+    </footer>
+  </body>
+</html>
