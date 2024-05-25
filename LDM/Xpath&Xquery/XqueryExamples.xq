@@ -38,33 +38,36 @@ let $anio := $libro/year
 where $anio > 2009 and $libro/price < 60
 return <li>$libro/title/text()</li>
 
+(: Devuelve author si el titulo es mayor a 5 caracteres :)
+for $i in //book
+where $i/title[string-length(text())>5]
+return $i/author
+
 
 
 (: Obtener el nombre de todos los jugadores  :)
-for $i in //jugador
-let $resultado := //jugador/nombre/text()
-return $resultado
+for $i in //jugador/nombre/text()
+return $i
 
 (: Obtener el equipo de todos los jugadores  :)
-for $i in //jugador
-let $resultado := //jugador/@equipo
-return $resultado
+for $i in //jugador/@equipo
+return $i
 
 (: Obtener todos los jugadores con una media superior a 9  :)
 for $i in //jugador
-let $resultado := //jugador/nombre/text()
 where $i/calificacion>9
-return $resultado
+return $i/nombre/text()
 
 (: Obtener todos los jugadores del FC Barcelona  :)
 for $jugador in /jugadores/jugador
-where $jugador/@equipo = 'FC Barcelona'
+where $jugador[@equipo = 'FC Barcelona']
 return $jugador/nombre/text()
 
-(: Obtener el nombre de todos los jugadores con edad inferior a 25 y que además tengan una media superior a 9  :)
+(: Obtener el nombre de todos los jugadores con edad inferior a 25 y 
+que además tengan una media superior a 9  :)
 for $i in //jugador
 where $i[@edad<25 and $i/calificacion>9]
-return $i
+return $i/nombre/text()
 
 
 
