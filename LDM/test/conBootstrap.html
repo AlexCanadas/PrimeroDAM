@@ -22,48 +22,41 @@
     <header class="bg-black text-white text-center">Header</header>
 
     <main class="container">
-      <div class="row">
-        <section class="mt-3 text-center">
-          <h2>Empiece</h2>
-          <p>Probando algo de texto</p>
-        </section>
-        <section class="row">
-          <div class="col-6">
+      <section>
+        <div class="row text-center mt-4">
+          <h2>Probando de nuevo</h2>
+          <p>Hola aqui estamos</p>
+        </div>
+      </section>
+      <section>
+        <div class="row">
+          <div class="col-6 text-center">
+            <h3>Probando1</h3>
+            <p>Texto de probando1</p>
             <div class="row">
-              <h2 class="text-center">Contenido</h2>
-              <div class="col-4 text-center">Asignatura 1</div>
-              <div class="col-4 text-center">Asignatura 1</div>
-              <div class="col-4 text-center">Asignatura 1</div>
+              <h6 class="col-4">hola1</h6>
+              <h6 class="col-4">hola2</h6>
+              <h6 class="col-4">hola3</h6>
             </div>
           </div>
           <div class="col-6">
-            <h2 class="text-center">Formulario</h2>
+            <h3 class="text-center">Probando2</h3>
+            <p>Texto de probando2</p>
             <form>
-              <div class="mb-3">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" required />
-              </div>
-              <div class="mb-3">
-                <label for="nombre">Email</label>
-                <input type="text" class="form-control" id="nombre" required />
-              </div>
-              <div class="mb-3">
-                <label for="nombre">Teléfono</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="nombre"
-                  required
-                />
-              </div>
-              <div>
-                <label class="">Comentario *</label>
-                <textarea class="form-control"></textarea>
-              </div>
+              <label for="nombre" class="form-label">Nombre: *</label>
+              <input type="text" id="nombre" class="form-control" required />
+              <label for="edad">Edad: *</label>
+              <input type="edad" id="edad" class="form-control" required />
+              <button type="button" class="mt-2 btn btn-dark" id="boton">
+                Enviar
+              </button>
             </form>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      <section>
+        <output class="row" id="output"></output>
+      </section>
     </main>
 
     <footer
@@ -71,5 +64,6 @@
     >
       <p>Footer</p>
     </footer>
+    <script src="./gestor.js"></script>
   </body>
 </html>

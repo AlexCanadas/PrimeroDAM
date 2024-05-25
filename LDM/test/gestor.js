@@ -1,8 +1,7 @@
-
-
-
-
-
+let nombre = document.getElementById("nombre");
+let edad = document.getElementById("edad");
+let boton = document.getElementById("boton");
+let output = document.getElementById("output");
 
 boton.addEventListener("click", () => {
     let nombreValue = nombre.value;
