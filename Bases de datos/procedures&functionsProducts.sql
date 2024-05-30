@@ -42,6 +42,26 @@ END;
 --Pregunta: Crea un procedimiento que reciba el id_cliente como parámetro y devuelva el total de pagos pendientes para ese cliente.
 
 
+-- Escribe un procedimiento para actualizar la tabla de pedidos que reciba dos parámetros: un id_pedido y un descuento que puede ser 'A' o 'B'. 
+-- Se debe actualizar total_pedido, aplicándole un descuento del 15% si el descuento es tipo A.
+-- Si es tipo B el descuento debe ser del 25%. En cualquier otro caso no se aplicará ningún descuento.
+DELIMITER $
+CREATE OR REPLACE PROCEDURE actualizarPedido(IN numPedido INT, IN descuento CHAR(1))
+BEGIN
+IF descuento = 'A' THEN
+UPDATE pedidos
+SET total_pedido = total_pedido * 0.85
+WHERE id_pedido = numPedido;
+ELSEIF descuento = 'B' THEN
+UPDATE pedidos
+SET total_pedido = total_pedido * 0.75
+WHERE id_pedido = numPedido;
+ELSE
+SELECT 'No se aplicará ningún descuento dado que el tipo no es A o B.' AS mensaje;
+END IF;
+END $
+
+
 --Pregunta: Crea una función que reciba el id_cliente como parámetro y devuelva el total de pedidos realizados por ese cliente.
 CREATE FUNCTION calcularTotalPedidos(cliente INT)
 RETURNS INT
