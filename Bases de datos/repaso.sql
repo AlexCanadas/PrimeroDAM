@@ -1,4 +1,4 @@
-                                                -- CONSULTAS --
+                                                    -- CONSULTAS --
 
 -- ¿Cuál es el total de pedidos realizados por cada cliente?
 SELECT a.id_cliente, a.nombre, COUNT(DISTINCT b.id_pedido) numPedidos
@@ -6,19 +6,19 @@ FROM clientes a
 LEFT JOIN pedidos b USING(id_cliente)
 GROUP BY a.id_cliente;
 
---¿Cuáles son los detalles de los pedidos realizados por cada cliente?
+-- ¿Cuáles son los detalles de los pedidos realizados por cada cliente?
 SELECT a.id_cliente, a.nombre, b.id_pedido, c.id_producto, c.cantidad, c.precio_unitario, c.subtotal
 FROM clientes a 
 LEFT JOIN pedidos b USING (id_cliente)
 LEFT JOIN detalles_pedido c USING(id_pedido);
 
---¿Cuál es la valoración media de cada producto?
+-- ¿Cuál es la valoración media de cada producto?
 SELECT a.id_producto, a.nombre_producto, AVG(b.valoracion) valoracionMedia
 FROM productos a 
 LEFT JOIN comentarios_producto b USING (id_producto)
 GROUP BY id_producto
 
---¿Cuál es el coste total de productos en cada línea de productos?
+-- ¿Cuál es el coste total de productos en cada línea de productos?
 SELECT a.id_linea_producto, a.nombre_linea, SUM(b.coste_unitario * b.stock) costeTotal
 FROM lineas_producto a 
 LEFT JOIN productos b USING(id_linea_producto)
@@ -34,7 +34,7 @@ ORDER BY a.id_empleado ASC;
 
                                                     -- FUNCIONES --
 
---Pregunta: Crea una función que reciba el id_cliente como parámetro y devuelva el nombre del representante de ventas de ese cliente.
+-- Pregunta: Crea una función que reciba el id_cliente como parámetro y devuelva el nombre del representante de ventas de ese cliente.
 CREATE FUNCTION devolverRepVentasSegunCliente(cliente int)
 RETURNS VARCHAR(50)
 BEGIN 
@@ -49,7 +49,7 @@ BEGIN
     RETURN representanteVentas;
 END;
 
---Pregunta: Crea una función que reciba el id_cliente como parámetro y devuelva el total de pedidos realizados por ese cliente.
+-- Pregunta: Crea una función que reciba el id_cliente como parámetro y devuelva el total de pedidos realizados por ese cliente.
 CREATE FUNCTION calcularTotalPedidos(cliente INT)
 RETURNS INT
 BEGIN 
