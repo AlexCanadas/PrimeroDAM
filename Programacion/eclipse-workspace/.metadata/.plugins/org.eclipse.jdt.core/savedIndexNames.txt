@@ -17,7 +17,6 @@ INDEX VERSION 1.134+C:\Users\Cañadas\Desktop\DAM\Programacion\eclipse-workspace\
 245674693.index
 3175182713.index
 1415254602.index
-3087143053.index
 2836006885.index
 2919790223.index
 543957864.index

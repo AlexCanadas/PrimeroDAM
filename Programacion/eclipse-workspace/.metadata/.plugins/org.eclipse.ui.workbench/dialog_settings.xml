@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.e4.ui.importer.wizard"/>
-		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.FileSystem"/>
+		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.Preferences"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 			<item value="org.eclipse.egit.ui.internal.clone.gitclonecategory"/>
@@ -21,6 +21,14 @@
 		<item key="WizardFileSystemResourceExportPage1.STORE_RESOLVE_LINKED_RESOURCES_ID" value="false"/>
 		<list key="WizardFileSystemResourceExportPage1.STORE_DESTINATION_NAMES_ID">
 			<item value="C:\Users\Cañadas\Downloads"/>
+		</list>
+	</section>
+	<section name="PreferencesExportWizard">
+		<item key="" value="C:\Users\Cañadas\Desktop\Alex\Eclipse\Backup.epf"/>
+		<item key="WizardPreferencesExportPage1.STORE_OVERWRITE_EXISTING_FILES_ID" value="false"/>
+		<item key="WizardPreferencesExportPage1.EXPORT_ALL_PREFERENCES_ID" value="true"/>
+		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\Cañadas\Desktop\Alex\Eclipse\Backup.epf"/>
 		</list>
 	</section>
 </section>
