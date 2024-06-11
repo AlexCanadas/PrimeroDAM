@@ -18,5 +18,6 @@ public class FutbolTest {
 	public void comprobarEdad() {
 	jugador = new Futbol ("alex", "defensa", 19);
 	Assertions.assertTrue(jugador.mayorDeEdad(), "Mayor de edad");
+	int o;
 	}
 }
